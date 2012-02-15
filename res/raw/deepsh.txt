@@ -1,0 +1,350 @@
+screen
+	controls:100
+	id:1000
+	
+sh
+	height:700
+	width:700
+	screen-alignment:center
+	background-color:red
+	padding-left:5
+	padding-top:5
+	padding-bottom:5
+	padding-right:5
+	margin-left:5
+	margin-top:5
+	margin-bottom:5
+	margin-right:5
+	title:SH1
+	id:100
+	target-screen:2000
+	
+screen
+	controls:200
+	id:2000
+
+sh
+	height:680
+	width:680
+	screen-alignment:center
+	background-color:yellow
+	padding-left:5
+	padding-top:5
+	padding-bottom:5
+	padding-right:5
+	margin-left:5
+	margin-top:5
+	margin-bottom:5
+	margin-right:5
+	title:SH
+	id:200
+	target-screen:3000
+	
+screen
+	controls:300
+	id:3000
+	
+sh
+	height:660
+	width:660
+	screen-alignment:center
+	background-color:red
+	padding-left:5
+	padding-top:5
+	padding-bottom:5
+	padding-right:5
+	margin-left:5
+	margin-top:5
+	margin-bottom:5
+	margin-right:5
+	title:SH
+	id:300
+	target-screen:4000
+	
+screen
+	controls:400
+	id:4000
+	
+sh
+	height:640
+	width:640
+	screen-alignment:center
+	background-color:yellow
+	padding-left:5
+	padding-top:5
+	padding-bottom:5
+	padding-right:5
+	margin-left:5
+	margin-top:5
+	margin-bottom:5
+	margin-right:5
+	title:SH
+	id:400
+	target-screen:5000
+	
+screen
+	controls:500
+	id:5000
+	
+sh
+	height:620
+	width:620
+	screen-alignment:center
+	background-color:red
+	padding-left:5
+	padding-top:5
+	padding-bottom:5
+	padding-right:5
+	margin-left:5
+	margin-top:5
+	margin-bottom:5
+	margin-right:5
+	title:SH
+	id:500
+	target-screen:6000
+	
+screen
+	controls:600
+	id:6000
+	
+sh
+	height:600
+	width:600
+	screen-alignment:center
+	background-color:yellow
+	padding-left:5
+	padding-top:5
+	padding-bottom:5
+	padding-right:5
+	margin-left:5
+	margin-top:5
+	margin-bottom:5
+	margin-right:5
+	title:SH
+	id:600
+	target-screen:7000
+	
+screen
+	controls:700
+	id:7000
+	
+sh
+	height:580
+	width:580
+	screen-alignment:center
+	background-color:red
+	padding-left:5
+	padding-top:5
+	padding-bottom:5
+	padding-right:5
+	margin-left:5
+	margin-top:5
+	margin-bottom:5
+	margin-right:5
+	title:SH
+	id:700
+	target-screen:8000
+	
+screen
+	controls:800
+	id:8000
+	
+sh
+	height:560
+	width:560
+	screen-alignment:center
+	background-color:yellow
+	padding-left:5
+	padding-top:5
+	padding-bottom:5
+	padding-right:5
+	margin-left:5
+	margin-top:5
+	margin-bottom:5
+	margin-right:5
+	title:SH
+	id:800
+	target-screen:9000
+	
+screen
+	controls:900
+	id:9000
+	
+sh
+	height:540
+	width:540
+	screen-alignment:center
+	background-color:red
+	padding-left:5
+	padding-top:5
+	padding-bottom:5
+	padding-right:5
+	margin-left:5
+	margin-top:5
+	margin-bottom:5
+	margin-right:5
+	title:SH
+	id:900
+	target-screen:10000
+	
+screen
+	controls:1000
+	id:10000
+	
+sh
+	height:520
+	width:520
+	screen-alignment:center
+	background-color:yellow
+	padding-left:5
+	padding-top:5
+	padding-bottom:5
+	padding-right:5
+	margin-left:5
+	margin-top:5
+	margin-bottom:5
+	margin-right:5
+	title:SH
+	id:1000
+	target-screen:11000
+	
+screen
+	controls:1100
+	id:11000	
+	
+sh
+	height:500
+	width:500
+	screen-alignment:center
+	background-color:red
+	padding-left:5
+	padding-top:5
+	padding-bottom:5
+	padding-right:5
+	margin-left:5
+	margin-top:5
+	margin-bottom:5
+	margin-right:5
+	title:SH
+	id:1100
+	target-screen:12000
+	
+screen
+	controls:1200
+	id:12000	
+	
+sh
+	height:480
+	width:480
+	screen-alignment:center
+	background-color:yellow
+	padding-left:5
+	padding-top:5
+	padding-bottom:5
+	padding-right:5
+	margin-left:5
+	margin-top:5
+	margin-bottom:5
+	margin-right:5
+	title:SH
+	id:1200
+	target-screen:13000
+	
+screen
+	controls:1300
+	id:13000	
+	
+sh
+	height:460
+	width:460
+	screen-alignment:center
+	background-color:red
+	padding-left:5
+	padding-top:5
+	padding-bottom:5
+	padding-right:5
+	margin-left:5
+	margin-top:5
+	margin-bottom:5
+	margin-right:5
+	title:SH
+	id:1300
+	target-screen:14000
+	
+screen
+	controls:1400
+	id:14000	
+	
+sh
+	height:440
+	width:440
+	screen-alignment:center
+	background-color:yellow
+	padding-left:5
+	padding-top:5
+	padding-bottom:5
+	padding-right:5
+	margin-left:5
+	margin-top:5
+	margin-bottom:5
+	margin-right:5
+	title:SH
+	id:1400
+	target-screen:15000
+	
+screen
+	controls:1500
+	id:15000	
+	
+sh
+	height:420
+	width:420
+	screen-alignment:center
+	background-color:red
+	padding-left:5
+	padding-top:5
+	padding-bottom:5
+	padding-right:5
+	margin-left:5
+	margin-top:5
+	margin-bottom:5
+	margin-right:5
+	title:SH
+	id:1500
+	target-screen:18000
+	
+screen
+	controls:5,6
+	id:18000
+
+button
+	height:30
+	width:20
+	screen-alignment:center
+	background-color:blue
+	padding-left:5
+	padding-top:5
+	padding-bottom:5
+	padding-right:5
+	margin-left:5
+	margin-top:5
+	margin-bottom:5
+	margin-right:5
+	title:Button
+	id:5
+	
+button
+	height:30
+	width:60
+	screen-alignment:center
+	background-color:blue
+	padding-left:5
+	padding-top:5
+	padding-bottom:5
+	padding-right:5
+	margin-left:5
+	margin-top:5
+	margin-bottom:5
+	margin-right:5
+	title:Button
+	id:6

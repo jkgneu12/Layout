@@ -1,0 +1,115 @@
+screen
+	controls:1,100,2,3,4,5
+	id:1000
+
+button
+	height:30
+	width:300
+	screen-alignment:center
+	background-color:blue
+	padding-left:5
+	padding-top:5
+	padding-bottom:5
+	padding-right:5
+	margin-left:5
+	margin-top:5
+	margin-bottom:5
+	margin-right:5
+	title:Button1
+	id:1
+	
+button
+	height:30
+	width:300
+	screen-alignment:center
+	background-color:blue
+	padding-left:5
+	padding-top:5
+	padding-bottom:5
+	padding-right:5
+	margin-left:25
+	margin-top:5
+	margin-bottom:5
+	margin-right:5
+	title:Button2
+	id:2
+
+button
+	height:30
+	width:300
+	screen-alignment:center
+	background-color:blue
+	padding-left:5
+	padding-top:5
+	padding-bottom:5
+	padding-right:5
+	margin-left:5
+	margin-top:5
+	margin-bottom:5
+	margin-right:5
+	title:Button3
+	id:3
+	
+button
+	height:30
+	width:300
+	screen-alignment:center
+	background-color:blue
+	padding-left:5
+	padding-top:5
+	padding-bottom:5
+	padding-right:5
+	margin-left:5
+	margin-top:5
+	margin-bottom:5
+	margin-right:5
+	title:Button4
+	id:4
+	
+button
+	height:30
+	width:300
+	screen-alignment:center
+	background-color:blue
+	padding-left:5
+	padding-top:5
+	padding-bottom:5
+	padding-right:5
+	margin-left:5
+	margin-top:5
+	margin-bottom:5
+	margin-right:5
+	title:Button5
+	id:5
+	
+region
+	screen-alignment:center
+	inner-alignment:left
+	background-color:red
+	padding-left:5
+	padding-top:50
+	padding-bottom:5
+	padding-right:5
+	margin-left:5
+	margin-top:5
+	margin-bottom:5
+	margin-right:5
+	title:Region
+	id:100
+	layout:flow
+	controls:6
+	
+button
+	height:30
+	screen-alignment:left
+	background-color:blue
+	padding-left:5
+	padding-top:5
+	padding-bottom:5
+	padding-right:5
+	margin-left:5
+	margin-top:5
+	margin-bottom:5
+	margin-right:5
+	title:Button6666666666
+	id:6
