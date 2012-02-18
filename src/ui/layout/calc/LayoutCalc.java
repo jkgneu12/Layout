@@ -3,19 +3,18 @@ package ui.layout.calc;
 import java.util.ArrayList;
 
 import ui.activity.BaseActivity;
-import ui.view.IView;
-import ui.view.control.IControl;
+import ui.view.wrapper.ViewWrapper;
 import android.view.View.MeasureSpec;
 import config.ControlConfig;
 
 public abstract class LayoutCalc {
 
-	protected ArrayList<IControl> controls;
+	protected ArrayList<ViewWrapper> controls;
 
 	protected int parentWidth;
 	protected int parentHeight;
 
-	public LayoutCalc(ArrayList<IControl> controls, int parentWidth, int parentHeight) {
+	public LayoutCalc(ArrayList<ViewWrapper> controls, int parentWidth, int parentHeight) {
 		this.controls = controls;
 		this.parentWidth = parentWidth;
 		this.parentHeight = parentHeight;
@@ -24,8 +23,8 @@ public abstract class LayoutCalc {
 	
 	public abstract void layoutControls();
 
-	public static int getMeasuredWidth(IControl c){
-		int width = c.getControlConfig().getWidth();
+	public static int getMeasuredWidth(ViewWrapper c){
+		int width = c.getWidth();
 		if(width == ControlConfig.INVALID){
 			c.getView().measure(MeasureSpec.UNSPECIFIED, MeasureSpec.UNSPECIFIED);
 			width = c.getView().getMeasuredWidth();
@@ -33,8 +32,8 @@ public abstract class LayoutCalc {
 		return width;	
 	}
 
-	public static int getMeasuredHeight(IControl c){
-		int height = c.getControlConfig().getHeight();
+	public static int getMeasuredHeight(ViewWrapper c){
+		int height = c.getHeight();
 		if(height == ControlConfig.INVALID){
 			c.getView().measure(MeasureSpec.UNSPECIFIED, MeasureSpec.UNSPECIFIED);
 			height = c.getView().getMeasuredHeight();
@@ -42,11 +41,11 @@ public abstract class LayoutCalc {
 		return height;	
 	}
 	
-	public static int getMaxWidth(IView view, BaseActivity activity) {
-		IView parent = view.getViewParent();
+	public static int getMaxWidth(ViewWrapper view, BaseActivity activity) {
+		ViewWrapper parent = view.getParent();
 		if(parent != null){
-			if(parent instanceof IControl){
-				int configWidth = ((IControl)parent).getControlConfig().getWidth();
+			if(parent instanceof ViewWrapper){
+				int configWidth = parent.getWidth();
 			
 				if(configWidth != ControlConfig.INVALID)
 					return configWidth;
@@ -57,11 +56,11 @@ public abstract class LayoutCalc {
 		return activity.getScreenWidth();
 	}
 	
-	public static int getMaxHeight(IView view, BaseActivity activity) {
-		IView parent = view.getViewParent();
+	public static int getMaxHeight(ViewWrapper view, BaseActivity activity) {
+		ViewWrapper parent = view.getParent();
 		if(parent != null){
-			if(parent instanceof IControl){
-				int configHeight = ((IControl)parent).getControlConfig().getHeight();
+			if(parent instanceof ViewWrapper){
+				int configHeight = parent.getHeight();
 			
 				if(configHeight != ControlConfig.INVALID)
 					return configHeight;
@@ -72,7 +71,7 @@ public abstract class LayoutCalc {
 		return activity.getScreenHeight();
 	}
 	
-	protected abstract int calculateLeftSpacing(IControl c, int space);
+	protected abstract int calculateLeftSpacing(ViewWrapper c, int space);
 	
-	protected abstract int calculateRightSpacing(IControl c, int space);
+	protected abstract int calculateRightSpacing(ViewWrapper c, int space);
 }

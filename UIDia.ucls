@@ -80,8 +80,8 @@
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="11" corner="BOTTOM_RIGHT" language="java" name="ui.view.Container" project="ReRelayout" 
-    file="/ReRelayout/src/ui/view/Container.java" binary="false">    
+  <class id="11" corner="BOTTOM_RIGHT" language="java" name="ui.view.control.wrapper.Container" project="ReRelayout" 
+    file="/ReRelayout/src/ui/view/control/wrapper/Container.java" binary="false">    
     <position x="537" y="37" width="231" height="306"/>    
     <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
@@ -104,8 +104,8 @@
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="14" corner="BOTTOM_RIGHT" language="java" name="ui.view.control.Region" project="ReRelayout" 
-    file="/ReRelayout/src/ui/view/control/Region.java" binary="false">    
+  <class id="14" corner="BOTTOM_RIGHT" language="java" name="ui.view.control.wrapper.Region" project="ReRelayout" 
+    file="/ReRelayout/src/ui/view/control/wrapper/Region.java" binary="false">    
     <position x="598" y="537" width="216" height="114"/>    
     <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
@@ -120,8 +120,8 @@
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </interface>  
-  <class id="16" corner="BOTTOM_RIGHT" language="java" name="ui.view.ScreenContainer" project="ReRelayout" 
-    file="/ReRelayout/src/ui/view/ScreenContainer.java" binary="false">    
+  <class id="16" corner="BOTTOM_RIGHT" language="java" name="ui.view.control.wrapper.ScreenContainer" 
+    project="ReRelayout" file="/ReRelayout/src/ui/view/control/wrapper/ScreenContainer.java" binary="false">    
     <position x="912" y="383" width="238" height="98"/>    
     <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      

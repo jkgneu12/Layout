@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import ui.layout.calc.HorizontalLayoutCalc;
 import ui.layout.calc.LayoutCalc;
-import ui.view.control.IControl;
+import ui.view.wrapper.ViewWrapper;
 import android.content.Context;
 
 public class HorizontalLayout extends Layout {
@@ -14,7 +14,7 @@ public class HorizontalLayout extends Layout {
 	}
 	
 	@Override
-	protected LayoutCalc createCalc(ArrayList<IControl> controls, int width, int height) {
+	protected LayoutCalc createCalc(ArrayList<ViewWrapper> controls, int width, int height) {
 		return new HorizontalLayoutCalc(controls, width, height);
 	}
 

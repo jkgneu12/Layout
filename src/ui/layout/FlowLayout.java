@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import ui.layout.calc.FlowLayoutCalc;
 import ui.layout.calc.LayoutCalc;
-import ui.view.control.IControl;
+import ui.view.wrapper.ViewWrapper;
 import android.content.Context;
 
 public class FlowLayout extends Layout {
@@ -14,7 +14,7 @@ public class FlowLayout extends Layout {
 	}
 
 	@Override
-	protected LayoutCalc createCalc(ArrayList<IControl> controls, int width, int height) {
+	protected LayoutCalc createCalc(ArrayList<ViewWrapper> controls, int width, int height) {
 		return new FlowLayoutCalc(controls, width, height);
 	}
 

@@ -2,16 +2,16 @@ package ui.layout.calc;
 
 import java.util.ArrayList;
 
-import ui.view.control.IControl;
+import ui.view.wrapper.ViewWrapper;
 import android.widget.FrameLayout.LayoutParams;
 
 public class FlowLayoutCalc extends LayoutCalc {
 	
 	protected ArrayList<Integer> spacingWidth;
 	protected ArrayList<Integer> spacingHeight;
-	protected ArrayList<ArrayList<IControl>> controlsByLine;
+	protected ArrayList<ArrayList<ViewWrapper>> controlsByLine;
 
-	public FlowLayoutCalc(ArrayList<IControl> controls, int parentWidth, int parentHeight) {
+	public FlowLayoutCalc(ArrayList<ViewWrapper> controls, int parentWidth, int parentHeight) {
 		super(controls, parentWidth, parentHeight);
 	}
 	
@@ -26,18 +26,18 @@ public class FlowLayoutCalc extends LayoutCalc {
 	 * Group controls into rows as they will appear on screen.
 	 */
 	protected void groupControlsByLine() {
-		controlsByLine = new ArrayList<ArrayList<IControl>>();
-		controlsByLine.add(new ArrayList<IControl>());
+		controlsByLine = new ArrayList<ArrayList<ViewWrapper>>();
+		controlsByLine.add(new ArrayList<ViewWrapper>());
 		
 		int controlWidth = 0;
 		int line = 0;
 		
-		for(IControl c : controls){
-        	controlWidth += getMeasuredWidth(c) + c.getControlConfig().getMarginLeft() + c.getControlConfig().getMarginRight();
+		for(ViewWrapper c : controls){
+        	controlWidth += getMeasuredWidth(c) + c.getMarginLeft() + c.getMarginRight();
 			if(controlWidth > parentWidth){
 				line++;
 				controlWidth = 0;
-				controlsByLine.add(new ArrayList<IControl>());
+				controlsByLine.add(new ArrayList<ViewWrapper>());
 			}
         	controlsByLine.get(line).add(c);
 		}
@@ -51,12 +51,12 @@ public class FlowLayoutCalc extends LayoutCalc {
 		spacingHeight = new ArrayList<Integer>();
 		
 		for(int line = 0; line < controlsByLine.size(); line++){
-			ArrayList<IControl> lineOfControls = controlsByLine.get(line);
+			ArrayList<ViewWrapper> lineOfControls = controlsByLine.get(line);
 			int controlWidth = 0;
 			int maxHeight = 0;
-			for(IControl c : lineOfControls){
-	        	controlWidth += getMeasuredWidth(c) + c.getControlConfig().getMarginLeft() + c.getControlConfig().getMarginRight();
-	        	int h = getMeasuredHeight(c) + c.getControlConfig().getMarginTop() + c.getControlConfig().getMarginBottom();
+			for(ViewWrapper c : lineOfControls){
+	        	controlWidth += getMeasuredWidth(c) + c.getMarginLeft() + c.getMarginRight();
+	        	int h = getMeasuredHeight(c) + c.getMarginTop() + c.getMarginBottom();
 	        	if(h > maxHeight)
 	        		maxHeight = h;
 			}
@@ -75,23 +75,23 @@ public class FlowLayoutCalc extends LayoutCalc {
 		
 		int verticalMargin = 0;
 		for(int line = 0; line < controlsByLine.size(); line++){
-			ArrayList<IControl> lineOfControls = controlsByLine.get(line);
+			ArrayList<ViewWrapper> lineOfControls = controlsByLine.get(line);
 			int space = spacingWidth.get(line);
 			int horizontalMargin = 0;
 			if(line > 0)
 				verticalMargin += spacingHeight.get(line - 1);
-			for(IControl c : lineOfControls){
+			for(ViewWrapper c : lineOfControls){
 	        	horizontalMargin += calculateLeftSpacing(c, space);
-	        	c.setTranslationX(horizontalMargin);
+	        	c.getView().setTranslationX(horizontalMargin);
 	        	horizontalMargin += calculateRightSpacing(c, space) + getMeasuredWidth(c);
-	        	c.setTanslationY(verticalMargin + c.getControlConfig().getMarginTop());
+	        	c.getView().setTranslationY(verticalMargin + c.getMarginTop());
 			}
 		}
 	}
 	
-	protected int calculateLeftSpacing(IControl c, int space) {
-		int marginLeft = c.getControlConfig().getMarginLeft();
-		switch(c.getControlConfig().getScreenAlignment()){
+	protected int calculateLeftSpacing(ViewWrapper c, int space) {
+		int marginLeft = c.getMarginLeft();
+		switch(c.getScreenAlignment()){
 		case LEFT: return marginLeft;
 		case CENTER: return marginLeft + (space /2);
 		case RIGHT: return marginLeft + space;
@@ -99,9 +99,9 @@ public class FlowLayoutCalc extends LayoutCalc {
 		return 0;
 	}
 	
-	protected int calculateRightSpacing(IControl c, int space) {
-		int marginRight = c.getControlConfig().getMarginRight();
-		switch(c.getControlConfig().getScreenAlignment()){
+	protected int calculateRightSpacing(ViewWrapper c, int space) {
+		int marginRight = c.getMarginRight();
+		switch(c.getScreenAlignment()){
 		case RIGHT: return marginRight;
 		case CENTER: return marginRight + (space /2);
 		case LEFT: return marginRight + space;
@@ -117,12 +117,12 @@ public class FlowLayoutCalc extends LayoutCalc {
 		LayoutParams layoutParams;
 		int count = 0;
 		for(int line = 0; line < controlsByLine.size(); line++){
-			ArrayList<IControl> lineOfControls = controlsByLine.get(line);
+			ArrayList<ViewWrapper> lineOfControls = controlsByLine.get(line);
 			for(int c = 0; c < lineOfControls.size(); c++){
-				IControl control = lineOfControls.get(c);
+				ViewWrapper control = lineOfControls.get(c);
 				
 				layoutParams = new LayoutParams(getMeasuredWidth(control), getMeasuredHeight(control));
-				control.setLayoutParams(layoutParams);
+				control.getView().setLayoutParams(layoutParams);
 				count++;
 			}
 		}	

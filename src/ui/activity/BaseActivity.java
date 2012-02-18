@@ -1,13 +1,15 @@
 package ui.activity;
 
-import ui.view.BaseView;
+import ui.view.wrapper.ScreenContainer;
+import ui.view.wrapper.ViewWrapper;
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import config.ConfigStore;
 
 public class BaseActivity extends Activity {
 	
-	BaseView baseView;
+	ScreenContainer baseView;
 	
 	ConfigStore configStore;
 	
@@ -20,7 +22,14 @@ public class BaseActivity extends Activity {
 		
 		configStore = new ConfigStore(this);
         
-        baseView = new BaseView(this, 1000, width, height);
+        baseView = new ScreenContainer(this, null, ViewWrapper.INVALID);
+        
+        baseView.setScreenId(1000);
+        
+        baseView.setWidth(width);
+        baseView.setHeight(height);
+        
+        baseView.setBackgroundColor(Color.GRAY);
         
         baseView.init();
         
@@ -36,7 +45,7 @@ public class BaseActivity extends Activity {
 		return configStore;
 	}
 
-	public BaseView getBaseView() {
+	public ScreenContainer getBaseView() {
 		return baseView;
 	}
 

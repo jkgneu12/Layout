@@ -2,12 +2,12 @@ package ui.layout.calc;
 
 import java.util.ArrayList;
 
-import ui.view.control.IControl;
+import ui.view.wrapper.ViewWrapper;
 import android.widget.FrameLayout.LayoutParams;
 
 public class HorizontalLayoutCalc extends LayoutCalc {
 
-	public HorizontalLayoutCalc(ArrayList<IControl> controls, int parentWidth, int parentHeight) {
+	public HorizontalLayoutCalc(ArrayList<ViewWrapper> controls, int parentWidth, int parentHeight) {
 		super(controls, parentWidth, parentHeight);
 	}
 	
@@ -21,20 +21,20 @@ public class HorizontalLayoutCalc extends LayoutCalc {
 	 */
 	protected void applySpacing() {
 		int horizontalMargin = 0;
-		for(IControl control : controls){
+		for(ViewWrapper control : controls){
 			int width = getMeasuredWidth(control);
-			int marginLeft = control.getControlConfig().getMarginLeft();
-			int marginRight = control.getControlConfig().getMarginRight();
+			int marginLeft = control.getMarginLeft();
+			int marginRight = control.getMarginRight();
 			int space = parentWidth - width - marginLeft - marginRight;
         	horizontalMargin += calculateLeftSpacing(control, space);
-        	control.setTranslationX(horizontalMargin);
+        	control.getView().setTranslationX(horizontalMargin);
         	horizontalMargin += calculateRightSpacing(control, space) + width;
-        	control.setTanslationY(control.getControlConfig().getMarginTop());
+        	control.getView().setTranslationY(control.getMarginTop());
 		}
 	}
 	
-	protected int calculateLeftSpacing(IControl c, int space) {
-		int marginLeft = c.getControlConfig().getMarginLeft();
+	protected int calculateLeftSpacing(ViewWrapper c, int space) {
+		int marginLeft = c.getMarginLeft();
 		
 		/*switch(c.getControlConfig().getScreenAlignment()){
 		case LEFT: return marginLeft;
@@ -45,8 +45,8 @@ public class HorizontalLayoutCalc extends LayoutCalc {
 		return marginLeft;
 	}
 	
-	protected int calculateRightSpacing(IControl c, int space) {
-		int marginRight = c.getControlConfig().getMarginRight();
+	protected int calculateRightSpacing(ViewWrapper c, int space) {
+		int marginRight = c.getMarginRight();
 		
 		/*switch(c.getControlConfig().getScreenAlignment()){
 		case RIGHT: return marginRight;
@@ -61,8 +61,8 @@ public class HorizontalLayoutCalc extends LayoutCalc {
 	 * Apply LayoutParams to each control
 	 */
 	protected void applyLayoutParams() {
-		for(IControl control : controls){
-			control.setLayoutParams(new LayoutParams(getMeasuredWidth(control), getMeasuredHeight(control)));
+		for(ViewWrapper control : controls){
+			control.getView().setLayoutParams(new LayoutParams(getMeasuredWidth(control), getMeasuredHeight(control)));
 		}	
 	}
 

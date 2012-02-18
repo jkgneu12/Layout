@@ -4,12 +4,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import ui.activity.BaseActivity;
-import ui.view.IView;
-import ui.view.control.ButtonControl;
-import ui.view.control.IControl;
-import ui.view.control.Region;
-import ui.view.control.ScreenHost;
-import ui.view.control.TextControl;
+import ui.view.wrapper.ButtonWrapper;
+import ui.view.wrapper.Region;
+import ui.view.wrapper.ScreenContainer;
+import ui.view.wrapper.TextWrapper;
+import ui.view.wrapper.ViewWrapper;
 import config.ControlConfig;
 import config.ScreenConfig;
 
@@ -19,17 +18,19 @@ public class ControlFactory {
 		
 	}
 	
-	public ArrayList<IControl> createControls(BaseActivity context, IView parent, ScreenConfig screenConfig){
+	public ArrayList<ViewWrapper> createControlsForScreen(BaseActivity context, ViewWrapper parent, int screenId){
+		
+		ScreenConfig screenConfig = context.getConfigStore().getScreenConfig(screenId);
 		
 		ArrayList<Integer> controlIds = screenConfig.getControlIds();
 		
 		HashMap<Integer, ControlConfig> controlConfigs = context.getConfigStore().getControlConfigs(controlIds);
 		
-		ArrayList<IControl> controls = new ArrayList<IControl>();
+		ArrayList<ViewWrapper> controls = new ArrayList<ViewWrapper>();
 		
 		for(int id : controlIds){
 			ControlConfig controlConfig = controlConfigs.get(id);
-			IControl c = createControl(context, parent, controlConfig);
+			ViewWrapper c = createControl(context, parent, controlConfig);
 			initControl(c, controlConfig);
 			controls.add(c);
 		}
@@ -37,16 +38,18 @@ public class ControlFactory {
         return controls;
 	}
 	
-	public ArrayList<IControl> createControls(BaseActivity context, IView parent, ControlConfig controlConfig) {
+	public ArrayList<ViewWrapper> createControlsForControl(BaseActivity context, ViewWrapper parent, int controlId) {
+		ControlConfig controlConfig = context.getConfigStore().getControlConfig(controlId);
+		
 		ArrayList<Integer> controlIds = controlConfig.getControlIds();
 		
 		HashMap<Integer, ControlConfig> controlConfigs = context.getConfigStore().getControlConfigs(controlIds);
 		
-		ArrayList<IControl> controls = new ArrayList<IControl>();
+		ArrayList<ViewWrapper> controls = new ArrayList<ViewWrapper>();
 		
 		for(int id : controlIds){
 			ControlConfig innerControlConfig = controlConfigs.get(id);
-			IControl c = createControl(context, parent, innerControlConfig);
+			ViewWrapper c = createControl(context, parent, innerControlConfig);
 			initControl(c, innerControlConfig);
 			controls.add(c);
 		}
@@ -54,16 +57,17 @@ public class ControlFactory {
         return controls;
 	}
 
-	private IControl createControl(BaseActivity context, IView parent, ControlConfig controlConfig) {
+	private ViewWrapper createControl(BaseActivity context, ViewWrapper parent, ControlConfig controlConfig) {
+		int id = controlConfig.getId();
 		switch (controlConfig.getType()) {
-			case BUTTON: return new ButtonControl(context, parent, controlConfig);			
-			case TEXT: return new TextControl(context, parent, controlConfig);	
+			case BUTTON: return new ButtonWrapper(context, parent, id);			
+			case TEXT: return new TextWrapper(context, parent, id);	
 			case SCREENHOST: 
-				ScreenHost s = new ScreenHost(context, parent, controlConfig);
+				ScreenContainer s = new ScreenContainer(context, parent, id);
 				s.init();
 				return s;
 			case REGION: 
-				Region r = new Region(context, parent, controlConfig);
+				Region r = new Region(context, parent, id);
 				r.init();
 				return r;
 
@@ -71,12 +75,27 @@ public class ControlFactory {
 		}
 	}
 	
-	private void initControl(IControl c, ControlConfig controlConfig) {
+	private void initControl(ViewWrapper c, ControlConfig controlConfig) {
+		c.setTitle(controlConfig.getTitle());
 		c.setId(controlConfig.getId());
+		c.setType(controlConfig.getType());
+		c.setWidth(controlConfig.getWidth());
+		c.setHeight(controlConfig.getHeight());
+		c.setPaddingLeft(controlConfig.getPaddingLeft());
+		c.setPaddingTop(controlConfig.getPaddingTop());
+		c.setPaddingRight(controlConfig.getPaddingRight());
+		c.setPaddingBottom(controlConfig.getPaddingBottom());
+		c.setMarginLeft(controlConfig.getMarginLeft());
+		c.setMarginTop(controlConfig.getMarginTop());
+		c.setMarginRight(controlConfig.getMarginRight());
+		c.setMarginBottom(controlConfig.getMarginBottom());
+		c.setScreenAlignment(controlConfig.getScreenAlignment());
+		c.setInnerAlignment(controlConfig.getInnerAlignment());
 		c.setBackgroundColor(controlConfig.getBackgroundColor());
-		c.setText(controlConfig.getTitle());
-		c.setGravity(controlConfig.getInnerAlignment().value());
-		c.setPadding(controlConfig.getPaddingLeft(), controlConfig.getPaddingTop(), controlConfig.getPaddingRight(), controlConfig.getPaddingBottom());
+		c.setLayoutType(controlConfig.getLayoutType());
+		c.setTargetScreenId(controlConfig.getTargetScreenId());
+		
+		c.init();
 	}
 
 }
