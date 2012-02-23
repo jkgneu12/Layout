@@ -96,7 +96,7 @@ region
 	margin-right:5
 	title:Region
 	id:100
-	layout:flow
+	layout:horizontal
 	controls:6
 	
 button

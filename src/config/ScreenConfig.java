@@ -30,12 +30,4 @@ public class ScreenConfig {
 		this.id = id;
 	}
 	
-
-	public enum ScreenType {
-		
-	}
-
-
-
-	
 }

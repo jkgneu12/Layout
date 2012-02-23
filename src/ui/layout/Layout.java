@@ -1,6 +1,8 @@
 package ui.layout;
 import java.util.ArrayList;
 
+import enums.ELayoutType;
+
 import ui.layout.calc.LayoutCalc;
 import ui.view.wrapper.ViewWrapper;
 import android.content.Context;
@@ -25,15 +27,6 @@ public abstract class Layout extends FrameLayout {
 	}
 
 	protected abstract LayoutCalc createCalc(ArrayList<ViewWrapper> controls, int width, int height);
-
-	public static Layout create(String layoutType, Context activity) {
-		if(layoutType != null){
-			if(layoutType.equals("horizontal")) return new HorizontalLayout(activity);
-			if(layoutType.equals("flow")) return new FlowLayout(activity);
-		}
-		
-		return new HorizontalLayout(activity);
-	}
 	
 	
 }

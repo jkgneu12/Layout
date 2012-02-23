@@ -41,6 +41,14 @@ public abstract class LayoutCalc {
 		return height;	
 	}
 	
+	public static int getFullWidth(ViewWrapper control) {
+		return getMeasuredWidth(control) + control.getMarginLeft() + control.getMarginRight();
+	}
+
+	public static int getFullHeight(ViewWrapper control) {
+		return getMeasuredHeight(control) + control.getMarginTop() + control.getMarginBottom();
+	}
+	
 	public static int getMaxWidth(ViewWrapper view, BaseActivity activity) {
 		ViewWrapper parent = view.getParent();
 		if(parent != null){

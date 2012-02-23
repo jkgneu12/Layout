@@ -24,7 +24,7 @@ public class BaseActivity extends Activity {
         
         baseView = new ScreenContainer(this, null, ViewWrapper.INVALID);
         
-        baseView.setScreenId(1000);
+        baseView.setTargetScreenId(1000);
         
         baseView.setWidth(width);
         baseView.setHeight(height);

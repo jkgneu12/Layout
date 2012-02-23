@@ -1,5 +1,6 @@
 package ui.view.wrapper;
 
+import config.ConfigStore;
 import ui.activity.BaseActivity;
 import ui.factory.ControlFactory;
 
@@ -11,16 +12,8 @@ public class ScreenContainer extends Container {
 		super(context, parent, id);
 	}
 	
-	public int getScreenId(){
-		return screenId;
-	}
-	
-	public void setScreenId(int id){
-		this.screenId = id;
-	}
-	
 	public void createControls() {
-		controls = new ControlFactory().createControlsForScreen(activity, this, screenId);
+		controls = new ControlFactory().createControlsForScreen(activity, this, targetScreenId);
 	}
 	
 	@Override

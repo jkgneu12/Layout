@@ -12,9 +12,6 @@ import android.graphics.Color;
 
 import com.verivo.R;
 
-import config.ControlConfig.Alignment;
-import config.ControlConfig.ControlType;
-
 public class ConfigStore {
 	
 	private HashMap<Integer, ControlConfig> controls;
@@ -58,7 +55,7 @@ public class ConfigStore {
 				
 					ControlConfig c = new ControlConfig();
 					
-					c.setType(getType(line));
+					c.setType(line);
 					
 					line = in.readLine();
 					
@@ -106,9 +103,9 @@ public class ConfigStore {
 	private void setControlProperty(ControlConfig c, String property, String value) {
 		if(property.equals("height")) c.setHeight(Integer.parseInt(value));
 		else if(property.equals("width")) c.setWidth(Integer.parseInt(value));
-		else if(property.equals("screen-alignment")) c.setScreenAlignment(getAlignment(value));
-		else if(property.equals("inner-alignment")) c.setInnerAlignment(getAlignment(value));
-		else if(property.equals("background-color")) c.setBackgroundColor(getColor(value));
+		else if(property.equals("screen-alignment")) c.setScreenAlignment(value);
+		else if(property.equals("inner-alignment")) c.setInnerAlignment(value);
+		else if(property.equals("background-color")) c.setBackgroundColor(Color.parseColor(value));
 		else if(property.equals("padding-left")) c.setPaddingLeft(Integer.parseInt(value));
 		else if(property.equals("padding-top")) c.setPaddingTop(Integer.parseInt(value));
 		else if(property.equals("padding-bottom")) c.setPaddingBottom(Integer.parseInt(value));
@@ -122,31 +119,6 @@ public class ConfigStore {
 		else if(property.equals("layout")) c.setLayoutType(value);
 		else if(property.equals("target-screen")) c.setTargetScreenId(Integer.parseInt(value));
 		else if(property.equals("controls")) c.setControlIds(createControls(value));
-	}
-
-	private int getColor(String value) {
-		if(value.equals("blue")) return Color.BLUE;
-		if(value.equals("red")) return Color.RED;
-		if(value.equals("yellow")) return Color.YELLOW;
-		
-		return Color.TRANSPARENT;
-	}
-
-	private Alignment getAlignment(String value) {
-		if(value.equals("left")) return Alignment.LEFT;
-		if(value.equals("center")) return Alignment.CENTER;
-		if(value.equals("right")) return Alignment.RIGHT;
-		
-		return null;
-	}
-
-	private ControlType getType(String line) {
-		if(line.equals("button")) return ControlType.BUTTON;
-		if(line.equals("text")) return ControlType.TEXT;
-		if(line.equals("sh")) return ControlType.SCREENHOST;
-		if(line.equals("region")) return ControlType.REGION;
-		
-		return null;
 	}
 	
 	public ControlConfig getControlConfig(int controlId){

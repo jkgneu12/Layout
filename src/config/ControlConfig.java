@@ -4,6 +4,9 @@ import java.util.ArrayList;
 
 import android.graphics.Color;
 import android.view.Gravity;
+import enums.EAlignment;
+import enums.EControlType;
+import enums.ELayoutType;
 
 public class ControlConfig {
 	
@@ -13,7 +16,7 @@ public class ControlConfig {
 	
 	private int id = INVALID;
 	
-	private ControlType type;
+	private EControlType type;
 	
 	private int width = INVALID;
 	private int height = INVALID;
@@ -28,8 +31,8 @@ public class ControlConfig {
 	private int marginRight = INVALID;
 	private int marginBottom = INVALID;
 	
-	private Alignment screenAlignment = Alignment.LEFT;
-	private Alignment innerAlignment = Alignment.LEFT;
+	private EAlignment screenAlignment = EAlignment.LEFT;
+	private EAlignment innerAlignment = EAlignment.LEFT;
 
 	private int backgroundColor = Color.TRANSPARENT;
 	
@@ -61,12 +64,12 @@ public class ControlConfig {
 		this.id = id;
 	}
 
-	public ControlType getType() {
+	public EControlType getType() {
 		return type;
 	}
 
-	public void setType(ControlType type) {
-		this.type = type;
+	public void setType(String type) {
+		this.type = EControlType.stringToControlType(type);
 	}
 
 	public int getWidth() {
@@ -149,20 +152,20 @@ public class ControlConfig {
 		this.marginBottom = marginBottom;
 	}
 
-	public Alignment getScreenAlignment() {
+	public EAlignment getScreenAlignment() {
 		return screenAlignment;
 	}
 
-	public void setScreenAlignment(Alignment alignment) {
-		this.screenAlignment = alignment;
+	public void setScreenAlignment(String alignment) {
+		this.screenAlignment = EAlignment.stringToAlignment(alignment);
 	}
 	
-	public Alignment getInnerAlignment() {
+	public EAlignment getInnerAlignment() {
 		return innerAlignment;
 	}
 
-	public void setInnerAlignment(Alignment innerAlignment) {
-		this.innerAlignment = innerAlignment;
+	public void setInnerAlignment(String innerAlignment) {
+		this.innerAlignment = EAlignment.stringToAlignment(innerAlignment);
 	}
 
 	public int getBackgroundColor() {
@@ -173,8 +176,8 @@ public class ControlConfig {
 		this.backgroundColor = color;
 	}
 	
-	public String getLayoutType() {
-		return layoutType;
+	public ELayoutType getLayoutType() {
+		return ELayoutType.stringToLayoutType(layoutType);
 	}
 
 	public void setLayoutType(String layoutType) {
@@ -197,30 +200,6 @@ public class ControlConfig {
 		this.controlIds = controlIds;
 	}
 
-
-	public enum ControlType {
-		BUTTON,
-		TEXT,
-		SCREENHOST,
-		REGION
-	}
-	
-	public enum Alignment {
-		LEFT, CENTER, RIGHT;
-
-		public int value() {
-			switch (this) {
-			case LEFT:
-				return Gravity.LEFT;
-			case CENTER:
-				return Gravity.CENTER;
-			case RIGHT:
-				return Gravity.RIGHT;
-			default:
-				return Gravity.LEFT;
-			}
-		}
-	}
 
 
 	

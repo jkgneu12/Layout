@@ -42,7 +42,7 @@ public class Region extends Container {
 		button.measure(MeasureSpec.UNSPECIFIED, MeasureSpec.UNSPECIFIED);
 		button.setLayoutParams(new LayoutParams(button.getMeasuredWidth(), button.getMeasuredWidth()));
 		
-		view = Layout.create(getLayoutType(), activity);//new FlowLayout(activity);
+		view = getLayoutType().getLayout(activity);
 		
 		activity.getBaseView().getLayout().addView(button);
 		

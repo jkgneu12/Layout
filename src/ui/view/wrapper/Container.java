@@ -6,6 +6,7 @@ import ui.activity.BaseActivity;
 import ui.layout.Layout;
 import ui.layout.calc.LayoutCalc;
 import config.ControlConfig;
+import enums.ELayoutType;
 
 /**
  * Holds a layout
@@ -22,7 +23,7 @@ public abstract class Container extends ViewWrapper {
 	}
 	
 	public void init(){
-		view = Layout.create(getLayoutType(), activity);//new FlowLayout(activity);
+		view = getLayoutType().getLayout(activity);
 		createControls();
 		layoutControls();
 		addControls();

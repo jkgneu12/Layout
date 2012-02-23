@@ -276,27 +276,6 @@ screen
 	id:14000	
 	
 sh
-	height:440
-	width:440
-	screen-alignment:center
-	background-color:yellow
-	padding-left:5
-	padding-top:5
-	padding-bottom:5
-	padding-right:5
-	margin-left:5
-	margin-top:5
-	margin-bottom:5
-	margin-right:5
-	title:SH
-	id:1400
-	target-screen:15000
-	
-screen
-	controls:1500
-	id:15000	
-	
-sh
 	height:420
 	width:420
 	screen-alignment:center
@@ -310,12 +289,12 @@ sh
 	margin-bottom:5
 	margin-right:5
 	title:SH
-	id:1500
-	target-screen:18000
+	id:1400
+	target-screen:15000
 	
 screen
 	controls:5,6
-	id:18000
+	id:15000
 
 button
 	height:30

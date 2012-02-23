@@ -3,10 +3,11 @@ package ui.view.wrapper;
 import ui.activity.BaseActivity;
 import android.content.Context;
 import android.graphics.Color;
+import android.text.Layout.Alignment;
 import android.view.View;
-import android.view.View.MeasureSpec;
-import config.ControlConfig.Alignment;
-import config.ControlConfig.ControlType;
+import enums.EAlignment;
+import enums.EControlType;
+import enums.ELayoutType;
 
 public abstract class ViewWrapper {
 	
@@ -22,7 +23,7 @@ public abstract class ViewWrapper {
 	
 	protected int id = INVALID;
 	
-	protected ControlType type;
+	protected EControlType type;
 	
 	protected int width = INVALID;
 	protected int height = INVALID;
@@ -37,12 +38,12 @@ public abstract class ViewWrapper {
 	protected int marginRight = INVALID;
 	protected int marginBottom = INVALID;
 	
-	protected Alignment screenAlignment = Alignment.LEFT;
-	protected Alignment innerAlignment = Alignment.LEFT;
+	protected EAlignment screenAlignment = EAlignment.LEFT;
+	protected EAlignment innerAlignment = EAlignment.LEFT;
 
 	protected int backgroundColor = Color.TRANSPARENT;
 	
-	protected String layoutType;
+	protected ELayoutType layoutType = ELayoutType.FLOW;
 	
 	protected int targetScreenId = 1;
 	
@@ -104,11 +105,11 @@ public abstract class ViewWrapper {
 		this.id = id;
 	}
 
-	public ControlType getType() {
+	public EControlType getType() {
 		return type;
 	}
 
-	public void setType(ControlType type) {
+	public void setType(EControlType type) {
 		this.type = type;
 	}
 
@@ -192,19 +193,19 @@ public abstract class ViewWrapper {
 		this.marginBottom = marginBottom;
 	}
 
-	public Alignment getScreenAlignment() {
+	public EAlignment getScreenAlignment() {
 		return screenAlignment;
 	}
 
-	public void setScreenAlignment(Alignment screenAlignment) {
+	public void setScreenAlignment(EAlignment screenAlignment) {
 		this.screenAlignment = screenAlignment;
 	}
 
-	public Alignment getInnerAlignment() {
+	public EAlignment getInnerAlignment() {
 		return innerAlignment;
 	}
 
-	public void setInnerAlignment(Alignment innerAlignment) {
+	public void setInnerAlignment(EAlignment innerAlignment) {
 		this.innerAlignment = innerAlignment;
 	}
 
@@ -216,13 +217,11 @@ public abstract class ViewWrapper {
 		this.backgroundColor = backgroundColor;
 	}
 	
-	public String getLayoutType() {
-		if(layoutType != null)
-			return layoutType;
-		return "flow";
+	public ELayoutType getLayoutType() {
+		return layoutType;
 	}
 
-	public void setLayoutType(String layoutType) {
+	public void setLayoutType(ELayoutType layoutType) {
 		this.layoutType = layoutType;
 	}
 

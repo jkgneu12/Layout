@@ -33,7 +33,7 @@ public class FlowLayoutCalc extends LayoutCalc {
 		int line = 0;
 		
 		for(ViewWrapper c : controls){
-        	controlWidth += getMeasuredWidth(c) + c.getMarginLeft() + c.getMarginRight();
+        	controlWidth += getFullWidth(c);
 			if(controlWidth > parentWidth){
 				line++;
 				controlWidth = 0;
@@ -55,8 +55,8 @@ public class FlowLayoutCalc extends LayoutCalc {
 			int controlWidth = 0;
 			int maxHeight = 0;
 			for(ViewWrapper c : lineOfControls){
-	        	controlWidth += getMeasuredWidth(c) + c.getMarginLeft() + c.getMarginRight();
-	        	int h = getMeasuredHeight(c) + c.getMarginTop() + c.getMarginBottom();
+	        	controlWidth += getFullWidth(c);
+	        	int h = getFullHeight(c);
 	        	if(h > maxHeight)
 	        		maxHeight = h;
 			}
@@ -121,7 +121,7 @@ public class FlowLayoutCalc extends LayoutCalc {
 			for(int c = 0; c < lineOfControls.size(); c++){
 				ViewWrapper control = lineOfControls.get(c);
 				
-				layoutParams = new LayoutParams(getMeasuredWidth(control), getMeasuredHeight(control));
+				layoutParams = new LayoutParams(getFullWidth(control), getFullHeight(control));
 				control.getView().setLayoutParams(layoutParams);
 				count++;
 			}

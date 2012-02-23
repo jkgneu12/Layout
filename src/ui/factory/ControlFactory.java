@@ -11,6 +11,7 @@ import ui.view.wrapper.TextWrapper;
 import ui.view.wrapper.ViewWrapper;
 import config.ControlConfig;
 import config.ScreenConfig;
+import enums.ELayoutType;
 
 public class ControlFactory {
 
@@ -63,13 +64,9 @@ public class ControlFactory {
 			case BUTTON: return new ButtonWrapper(context, parent, id);			
 			case TEXT: return new TextWrapper(context, parent, id);	
 			case SCREENHOST: 
-				ScreenContainer s = new ScreenContainer(context, parent, id);
-				s.init();
-				return s;
+				return new ScreenContainer(context, parent, id);
 			case REGION: 
-				Region r = new Region(context, parent, id);
-				r.init();
-				return r;
+				return new Region(context, parent, id);
 
 			default:return null;
 		}
