@@ -11,7 +11,6 @@ import ui.view.wrapper.TextWrapper;
 import ui.view.wrapper.ViewWrapper;
 import config.ControlConfig;
 import config.ScreenConfig;
-import enums.ELayoutType;
 
 public class ControlFactory {
 

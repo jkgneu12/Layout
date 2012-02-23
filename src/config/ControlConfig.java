@@ -3,7 +3,6 @@ package config;
 import java.util.ArrayList;
 
 import android.graphics.Color;
-import android.view.Gravity;
 import enums.EAlignment;
 import enums.EControlType;
 import enums.ELayoutType;

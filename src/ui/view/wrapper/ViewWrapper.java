@@ -3,7 +3,6 @@ package ui.view.wrapper;
 import ui.activity.BaseActivity;
 import android.content.Context;
 import android.graphics.Color;
-import android.text.Layout.Alignment;
 import android.view.View;
 import enums.EAlignment;
 import enums.EControlType;

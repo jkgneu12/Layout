@@ -3,7 +3,6 @@ package ui.view.wrapper;
 import ui.activity.BaseActivity;
 import ui.factory.ControlFactory;
 import ui.layout.FlowLayout;
-import ui.layout.Layout;
 import android.graphics.Color;
 import android.view.MotionEvent;
 import android.view.View;

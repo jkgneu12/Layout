@@ -1,6 +1,5 @@
 package ui.view.wrapper;
 
-import config.ConfigStore;
 import ui.activity.BaseActivity;
 import ui.factory.ControlFactory;
 

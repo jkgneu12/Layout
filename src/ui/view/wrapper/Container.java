@@ -6,7 +6,6 @@ import ui.activity.BaseActivity;
 import ui.layout.Layout;
 import ui.layout.calc.LayoutCalc;
 import config.ControlConfig;
-import enums.ELayoutType;
 
 /**
  * Holds a layout

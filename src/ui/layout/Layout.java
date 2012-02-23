@@ -1,8 +1,6 @@
 package ui.layout;
 import java.util.ArrayList;
 
-import enums.ELayoutType;
-
 import ui.layout.calc.LayoutCalc;
 import ui.view.wrapper.ViewWrapper;
 import android.content.Context;
