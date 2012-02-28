@@ -29,13 +29,16 @@ public enum ELayoutType {
 	public abstract Layout getLayout(BaseActivity activity);
 	
 	public static ELayoutType stringToLayoutType(String s){
-		if(s.equals("flow"))
+		if(s != null){
+			if(s.equals("flow"))
+				return FLOW;
+			if(s.equals("horizontal"))
+				return HORIZONTAL;
+			if(s.equals("vertical"))
+				return VERTICAL;
 			return FLOW;
-		if(s.equals("horizontal"))
-			return HORIZONTAL;
-		if(s.equals("vertical"))
-			return VERTICAL;
-		return FLOW;
+		}
+		return null;
 	}
 	
 }

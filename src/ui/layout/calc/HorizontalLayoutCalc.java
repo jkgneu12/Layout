@@ -1,14 +1,13 @@
 package ui.layout.calc;
 
-import java.util.ArrayList;
-
+import ui.view.wrapper.Container;
 import ui.view.wrapper.ViewWrapper;
 import android.widget.FrameLayout.LayoutParams;
 
 public class HorizontalLayoutCalc extends LayoutCalc {
 
-	public HorizontalLayoutCalc(ArrayList<ViewWrapper> controls, int parentWidth, int parentHeight) {
-		super(controls, parentWidth, parentHeight);
+	public HorizontalLayoutCalc(Container c, int parentWidth, int parentHeight) {
+		super(c, parentWidth, parentHeight);
 	}
 	
 	public void layoutControls() {
@@ -20,17 +19,25 @@ public class HorizontalLayoutCalc extends LayoutCalc {
 	 * Apply the horizontal and vertical spacing to controls
 	 */
 	protected void applySpacing() {
-		int horizontalMargin = 0;
+		int horizontalMargin = container.getPaddingLeft();
+		int maxHeight = 0;
+		
+		int maxWidth = container.subtractPaddingFromWidth(parentWidth);
+		
 		for(ViewWrapper control : controls){
-			int width = getMeasuredWidth(control);
-			int marginLeft = control.getMarginLeft();
-			int marginRight = control.getMarginRight();
-			int space = parentWidth - width - marginLeft - marginRight;
+			int width = control.getMeasuredWidth();
+			int space = maxWidth - width;
         	horizontalMargin += calculateLeftSpacing(control, space);
         	control.getView().setTranslationX(horizontalMargin);
         	horizontalMargin += calculateRightSpacing(control, space) + width;
         	control.getView().setTranslationY(control.getMarginTop());
+        	int fullHeight = control.getMeasuredHeightPlusMargins();
+        	if(fullHeight > maxHeight)
+        		maxHeight = fullHeight;
 		}
+		horizontalMargin += container.getPaddingRight();
+		container.setCalculatedWidth(horizontalMargin);
+		container.setCalculatedHeight(maxHeight);
 	}
 	
 	protected int calculateLeftSpacing(ViewWrapper c, int space) {
@@ -62,7 +69,7 @@ public class HorizontalLayoutCalc extends LayoutCalc {
 	 */
 	protected void applyLayoutParams() {
 		for(ViewWrapper control : controls){
-			control.getView().setLayoutParams(new LayoutParams(getMeasuredWidth(control), getMeasuredHeight(control)));
+			control.getView().setLayoutParams(new LayoutParams(control.getMeasuredWidth(), control.getMeasuredHeight()));
 		}	
 	}
 

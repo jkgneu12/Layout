@@ -4,6 +4,8 @@ import ui.activity.BaseActivity;
 import android.content.Context;
 import android.graphics.Color;
 import android.view.View;
+import android.view.View.MeasureSpec;
+import config.ControlConfig;
 import enums.EAlignment;
 import enums.EControlType;
 import enums.ELayoutType;
@@ -27,15 +29,15 @@ public abstract class ViewWrapper {
 	protected int width = INVALID;
 	protected int height = INVALID;
 	
-	protected int paddingLeft = INVALID;
-	protected int paddingTop = INVALID;
-	protected int paddingRight = INVALID;
-	protected int paddingBottom = INVALID;
+	protected int paddingLeft = 0;
+	protected int paddingTop = 0;
+	protected int paddingRight = 0;
+	protected int paddingBottom = 0;
 	
-	protected int marginLeft = INVALID;
-	protected int marginTop = INVALID;
-	protected int marginRight = INVALID;
-	protected int marginBottom = INVALID;
+	protected int marginLeft = 0;
+	protected int marginTop = 0;
+	protected int marginRight = 0;
+	protected int marginBottom = 0;
 	
 	protected EAlignment screenAlignment = EAlignment.LEFT;
 	protected EAlignment innerAlignment = EAlignment.LEFT;
@@ -53,7 +55,7 @@ public abstract class ViewWrapper {
 		this.id = id;
 	}
 	
-	public void init(){
+	public void createLayoutAndAddControls(){
 		view.setBackgroundColor(backgroundColor);
 	}
 	
@@ -231,5 +233,72 @@ public abstract class ViewWrapper {
 	public void setTargetScreenId(int targetScreenId) {
 		this.targetScreenId = targetScreenId;
 	}
+
+	public int getMeasuredWidth() {
+		if(width == ControlConfig.INVALID){
+			getView().measure(MeasureSpec.UNSPECIFIED, MeasureSpec.UNSPECIFIED);
+			return getView().getMeasuredWidth();
+		}
+		return width;	
+	}
+	
+	public int getMeasuredHeight() {
+		if(height == ControlConfig.INVALID){
+			getView().measure(MeasureSpec.UNSPECIFIED, MeasureSpec.UNSPECIFIED);
+			return getView().getMeasuredHeight();
+		}
+		return height;
+	}
+	
+	public int getMeasuredWidthPlusMargins(){
+		 return getMeasuredWidth() + marginLeft + marginRight;
+	}
+	
+	public int getMeasuredHeightPlusMargins(){
+		 return getMeasuredHeight() + marginTop + marginBottom;
+	}
+	
+	public int getMaxWidth() {
+		if(width != ControlConfig.INVALID)
+			return width;
+		if(parent != null){
+			if(parent instanceof ViewWrapper){
+				int configWidth = parent.getWidth();
+			
+				if(configWidth != ControlConfig.INVALID)
+					return configWidth;
+				else 
+					return parent.getMaxWidth();
+			}
+		}
+		return activity.getScreenWidth();
+	}
+	
+	public int getMaxHeight() {
+		if(height != ControlConfig.INVALID)
+			return height;
+		if(parent != null){
+			if(parent instanceof ViewWrapper){
+				int configHeight = parent.getHeight();
+			
+				if(configHeight != ControlConfig.INVALID)
+					return configHeight;
+				else 
+					return parent.getMaxHeight();
+			}
+		}
+		return activity.getScreenHeight();
+	}
+	
+	public int getXOffset(){
+		return 0;
+	}
+	
+	public int getYOffset(){
+		return 0;
+	}
+	
+	public void applyOffsetX(int parentOffset){}
+	public void applyOffsetY(int parentOffset){}
 	
 }

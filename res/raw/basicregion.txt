@@ -1,5 +1,6 @@
 screen
 	controls:1,100,2,3,4,5
+	layout:flow
 	id:1000
 
 button
@@ -96,12 +97,12 @@ region
 	margin-right:5
 	title:Region
 	id:100
-	layout:horizontal
+	layout:flow
 	controls:6
 	
 button
 	height:30
-	screen-alignment:left
+	screen-alignment:center
 	background-color:blue
 	padding-left:5
 	padding-top:5

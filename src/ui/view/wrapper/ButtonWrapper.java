@@ -10,11 +10,11 @@ public class ButtonWrapper extends ViewWrapper {
 	}
 
 	@Override
-	public void init() {
+	public void createLayoutAndAddControls() {
 		view = new ButtonControl(activity, this);
 		setText(getTitle());
 		view.setPadding(paddingLeft, paddingTop, paddingRight, paddingBottom);
-		super.init();
+		super.createLayoutAndAddControls();
 	}
 	
 	@Override

@@ -16,8 +16,9 @@ public class ButtonControl extends Button {
 	
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
-		if(event.getAction() == MotionEvent.ACTION_DOWN)
+		if(event.getAction() == MotionEvent.ACTION_DOWN){
 			wrapper.getActivity().updateData();
+		}
 		return super.onTouchEvent(event);
 	}
 }

@@ -1,5 +1,6 @@
 screen
 	controls:100
+	layout:flow
 	id:1000
 	
 sh
@@ -21,6 +22,7 @@ sh
 	
 screen
 	controls:200
+	layout:flow
 	id:2000
 
 sh
@@ -42,6 +44,7 @@ sh
 	
 screen
 	controls:300
+	layout:flow
 	id:3000
 	
 sh
@@ -63,6 +66,7 @@ sh
 	
 screen
 	controls:400
+	layout:flow
 	id:4000
 	
 sh
@@ -84,6 +88,7 @@ sh
 	
 screen
 	controls:500
+	layout:flow
 	id:5000
 	
 sh
@@ -105,6 +110,7 @@ sh
 	
 screen
 	controls:600
+	layout:flow
 	id:6000
 	
 sh
@@ -126,6 +132,7 @@ sh
 	
 screen
 	controls:700
+	layout:flow
 	id:7000
 	
 sh
@@ -147,6 +154,7 @@ sh
 	
 screen
 	controls:800
+	layout:flow
 	id:8000
 	
 sh
@@ -168,6 +176,7 @@ sh
 	
 screen
 	controls:900
+	layout:flow
 	id:9000
 	
 sh
@@ -189,6 +198,7 @@ sh
 	
 screen
 	controls:1000
+	layout:flow
 	id:10000
 	
 sh
@@ -210,6 +220,7 @@ sh
 	
 screen
 	controls:1100
+	layout:flow
 	id:11000	
 	
 sh
@@ -231,6 +242,7 @@ sh
 	
 screen
 	controls:1200
+	layout:flow
 	id:12000	
 	
 sh
@@ -252,6 +264,7 @@ sh
 	
 screen
 	controls:1300
+	layout:flow
 	id:13000	
 	
 sh
@@ -273,6 +286,7 @@ sh
 	
 screen
 	controls:1400
+	layout:flow
 	id:14000	
 	
 sh
@@ -294,6 +308,7 @@ sh
 	
 screen
 	controls:5,6
+	layout:flow
 	id:15000
 
 button

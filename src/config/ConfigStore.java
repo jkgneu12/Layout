@@ -86,6 +86,7 @@ public class ConfigStore {
 	
 	private void setScreenProperty(ScreenConfig s, String property, String value) {
 		if(property.equals("controls")) s.setControlIds(createControls(value));
+		else if(property.equals("layout")) s.setLayoutType(value);
 		else if(property.equals("id")) s.setId(Integer.parseInt(value));
 	}
 
@@ -116,8 +117,8 @@ public class ConfigStore {
 		else if(property.equals("margin-right")) c.setMarginRight(Integer.parseInt(value));
 		else if(property.equals("title")) c.setTitle(value);
 		else if(property.equals("id")) c.setId(Integer.parseInt(value));
-		else if(property.equals("layout")) c.setLayoutType(value);
 		else if(property.equals("target-screen")) c.setTargetScreenId(Integer.parseInt(value));
+		else if(property.equals("layout")) c.setLayoutType(value);
 		else if(property.equals("controls")) c.setControlIds(createControls(value));
 	}
 	
@@ -136,8 +137,10 @@ public class ConfigStore {
 	public HashMap<Integer, ControlConfig> getControlConfigs(ArrayList<Integer> controlIds) {
 		HashMap<Integer, ControlConfig> controlConfigs = new HashMap<Integer, ControlConfig>();
 		
-		for(Integer id : controlIds){
-			controlConfigs.put(id, controls.get(id));
+		if(controlIds != null){
+			for(Integer id : controlIds){
+				controlConfigs.put(id, controls.get(id));
+			}
 		}
 		
 		return controlConfigs;

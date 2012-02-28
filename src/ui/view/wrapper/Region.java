@@ -21,11 +21,11 @@ public class Region extends Container {
 	public Region(BaseActivity context, ViewWrapper parent, int id) {
 		super(context, parent, id);
 		
-		init();
+		createLayoutAndAddControls();
 		
 	}
 	
-	public void init() {
+	public void createLayoutAndAddControls() {
 		view = new FlowLayout(activity);
 		Button button = new Button(activity);
 		button.setOnTouchListener(new OnTouchListener() {

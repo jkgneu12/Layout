@@ -1,5 +1,8 @@
 package ui.activity;
 
+import java.util.ArrayList;
+
+import ui.view.wrapper.BaseContainer;
 import ui.view.wrapper.ScreenContainer;
 import ui.view.wrapper.ViewWrapper;
 import android.app.Activity;
@@ -9,35 +12,39 @@ import config.ConfigStore;
 
 public class BaseActivity extends Activity {
 	
-	ScreenContainer baseView;
+	private BaseContainer baseView;
 	
-	ConfigStore configStore;
+	private ConfigStore configStore;
+
+	private ArrayList<ScreenContainer> screenContainers;
+	
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        int width = getScreenWidth();
-		int height = getScreenHeight();
 		
 		configStore = new ConfigStore(this);
+		
+		screenContainers = new ArrayList<ScreenContainer>();
+		
+		baseView = new BaseContainer(this, null, ViewWrapper.INVALID);
         
-        baseView = new ScreenContainer(this, null, ViewWrapper.INVALID);
+        baseView.createLayoutAndAddControls();
         
-        baseView.setTargetScreenId(1000);
+        baseView.finishLayoutControls();
         
-        baseView.setWidth(width);
-        baseView.setHeight(height);
         
-        baseView.setBackgroundColor(Color.GRAY);
-        
-        baseView.init();
-        
-        setContentView(baseView.getLayout());
+    }
+    
+    @Override
+    protected void onResume() {
+    	super.onResume();
+    	for(ScreenContainer sc : screenContainers)
+    		sc.initFragment();
     }
 
     public void updateData(){
-    	baseView.updateData();
+    	getBaseView().updateData();
     }
     
     
@@ -45,7 +52,7 @@ public class BaseActivity extends Activity {
 		return configStore;
 	}
 
-	public ScreenContainer getBaseView() {
+	public BaseContainer getBaseView() {
 		return baseView;
 	}
 
@@ -56,6 +63,10 @@ public class BaseActivity extends Activity {
 	
 	public int getScreenHeight() {
 		return getWindowManager().getDefaultDisplay().getHeight();
+	}
+
+	public void addScreenContainer(ScreenContainer screenContainer) {
+		screenContainers.add(screenContainer);
 	}
 
 	

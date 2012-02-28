@@ -10,7 +10,7 @@ public class TextWrapper extends ViewWrapper {
 	}
 	
 	@Override
-	public void init() {
+	public void createLayoutAndAddControls() {
 		setView(new TextControl(activity, this));
 	}
 

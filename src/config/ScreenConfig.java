@@ -2,9 +2,12 @@ package config;
 
 import java.util.ArrayList;
 
+import enums.ELayoutType;
+
 public class ScreenConfig {
 	
 	private ArrayList<Integer> controlIds;
+	private String layoutType;
 	private int id;
 	
 	public ScreenConfig() {
@@ -21,6 +24,13 @@ public class ScreenConfig {
 		this.controlIds = controlIds;
 	}
 	
+	public ELayoutType getLayoutType() {
+		return ELayoutType.stringToLayoutType(layoutType);
+	}
+
+	public void setLayoutType(String layoutType) {
+		this.layoutType = layoutType;
+	}
 
 	public int getId(){
 		return id;

@@ -28,11 +28,13 @@ public class ControlFactory {
 		
 		ArrayList<ViewWrapper> controls = new ArrayList<ViewWrapper>();
 		
-		for(int id : controlIds){
-			ControlConfig controlConfig = controlConfigs.get(id);
-			ViewWrapper c = createControl(context, parent, controlConfig);
-			initControl(c, controlConfig);
-			controls.add(c);
+		if(controlIds != null){
+			for(int id : controlIds){
+				ControlConfig controlConfig = controlConfigs.get(id);
+				ViewWrapper c = createControl(context, parent, controlConfig);
+				initControl(c, controlConfig);
+				controls.add(c);
+			}
 		}
 
         return controls;
@@ -88,10 +90,9 @@ public class ControlFactory {
 		c.setScreenAlignment(controlConfig.getScreenAlignment());
 		c.setInnerAlignment(controlConfig.getInnerAlignment());
 		c.setBackgroundColor(controlConfig.getBackgroundColor());
-		c.setLayoutType(controlConfig.getLayoutType());
 		c.setTargetScreenId(controlConfig.getTargetScreenId());
 		
-		c.init();
+		c.createLayoutAndAddControls();
 	}
 
 }

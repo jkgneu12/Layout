@@ -19,10 +19,11 @@ public enum EAlignment {
 	}
 	
 	public static EAlignment stringToAlignment(String value) {
-		if(value.equals("left")) return LEFT;
-		if(value.equals("center")) return CENTER;
-		if(value.equals("right")) return RIGHT;
-		
+		if(value != null){
+			if(value.equals("left")) return LEFT;
+			if(value.equals("center")) return CENTER;
+			if(value.equals("right")) return RIGHT;
+		}
 		return null;
 	}
 }
