@@ -45,9 +45,7 @@ public class Region extends Container {
 		
 		activity.getBaseView().getLayout().addView(button);
 		
-		createControls();
-		layoutControls();
-		addControls();
+		super.createLayoutAndAddControls();
 	}
 
 	public void createControls() {
@@ -64,11 +62,19 @@ public class Region extends Container {
 			view.setLayoutParams(new LayoutParams(expandedWidth, 20));
 			collapsed = true;
 		}
+		activity.updateData();
 	}
 
 	@Override
 	public void setText(String title) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	@Override
+	public int getMeasuredHeight() {
+		if(collapsed)
+			return 20;
+		return super.getMeasuredHeight();
 	}
 }
