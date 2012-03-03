@@ -1,0 +1,112 @@
+container
+	children:10,1001
+	title:Base
+	layout:flow
+	id:1000
+	
+tab
+	screen-alignment:center
+	inner-alignment:center
+	targets:1001,1002
+	children:11,12
+	width:-99
+	background-color:green
+	id:10
+	
+tabbutton
+	screen-alignment:center
+	inner-alignment:center
+	width:-48
+	background-color:blue
+	padding-left:5
+	padding-top:5
+	padding-bottom:5
+	padding-right:5
+	margin-left:5
+	margin-top:5
+	margin-bottom:5
+	margin-right:5
+	title:Tab1
+	id:11
+	
+tabbutton
+	screen-alignment:center
+	inner-alignment:center
+	width:-48
+	background-color:blue
+	padding-left:5
+	padding-top:5
+	padding-bottom:5
+	padding-right:5
+	margin-left:5
+	margin-top:5
+	margin-bottom:5
+	margin-right:5
+	title:Tab2
+	id:12
+	
+container
+	children:1
+	screen-alignment:center
+	inner-alignment:left
+	height:-75
+	background-color:red
+	padding-left:5
+	padding-top:5
+	padding-bottom:5
+	padding-right:5
+	margin-left:5
+	margin-top:5
+	margin-bottom:5
+	margin-right:5
+	title:Screen1
+	id:1001
+	layout:flow
+
+button
+	screen-alignment:center
+	inner-alignment:center
+	background-color:green
+	padding-left:25
+	padding-top:5
+	padding-bottom:5
+	padding-right:5
+	margin-left:5
+	margin-top:5
+	margin-bottom:5
+	margin-right:5
+	title:Button1
+	id:1
+	
+container
+	children:2
+	screen-alignment:center
+	height:-75
+	inner-alignment:left
+	background-color:yellow
+	padding-left:5
+	padding-top:5
+	padding-bottom:5
+	padding-right:5
+	margin-left:5
+	margin-top:5
+	margin-bottom:5
+	margin-right:5
+	title:Screen2
+	layout:flow
+	id:1002
+
+button
+	screen-alignment:center
+	inner-alignment:center
+	background-color:green
+	padding-left:25
+	padding-top:5
+	padding-bottom:5
+	padding-right:5
+	margin-left:5
+	margin-top:5
+	margin-bottom:5
+	margin-right:5
+	title:Button2
+	id:2

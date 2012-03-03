@@ -1,9 +1,6 @@
-screen
-	controls:100
+container
+	children:2000
 	layout:flow
-	id:1000
-	
-sh
 	height:700
 	width:700
 	screen-alignment:center
@@ -17,15 +14,11 @@ sh
 	margin-bottom:5
 	margin-right:5
 	title:SH1
-	id:100
-	target-screen:2000
+	id:1000
 	
-screen
-	controls:200
+container
+	children:3000
 	layout:flow
-	id:2000
-
-sh
 	height:680
 	width:680
 	screen-alignment:center
@@ -39,15 +32,11 @@ sh
 	margin-bottom:5
 	margin-right:5
 	title:SH
-	id:200
-	target-screen:3000
+	id:2000
 	
-screen
-	controls:300
+container
+	children:4000
 	layout:flow
-	id:3000
-	
-sh
 	height:660
 	width:660
 	screen-alignment:center
@@ -61,15 +50,11 @@ sh
 	margin-bottom:5
 	margin-right:5
 	title:SH
-	id:300
-	target-screen:4000
+	id:3000
 	
-screen
-	controls:400
+container
+	children:5000
 	layout:flow
-	id:4000
-	
-sh
 	height:640
 	width:640
 	screen-alignment:center
@@ -83,15 +68,11 @@ sh
 	margin-bottom:5
 	margin-right:5
 	title:SH
-	id:400
-	target-screen:5000
+	id:4000
 	
-screen
-	controls:500
+container
+	children:6000
 	layout:flow
-	id:5000
-	
-sh
 	height:620
 	width:620
 	screen-alignment:center
@@ -105,15 +86,11 @@ sh
 	margin-bottom:5
 	margin-right:5
 	title:SH
-	id:500
-	target-screen:6000
+	id:5000
 	
-screen
-	controls:600
+container
+	children:7000
 	layout:flow
-	id:6000
-	
-sh
 	height:600
 	width:600
 	screen-alignment:center
@@ -127,15 +104,11 @@ sh
 	margin-bottom:5
 	margin-right:5
 	title:SH
-	id:600
-	target-screen:7000
+	id:6000
 	
-screen
-	controls:700
+container
+	children:8000
 	layout:flow
-	id:7000
-	
-sh
 	height:580
 	width:580
 	screen-alignment:center
@@ -149,15 +122,11 @@ sh
 	margin-bottom:5
 	margin-right:5
 	title:SH
-	id:700
-	target-screen:8000
+	id:7000
 	
-screen
-	controls:800
+container
+	children:9000
 	layout:flow
-	id:8000
-	
-sh
 	height:560
 	width:560
 	screen-alignment:center
@@ -171,15 +140,11 @@ sh
 	margin-bottom:5
 	margin-right:5
 	title:SH
-	id:800
-	target-screen:9000
+	id:8000
 	
-screen
-	controls:900
+container
+	children:10000
 	layout:flow
-	id:9000
-	
-sh
 	height:540
 	width:540
 	screen-alignment:center
@@ -193,15 +158,11 @@ sh
 	margin-bottom:5
 	margin-right:5
 	title:SH
-	id:900
-	target-screen:10000
+	id:9000
 	
-screen
-	controls:1000
+container
+	children:11000
 	layout:flow
-	id:10000
-	
-sh
 	height:520
 	width:520
 	screen-alignment:center
@@ -215,15 +176,11 @@ sh
 	margin-bottom:5
 	margin-right:5
 	title:SH
-	id:1000
-	target-screen:11000
+	id:10000
 	
-screen
-	controls:1100
+container
+	children:12000
 	layout:flow
-	id:11000	
-	
-sh
 	height:500
 	width:500
 	screen-alignment:center
@@ -237,15 +194,11 @@ sh
 	margin-bottom:5
 	margin-right:5
 	title:SH
-	id:1100
-	target-screen:12000
+	id:11000
 	
-screen
-	controls:1200
+container
+	children:13000
 	layout:flow
-	id:12000	
-	
-sh
 	height:480
 	width:480
 	screen-alignment:center
@@ -259,15 +212,11 @@ sh
 	margin-bottom:5
 	margin-right:5
 	title:SH
-	id:1200
-	target-screen:13000
+	id:12000
 	
-screen
-	controls:1300
+container
+	children:14000
 	layout:flow
-	id:13000	
-	
-sh
 	height:460
 	width:460
 	screen-alignment:center
@@ -281,15 +230,11 @@ sh
 	margin-bottom:5
 	margin-right:5
 	title:SH
-	id:1300
-	target-screen:14000
+	id:13000
 	
-screen
-	controls:1400
+container
+	children:15000
 	layout:flow
-	id:14000	
-	
-sh
 	height:420
 	width:420
 	screen-alignment:center
@@ -303,11 +248,10 @@ sh
 	margin-bottom:5
 	margin-right:5
 	title:SH
-	id:1400
-	target-screen:15000
+	id:14000
 	
-screen
-	controls:5,6
+container
+	children:5,6
 	layout:flow
 	id:15000
 

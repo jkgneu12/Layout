@@ -1,5 +1,6 @@
-screen
-	controls:1,2,3,4,5
+container
+	children:1,2,3,4,5
+	layout:flow
 	id:1000
 
 button

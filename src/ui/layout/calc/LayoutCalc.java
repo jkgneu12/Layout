@@ -2,31 +2,61 @@ package ui.layout.calc;
 
 import java.util.ArrayList;
 
-import ui.activity.BaseActivity;
-import ui.view.wrapper.Container;
-import ui.view.wrapper.ViewWrapper;
-import config.ControlConfig;
+import ui.wrapper.ContainerWrapper;
+import ui.wrapper.Wrapper;
+import android.widget.FrameLayout.LayoutParams;
 
+
+/**
+ * Calculates the absolute position of Wrapper(s) within a ContainerWrapper
+ *
+ * Layout(s) are positioned based on the parentWidth and parentHeight of their parent ContainerWrapper
+ */
 public abstract class LayoutCalc {
 
-	protected ArrayList<ViewWrapper> controls;
+	protected ContainerWrapper container;
 
 	protected int parentWidth;
 	protected int parentHeight;
+	
+	protected ArrayList<Wrapper> childWrappers;
 
-	protected Container container;
-
-	public LayoutCalc(Container c, int parentWidth, int parentHeight) {
+	public LayoutCalc(ContainerWrapper c, int parentWidth, int parentHeight) {
 		this.container = c;
-		this.controls = c.getControls();
+		
+		this.childWrappers = c.getChildWrappers();
+		
 		this.parentWidth = parentWidth;
 		this.parentHeight = parentHeight;
 	}
 	
 	
-	public abstract void layoutControls();
+	public abstract void layoutViews();
 	
-	protected abstract int calculateLeftSpacing(ViewWrapper c, int space);
+	/**
+	 * Set each wrapper to their measuredWidth and measuredHeight
+	 */
+	protected void applyLayoutParamsToViews() {
+		LayoutParams layoutParams;
+		for(Wrapper wrapper : childWrappers){
+			layoutParams = new LayoutParams(wrapper.getMeasuredWidth(), wrapper.getMeasuredHeight());
+			wrapper.getView().setLayoutParams(layoutParams);
+		}
+	}
 	
-	protected abstract int calculateRightSpacing(ViewWrapper c, int space);
+	
+	/**
+	 * Determines the amount of space to the left of a Wrapper(s) Layout
+	 * 
+	 * Usually comprised of the leftMargin and screenAlignment
+	 */
+	protected abstract int calculateLeftSpacing(Wrapper wrapper, int space);
+	
+	
+	/**
+	 * Determines the amount of space to the right of a Wrapper(s) Layout
+	 * 
+	 * Usually comprised of the rightMargin and screenAlignment
+	 */
+	protected abstract int calculateRightSpacing(Wrapper wrapper, int space);
 }

@@ -64,8 +64,8 @@
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="9" corner="BOTTOM_RIGHT" language="java" name="ui.factory.ControlFactory" project="ReRelayout" 
-    file="/ReRelayout/src/ui/factory/ControlFactory.java" binary="false">    
+  <class id="9" corner="BOTTOM_RIGHT" language="java" name="ui.factory.WrapperFactory" project="ReRelayout" 
+    file="/ReRelayout/src/ui/factory/WrapperFactory.java" binary="false">    
     <position x="88" y="37" width="363" height="114"/>    
     <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      

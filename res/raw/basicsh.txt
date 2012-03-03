@@ -1,5 +1,5 @@
-screen
-	controls:1,100,2,3,4,5
+container
+	children:1,2000,2,3,4,5
 	layout:horizontal
 	id:1000
 
@@ -82,7 +82,9 @@ button
 	title:Button5
 	id:5
 	
-sh
+container
+	children:6,7
+	layout:horizontal
 	screen-alignment:center
 	inner-alignment:left
 	background-color:red
@@ -95,12 +97,6 @@ sh
 	margin-bottom:5
 	margin-right:5
 	title:SH
-	id:100
-	target-screen:2000
-	
-screen
-	controls:6,7
-	layout:horizontal
 	id:2000
 	
 button
