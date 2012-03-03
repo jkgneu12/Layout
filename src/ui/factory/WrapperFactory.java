@@ -19,7 +19,7 @@ public class WrapperFactory {
 	public ArrayList<Wrapper> createWrapperForId(BaseActivity activity, ContainerWrapper parent, int id) {
 		Config config = activity.getConfigStore().getConfig(id);
 		
-		ArrayList<Integer> childWrapperIds = config.getChildWrapperIds();
+		ArrayList<Integer> childWrapperIds = config.childWrapperIds;
 		
 		HashMap<Integer, Config> configs = activity.getConfigStore().getConfigs(childWrapperIds);
 		
@@ -44,8 +44,8 @@ public class WrapperFactory {
 	}
 	
 	private Wrapper createWrapper(BaseActivity context, ContainerWrapper parent, Config config) {
-		int id = config.getId();
-		switch (config.getType()) {
+		int id = config.id;
+		switch (config.type) {
 			case BUTTON: return new ButtonWrapper(context, parent, id);			
 			case TEXT: return new TextWrapper(context, parent, id);	
 			case CONTAINER: 
@@ -60,25 +60,25 @@ public class WrapperFactory {
 	}
 	
 	private void initWrapper(Wrapper c, Config config) {
-		c.setTitle(config.getTitle());
-		c.setId(config.getId());
-		c.setType(config.getType());
-		c.setWidth(config.getWidth());
-		c.setHeight(config.getHeight());
-		c.setPaddingLeft(config.getPaddingLeft());
-		c.setPaddingTop(config.getPaddingTop());
-		c.setPaddingRight(config.getPaddingRight());
-		c.setPaddingBottom(config.getPaddingBottom());
-		c.setMarginLeft(config.getMarginLeft());
-		c.setMarginTop(config.getMarginTop());
-		c.setMarginRight(config.getMarginRight());
-		c.setMarginBottom(config.getMarginBottom());
-		c.setScreenAlignment(config.getScreenAlignment());
-		c.setInnerAlignment(config.getInnerAlignment());
-		c.setBackgroundColor(config.getBackgroundColor());
-		c.setTargetWrapperIds(config.getTargetWrapperIds());
-		c.setNavigationId(config.getNavigationId());
-		c.setLayoutType(config.getLayoutType());
+		c.setTitle(config.title);
+		c.setId(config.id);
+		c.setType(config.type);
+		c.setWidth(config.width);
+		c.setHeight(config.height);
+		c.setPaddingLeft(config.paddingLeft);
+		c.setPaddingTop(config.paddingTop);
+		c.setPaddingRight(config.paddingRight);
+		c.setPaddingBottom(config.paddingBottom);
+		c.setMarginLeft(config.marginLeft);
+		c.setMarginTop(config.marginTop);
+		c.setMarginRight(config.marginRight);
+		c.setMarginBottom(config.marginBottom);
+		c.setScreenAlignment(config.screenAlignment);
+		c.setInnerAlignment(config.innerAlignment);
+		c.setBackgroundColor(config.backgroundColor);
+		c.setTargetWrapperIds(config.targetWrapperIds);
+		c.setNavigationId(config.navigationId);
+		c.setLayoutType(config.layoutType);
 		
 		c.createLayoutAndAddWrappers();
 	}

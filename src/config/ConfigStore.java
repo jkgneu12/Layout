@@ -12,6 +12,10 @@ import android.graphics.Color;
 
 import com.verivo.R;
 
+import enums.EAlignment;
+import enums.ELayoutType;
+import enums.EWrapperType;
+
 /**
  * Creates and holds the Config(s)
  * 
@@ -40,7 +44,7 @@ public class ConfigStore {
 				
 				Config c = new Config();
 				
-				c.setType(line);
+				c.type = EWrapperType.stringToWrapperType(line);
 				
 				line = in.readLine();
 				
@@ -54,7 +58,7 @@ public class ConfigStore {
 					line = in.readLine();
 				}
 				
-				configs.put(c.getId(), c);
+				configs.put(c.id, c);
 				
 				line = in.readLine();
 			}
@@ -68,25 +72,25 @@ public class ConfigStore {
 	 * Sets the property to a value in a Config
 	 */
 	private void setConfigProperty(Config config, String property, String value) {
-		if(property.equals("height")) config.setHeight(Integer.parseInt(value));
-		else if(property.equals("width")) config.setWidth(Integer.parseInt(value));
-		else if(property.equals("screen-alignment")) config.setScreenAlignment(value);
-		else if(property.equals("inner-alignment")) config.setInnerAlignment(value);
-		else if(property.equals("background-color")) config.setBackgroundColor(Color.parseColor(value));
-		else if(property.equals("padding-left")) config.setPaddingLeft(Integer.parseInt(value));
-		else if(property.equals("padding-top")) config.setPaddingTop(Integer.parseInt(value));
-		else if(property.equals("padding-bottom")) config.setPaddingBottom(Integer.parseInt(value));
-		else if(property.equals("padding-right")) config.setPaddingRight(Integer.parseInt(value));
-		else if(property.equals("margin-left")) config.setMarginLeft(Integer.parseInt(value));
-		else if(property.equals("margin-top")) config.setMarginTop(Integer.parseInt(value));
-		else if(property.equals("margin-bottom")) config.setMarginBottom(Integer.parseInt(value));
-		else if(property.equals("margin-right")) config.setMarginRight(Integer.parseInt(value));
-		else if(property.equals("title")) config.setTitle(value);
-		else if(property.equals("id")) config.setId(Integer.parseInt(value));
-		else if(property.equals("layout")) config.setLayoutType(value);
-		else if(property.equals("children")) config.setChildWrapperIds(createIds(value));
-		else if(property.equals("targets")) config.setTargetWrapperIds(createIds(value));
-		else if(property.equals("navigation")) config.setNavigationId(Integer.parseInt(value));
+		if(property.equals("height")) config.height = Integer.parseInt(value);
+		else if(property.equals("width")) config.width = Integer.parseInt(value);
+		else if(property.equals("screen-alignment")) config.screenAlignment = EAlignment.stringToAlignment(value);
+		else if(property.equals("inner-alignment")) config.innerAlignment = EAlignment.stringToAlignment(value);
+		else if(property.equals("background-color")) config.backgroundColor = Color.parseColor(value);
+		else if(property.equals("padding-left")) config.paddingLeft = Integer.parseInt(value);
+		else if(property.equals("padding-top")) config.paddingTop = Integer.parseInt(value);
+		else if(property.equals("padding-bottom")) config.paddingBottom = Integer.parseInt(value);
+		else if(property.equals("padding-right")) config.paddingRight = Integer.parseInt(value);
+		else if(property.equals("margin-left")) config.marginLeft = Integer.parseInt(value);
+		else if(property.equals("margin-top")) config.marginTop = Integer.parseInt(value);
+		else if(property.equals("margin-bottom")) config.marginBottom = Integer.parseInt(value);
+		else if(property.equals("margin-right")) config.marginRight = Integer.parseInt(value);
+		else if(property.equals("title")) config.title = value;
+		else if(property.equals("id")) config.id = Integer.parseInt(value);
+		else if(property.equals("layout")) config.layoutType = ELayoutType.stringToLayoutType(value);
+		else if(property.equals("children")) config.childWrapperIds = createIds(value);
+		else if(property.equals("targets")) config.targetWrapperIds = createIds(value);
+		else if(property.equals("navigation")) config.navigationId = Integer.parseInt(value);
 	}
 	
 
