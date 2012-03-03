@@ -1,5 +1,6 @@
 package ui.wrapper;
 
+import navigation.ScreenFlowManager;
 import ui.activity.BaseActivity;
 import ui.view.ButtonView;
 import android.view.View;
@@ -42,7 +43,11 @@ public class ButtonWrapper extends Wrapper implements OnClickListener {
 	}
 
 	public void onClick(View v) {
-		getActivity().updateData();
+		if(navigationId != INVALID)
+			ScreenFlowManager.navigateToNextScreen(activity, getNavigationId());
+		else
+			ScreenFlowManager.navigateToPreviousScreen(activity);
+			//getActivity().updateData();
 	}
 
 	

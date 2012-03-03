@@ -3,6 +3,7 @@ package ui.activity;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import ui.factory.WrapperFactory;
 import ui.fragment.BaseFragment;
 import ui.wrapper.ContainerWrapper;
 import ui.wrapper.Wrapper;
@@ -42,11 +43,13 @@ public class BaseActivity extends Activity {
         
         configStore = new ConfigStore(this);
 		
-		initBaseContainerWrapper();
+		initBaseContainerWrapper(getIntent().getIntExtra("baseId", 1000));
+		
+		setTitle(baseContainerWrapper.getTitle());
     }
 
-	protected void initBaseContainerWrapper() {
-		baseContainerWrapper = new ContainerWrapper(this, null, 1000);
+	protected void initBaseContainerWrapper(int screenId) {
+		baseContainerWrapper = (ContainerWrapper)new WrapperFactory().createAndInitWrapper(this, null, screenId);
         
         baseContainerWrapper.createLayoutAndAddWrappers();
         

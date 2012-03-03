@@ -31,7 +31,7 @@ public class ConfigStore {
 	 */
 	public void parseConfigFile(BaseActivity activity){
 		try {
-			InputStream is = activity.getResources().openRawResource(R.raw.deepsh);
+			InputStream is = activity.getResources().openRawResource(R.raw.basicnav);
 			BufferedReader in = new BufferedReader(new InputStreamReader(is));
 			
 			String line = in.readLine();
@@ -86,6 +86,7 @@ public class ConfigStore {
 		else if(property.equals("layout")) config.setLayoutType(value);
 		else if(property.equals("children")) config.setChildWrapperIds(createIds(value));
 		else if(property.equals("targets")) config.setTargetWrapperIds(createIds(value));
+		else if(property.equals("navigation")) config.setNavigationId(Integer.parseInt(value));
 	}
 	
 

@@ -77,6 +77,7 @@ public class WrapperFactory {
 		c.setInnerAlignment(config.getInnerAlignment());
 		c.setBackgroundColor(config.getBackgroundColor());
 		c.setTargetWrapperIds(config.getTargetWrapperIds());
+		c.setNavigationId(config.getNavigationId());
 		
 		c.createLayoutAndAddWrappers();
 	}

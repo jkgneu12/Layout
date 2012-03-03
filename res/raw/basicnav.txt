@@ -1,0 +1,89 @@
+container
+	children:10
+	title:Navigation
+	layout:flow
+	id:1000
+	
+button
+	screen-alignment:center
+	inner-alignment:center
+	width:-48
+	background-color:blue
+	padding-left:5
+	padding-top:5
+	padding-bottom:5
+	padding-right:5
+	margin-left:5
+	margin-top:5
+	margin-bottom:5
+	margin-right:5
+	title:Go To Screen 2
+	navigation:1001
+	id:10
+	
+container
+	children:1
+	screen-alignment:center
+	inner-alignment:left
+	height:-75
+	background-color:red
+	padding-left:5
+	padding-top:5
+	padding-bottom:5
+	padding-right:5
+	margin-left:5
+	margin-top:5
+	margin-bottom:5
+	margin-right:5
+	title:Screen 2
+	id:1001
+	layout:flow
+
+button
+	screen-alignment:center
+	inner-alignment:center
+	background-color:green
+	padding-left:25
+	padding-top:5
+	padding-bottom:5
+	padding-right:5
+	margin-left:5
+	margin-top:5
+	margin-bottom:5
+	margin-right:5
+	title:Go To Screen 3
+	navigation:1002
+	id:1
+	
+container
+	children:2
+	screen-alignment:center
+	height:-75
+	inner-alignment:left
+	background-color:yellow
+	padding-left:5
+	padding-top:5
+	padding-bottom:5
+	padding-right:5
+	margin-left:5
+	margin-top:5
+	margin-bottom:5
+	margin-right:5
+	title:Screen 3
+	layout:flow
+	id:1002
+
+button
+	screen-alignment:center
+	inner-alignment:center
+	background-color:green
+	padding-left:25
+	padding-top:5
+	padding-bottom:5
+	padding-right:5
+	margin-left:5
+	margin-top:5
+	margin-bottom:5
+	margin-right:5
+	title:Previous Screen
+	id:2

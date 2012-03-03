@@ -49,6 +49,8 @@ public abstract class Wrapper {
 	
 	protected ArrayList<Integer> targetWrapperIds;
 	
+	protected int navigationId = INVALID;
+	
 	
 	public Wrapper(BaseActivity context, ContainerWrapper parentWrapper, int id){
 		this.activity = context;
@@ -226,6 +228,18 @@ public abstract class Wrapper {
 	public void setTargetWrapperIds(ArrayList<Integer> targetWrapperIds) {
 		this.targetWrapperIds = targetWrapperIds;
 	}
+	
+	public void setNavigationId(int navigationId) {
+		this.navigationId = navigationId;
+	}
+
+	public int getNavigationId() {
+		return navigationId;
+	}
+	
+	
+	
+	
 	
 	public int getConfiguredWidth(){
 		if(width >= 0 || width == Config.INVALID)

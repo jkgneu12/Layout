@@ -40,6 +40,8 @@ public class Config {
 	private ArrayList<Integer> childWrapperIds;
 	private ArrayList<Integer> targetWrapperIds;
 	
+	private int navigationId = INVALID;
+	
 	
 	public Config(){}
 	
@@ -194,6 +196,16 @@ public class Config {
 
 	public void setTargetWrapperIds(ArrayList<Integer> targetWrapperIds) {
 		this.targetWrapperIds = targetWrapperIds;
+	}
+
+
+	public void setNavigationId(int navigationId) {
+		this.navigationId = navigationId;
+	}
+
+
+	public int getNavigationId() {
+		return navigationId;
 	}
 	
 }
