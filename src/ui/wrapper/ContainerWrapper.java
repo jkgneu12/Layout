@@ -97,7 +97,7 @@ public class ContainerWrapper extends Wrapper {
 	public void initFragment(boolean force) {
 		if(!fragmentHasBeenAdded || force){
 			if(fragment == null)
-				fragment = new BaseFragment(activity, this);
+				fragment = new BaseFragment(this);
 			FragmentTransaction trans = activity.getFragmentManager().beginTransaction();
 			trans.add(android.R.id.content, fragment);
 			trans.commit();
@@ -121,6 +121,7 @@ public class ContainerWrapper extends Wrapper {
 			wrapper.updateData();
 		}
 		layoutWrappers();
+		finishLayoutWrappers();
 	}
 	
 	public int getXOffset(){
@@ -222,4 +223,9 @@ public class ContainerWrapper extends Wrapper {
 
 	@Override
 	public void setText(String text) {}
+
+	public void resetLayout() {
+		view.setTranslationX(paddingLeft + marginLeft);
+		view.setTranslationY(paddingTop + marginTop);
+	}
 }
