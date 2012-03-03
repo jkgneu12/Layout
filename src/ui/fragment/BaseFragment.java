@@ -2,7 +2,6 @@ package ui.fragment;
 
 import ui.activity.BaseActivity;
 import ui.wrapper.ContainerWrapper;
-import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,19 +13,10 @@ public class BaseFragment extends Fragment {
 	protected ContainerWrapper baseContainerWrapper;
 	protected BaseActivity activity;
 	
-	public BaseFragment(){
+	public BaseFragment(BaseActivity activity, ContainerWrapper baseContainerWrapper) {
 		super();
-	}
-	
-	public BaseFragment(ContainerWrapper baseContainerWrapper) {
-		super();
+		this.activity = activity;
 		this.baseContainerWrapper = baseContainerWrapper;
-	}
-	
-	@Override
-	public void onAttach(Activity activity) {
-		super.onAttach(activity);
-		this.activity = (BaseActivity)activity;
 	}
 	
 	@Override

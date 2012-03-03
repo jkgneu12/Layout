@@ -235,24 +235,6 @@ container
 container
 	children:15000
 	layout:flow
-	height:440
-	width:440
-	screen-alignment:center
-	background-color:yellow
-	padding-left:5
-	padding-top:5
-	padding-bottom:5
-	padding-right:5
-	margin-left:5
-	margin-top:5
-	margin-bottom:5
-	margin-right:5
-	title:SH
-	id:14000
-	
-container
-	children:16000
-	layout:flow
 	height:420
 	width:420
 	screen-alignment:center
@@ -266,156 +248,12 @@ container
 	margin-bottom:5
 	margin-right:5
 	title:SH
-	id:15000
-	
-container
-	children:17000
-	layout:flow
-	height:400
-	width:400
-	screen-alignment:center
-	background-color:yellow
-	padding-left:5
-	padding-top:5
-	padding-bottom:5
-	padding-right:5
-	margin-left:5
-	margin-top:5
-	margin-bottom:5
-	margin-right:5
-	title:SH
-	id:16000
-	
-container
-	children:18000
-	layout:flow
-	height:380
-	width:380
-	screen-alignment:center
-	background-color:red
-	padding-left:5
-	padding-top:5
-	padding-bottom:5
-	padding-right:5
-	margin-left:5
-	margin-top:5
-	margin-bottom:5
-	margin-right:5
-	title:SH
-	id:17000
-	
-container
-	children:19000
-	layout:flow
-	height:360
-	width:360
-	screen-alignment:center
-	background-color:yellow
-	padding-left:5
-	padding-top:5
-	padding-bottom:5
-	padding-right:5
-	margin-left:5
-	margin-top:5
-	margin-bottom:5
-	margin-right:5
-	title:SH
-	id:18000
-	
-container
-	children:20000
-	layout:flow
-	height:340
-	width:340
-	screen-alignment:center
-	background-color:red
-	padding-left:5
-	padding-top:5
-	padding-bottom:5
-	padding-right:5
-	margin-left:5
-	margin-top:5
-	margin-bottom:5
-	margin-right:5
-	title:SH
-	id:19000
-	
-container
-	children:21000
-	layout:flow
-	height:320
-	width:320
-	screen-alignment:center
-	background-color:yellow
-	padding-left:5
-	padding-top:5
-	padding-bottom:5
-	padding-right:5
-	margin-left:5
-	margin-top:5
-	margin-bottom:5
-	margin-right:5
-	title:SH
-	id:20000
-	
-container
-	children:22000
-	layout:flow
-	height:300
-	width:300
-	screen-alignment:center
-	background-color:red
-	padding-left:5
-	padding-top:5
-	padding-bottom:5
-	padding-right:5
-	margin-left:5
-	margin-top:5
-	margin-bottom:5
-	margin-right:5
-	title:SH
-	id:21000
-	
-container
-	children:23000
-	layout:flow
-	height:280
-	width:280
-	screen-alignment:center
-	background-color:yellow
-	padding-left:5
-	padding-top:5
-	padding-bottom:5
-	padding-right:5
-	margin-left:5
-	margin-top:5
-	margin-bottom:5
-	margin-right:5
-	title:SH
-	id:22000
-	
-container
-	children:24000
-	layout:flow
-	height:260
-	width:260
-	screen-alignment:center
-	background-color:red
-	padding-left:5
-	padding-top:5
-	padding-bottom:5
-	padding-right:5
-	margin-left:5
-	margin-top:5
-	margin-bottom:5
-	margin-right:5
-	title:SH
-	id:23000
+	id:14000
 	
 container
 	children:5,6
 	layout:flow
-	id:24000
+	id:15000
 
 button
 	height:30

@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import ui.fragment.BaseFragment;
+import ui.wrapper.BaseContainerWrapper;
 import ui.wrapper.ContainerWrapper;
 import ui.wrapper.Wrapper;
 import android.app.Activity;
 import android.app.FragmentTransaction;
-import android.content.res.Configuration;
 import android.os.Bundle;
 
 import com.verivo.R;
@@ -24,7 +24,7 @@ import config.ConfigStore;
  */
 public class BaseActivity extends Activity {
 	
-	private ContainerWrapper baseContainerWrapper;
+	private BaseContainerWrapper baseContainerWrapper;
 	
 	private ConfigStore configStore;
 
@@ -46,7 +46,7 @@ public class BaseActivity extends Activity {
     }
 
 	protected void initBaseContainerWrapper() {
-		baseContainerWrapper = new ContainerWrapper(this, null, 1000);
+		baseContainerWrapper = new BaseContainerWrapper(this, null, 1000);
         
         baseContainerWrapper.createLayoutAndAddWrappers();
         
@@ -72,6 +72,7 @@ public class BaseActivity extends Activity {
 	public void replaceFragment(ContainerWrapper newWrapper, ContainerWrapper oldWrapper) {
 		if(oldWrapper.getFragment() != null){
 			FragmentTransaction trans = getFragmentManager().beginTransaction();
+			//trans.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE);
 			trans.setCustomAnimations(R.animator.slide_in, R.animator.slide_out);
 			trans.remove(oldWrapper.getFragment());
 			trans.commit();
@@ -80,7 +81,7 @@ public class BaseActivity extends Activity {
 	}
 
     public void updateData(){
-    	baseContainerWrapper.updateData();
+    	getBaseContainerWrapper().updateData();
     }
     
     public Wrapper getWrapperById(int id){
@@ -100,29 +101,20 @@ public class BaseActivity extends Activity {
 		containerWrappers.add(containerWrapper);
 	}
     
-    @Override
-	public void onConfigurationChanged(Configuration newConfig) {
-		super.onConfigurationChanged(newConfig);
-		relayout();
-	}
-
-	public void relayout() {
-		for(ContainerWrapper wrapper : containerWrappers){
-			wrapper.resetLayout();
-		}
-		baseContainerWrapper.layoutWrappers();
-		baseContainerWrapper.finishLayoutWrappers();
-	}
     
 	public ConfigStore getConfigStore() {
 		return configStore;
+	}
+
+	public BaseContainerWrapper getBaseContainerWrapper() {
+		return baseContainerWrapper;
 	}
 
 	/**
 	 * Get the full width of the device.
 	 */
 	public int getScreenWidth() {
-		return getWindowManager().getDefaultDisplay().getWidth(); 
+		return getWindowManager().getDefaultDisplay().getWidth();
 	}
 	
 	/**
@@ -130,6 +122,10 @@ public class BaseActivity extends Activity {
 	 */
 	public int getScreenHeight() {
 		return getWindowManager().getDefaultDisplay().getHeight();
+	}
+
+	public void relayout() {
+		baseContainerWrapper.layoutWrappers();
 	}
 
 }
