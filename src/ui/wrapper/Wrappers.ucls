@@ -8,15 +8,7 @@
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="2" corner="BOTTOM_RIGHT" language="java" name="ui.view.wrapper.RegionWrapper" project="ReRelayout" 
-    file="/ReRelayout/src/ui/view/wrapper/RegionWrapper.java" binary="false">    
-    <position x="1404" y="1500" width="-1" height="-1"/>    
-    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true"/>      
-      <operations public="true" package="true" protected="true" private="true"/>    
-    </display>  
-  </class>  
-  <class id="3" corner="BOTTOM_RIGHT" language="java" name="ui.view.wrapper.Wrapper" project="ReRelayout" 
+  <class id="2" corner="BOTTOM_RIGHT" language="java" name="ui.view.wrapper.Wrapper" project="ReRelayout" 
     file="/ReRelayout/src/ui/view/wrapper/Wrapper.java" binary="false">    
     <position x="156" y="-351" width="264" height="1030"/>    
     <display autosize="false" package="true" initial-value="false" signature="true" visibility="true">      
@@ -24,7 +16,7 @@
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="4" corner="BOTTOM_RIGHT" language="java" name="ui.view.wrapper.ButtonWrapper" project="ReRelayout" 
+  <class id="3" corner="BOTTOM_RIGHT" language="java" name="ui.view.wrapper.ButtonWrapper" project="ReRelayout" 
     file="/ReRelayout/src/ui/view/wrapper/ButtonWrapper.java" binary="false">    
     <position x="-34" y="854" width="-1" height="-1"/>    
     <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
@@ -32,7 +24,7 @@
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="5" corner="BOTTOM_RIGHT" language="java" name="ui.view.wrapper.TabButtonWrapper" project="ReRelayout" 
+  <class id="4" corner="BOTTOM_RIGHT" language="java" name="ui.view.wrapper.TabButtonWrapper" project="ReRelayout" 
     file="/ReRelayout/src/ui/view/wrapper/TabButtonWrapper.java" binary="false">    
     <position x="-52" y="1168" width="-1" height="-1"/>    
     <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
@@ -40,15 +32,15 @@
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="6" corner="BOTTOM_RIGHT" language="java" name="ui.view.wrapper.TabWrapper" project="ReRelayout" 
+  <class id="5" corner="BOTTOM_RIGHT" language="java" name="ui.view.wrapper.TabWrapper" project="ReRelayout" 
     file="/ReRelayout/src/ui/view/wrapper/TabWrapper.java" binary="false">    
-    <position x="524" y="1528" width="-1" height="-1"/>    
+    <position x="986" y="1564" width="-1" height="-1"/>    
     <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="7" corner="BOTTOM_RIGHT" language="java" name="ui.view.wrapper.ContainerWrapper" project="ReRelayout" 
+  <class id="6" corner="BOTTOM_RIGHT" language="java" name="ui.view.wrapper.ContainerWrapper" project="ReRelayout" 
     file="/ReRelayout/src/ui/view/wrapper/ContainerWrapper.java" binary="false">    
     <position x="977" y="1038" width="-1" height="-1"/>    
     <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
@@ -56,53 +48,41 @@
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="8" corner="BOTTOM_RIGHT" language="java" name="ui.view.wrapper.BaseScreenWrapper" project="ReRelayout" 
-    file="/ReRelayout/src/ui/view/wrapper/BaseScreenWrapper.java" binary="false">    
-    <position x="972" y="1636" width="-1" height="-1"/>    
-    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true"/>      
-      <operations public="true" package="true" protected="true" private="true"/>    
-    </display>  
-  </class>  
-  <association id="9">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="10" name="childWrappers"/>      
-      <multiplicity id="11" minimum="0" maximum="2147483647"/>    
+  <association id="7">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="8" name="childWrappers"/>      
+      <multiplicity id="9" minimum="0" maximum="2147483647"/>    
     </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
+    <end type="TARGET" refId="2" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="12">    
+  <generalization id="10">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="2"/>  
+  </generalization>  
+  <generalization id="11">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="2"/>  
+  </generalization>  
+  <association id="12">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="13" name="parentWrapper"/>      
+      <multiplicity id="14" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="15">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="6"/>  
+  </generalization>  
+  <generalization id="16">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="2"/>  
+  </generalization>  
+  <generalization id="17">    
     <end type="SOURCE" refId="4"/>    
     <end type="TARGET" refId="3"/>  
-  </generalization>  
-  <generalization id="13">    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="3"/>  
-  </generalization>  
-  <association id="14">    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="15" name="parentWrapper"/>      
-      <multiplicity id="16" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="17">    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="7"/>  
-  </generalization>  
-  <generalization id="18">    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="7"/>  
-  </generalization>  
-  <generalization id="19">    
-    <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="3"/>  
-  </generalization>  
-  <generalization id="20">    
-    <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="4"/>  
   </generalization>  
   <classifier-display autosize="true" package="true" initial-value="false" signature="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true"/>    

@@ -4,6 +4,7 @@ import ui.activity.BaseActivity;
 import ui.layout.FlowLayout;
 import ui.layout.HorizontalLayout;
 import ui.layout.Layout;
+import ui.layout.VerticalLayout;
 import ui.wrapper.Wrapper;
 
 public enum ELayoutType {
@@ -23,7 +24,7 @@ public enum ELayoutType {
 	VERTICAL {
 		@Override
 		public Layout getLayout(BaseActivity activity, Wrapper wrapper) {
-			return null;
+			return new VerticalLayout(activity, wrapper);
 		}
 	};
 	
