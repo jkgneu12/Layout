@@ -3,6 +3,7 @@ package ui.wrapper;
 import navigation.ScreenFlowManager;
 import ui.activity.BaseActivity;
 import ui.view.ButtonView;
+import android.content.res.ColorStateList;
 import android.view.View;
 import android.view.View.OnClickListener;
 import config.Config;
@@ -22,7 +23,21 @@ public class ButtonWrapper extends Wrapper implements OnClickListener {
 	@Override
 	public void createAndLayoutAndAddWrappers() {
 		view = new ButtonView(activity, this);
-		getButtonView().setTextColor(config.textColor);
+		getButtonView().setTextColor(new ColorStateList(
+				new int[][] {
+						new int[] { android.R.attr.state_pressed},
+						new int[] { android.R.attr.state_selected},
+						
+						new int[] {android.R.attr.state_focused},
+						new int[] {}
+				}, 
+				new int[] {
+						styleConfig.pressedTextColor,
+						styleConfig.selectedTextColor,
+						styleConfig.focusedTextColor,
+						styleConfig.defaultTextColor
+				})
+		);
 		super.createAndLayoutAndAddWrappers();
 	}
 	
@@ -33,7 +48,7 @@ public class ButtonWrapper extends Wrapper implements OnClickListener {
 		setText("123");
 	}
 
-	private ButtonView getButtonView() {
+	public ButtonView getButtonView() {
 		return (ButtonView)getView();
 	}
 

@@ -19,7 +19,7 @@ public class HorizontalLayoutCalc extends LayoutCalc {
 	}
 	
 	protected void applySpacingToViews() {
-		int horizontalMargin = container.getConfig().paddingLeft;
+		int horizontalMargin = container.getStyleConfig().paddingLeft;
 		int maxHeight = 0;
 		
 		int maxWidth = container.subtractPaddingFromWidth(parentWidth);
@@ -35,7 +35,7 @@ public class HorizontalLayoutCalc extends LayoutCalc {
         	if(fullHeight > maxHeight)
         		maxHeight = fullHeight;
 		}
-		horizontalMargin += container.getConfig().paddingRight;
+		horizontalMargin += container.getStyleConfig().paddingRight;
 		container.setCalculatedWidth(horizontalMargin);
 		container.setCalculatedHeight(maxHeight);
 	}

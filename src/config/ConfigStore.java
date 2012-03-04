@@ -23,9 +23,11 @@ import enums.EWrapperType;
 public class ConfigStore {
 	
 	private HashMap<Integer, Config> configs;
+	private HashMap<Integer, StyleConfig> styleConfigs;
 	
 	public ConfigStore(BaseActivity activity) {
 		configs = new  HashMap<Integer, Config>();
+		styleConfigs = new HashMap<Integer, StyleConfig>();
 		
 		parseConfigFile(activity);
 	}
@@ -42,23 +44,42 @@ public class ConfigStore {
 			while(line != null && line.trim().length() > 0){
 				line = line.trim();
 				
-				Config c = new Config();
-				
-				c.type = EWrapperType.stringToWrapperType(line);
-				
-				line = in.readLine();
-				
-				while (line != null && line.trim().length() > 0) {
-					line = line.trim();
-					
-					String[] parts = line.split(":");
-					
-					setConfigProperty(c, parts[0], parts[1]);
+				if(line.equals("style")){
+					StyleConfig c = new StyleConfig();
 					
 					line = in.readLine();
-				}
+					
+					while (line != null && line.trim().length() > 0) {
+						line = line.trim();
+						
+						String[] parts = line.split(":");
+						
+						setStyleConfigProperty(c, parts[0], parts[1]);
+						
+						line = in.readLine();
+					}
+					
+					styleConfigs.put(c.id, c);
+				} else {
 				
-				configs.put(c.id, c);
+					Config c = new Config();
+					
+					c.type = EWrapperType.stringToWrapperType(line);
+					
+					line = in.readLine();
+					
+					while (line != null && line.trim().length() > 0) {
+						line = line.trim();
+						
+						String[] parts = line.split(":");
+						
+						setConfigProperty(c, parts[0], parts[1]);
+						
+						line = in.readLine();
+					}
+					
+					configs.put(c.id, c);
+				}
 				
 				line = in.readLine();
 			}
@@ -72,26 +93,34 @@ public class ConfigStore {
 	 * Sets the property to a value in a Config
 	 */
 	private void setConfigProperty(Config config, String property, String value) {
-		if(property.equals("height")) config.height = Integer.parseInt(value);
+		if(property.equals("id")) config.id = Integer.parseInt(value);
+		else if(property.equals("height")) config.height = Integer.parseInt(value);
 		else if(property.equals("width")) config.width = Integer.parseInt(value);
 		else if(property.equals("screen-alignment")) config.screenAlignment = EAlignment.stringToAlignment(value);
 		else if(property.equals("inner-alignment")) config.innerAlignment = EAlignment.stringToAlignment(value);
-		else if(property.equals("background-color")) config.backgroundColor = Color.parseColor(value);
-		else if(property.equals("text-color")) config.textColor = Color.parseColor(value);
-		else if(property.equals("padding-left")) config.paddingLeft = Integer.parseInt(value);
-		else if(property.equals("padding-top")) config.paddingTop = Integer.parseInt(value);
-		else if(property.equals("padding-bottom")) config.paddingBottom = Integer.parseInt(value);
-		else if(property.equals("padding-right")) config.paddingRight = Integer.parseInt(value);
 		else if(property.equals("margin-left")) config.marginLeft = Integer.parseInt(value);
 		else if(property.equals("margin-top")) config.marginTop = Integer.parseInt(value);
 		else if(property.equals("margin-bottom")) config.marginBottom = Integer.parseInt(value);
 		else if(property.equals("margin-right")) config.marginRight = Integer.parseInt(value);
 		else if(property.equals("title")) config.title = value;
-		else if(property.equals("id")) config.id = Integer.parseInt(value);
 		else if(property.equals("layout")) config.layoutType = ELayoutType.stringToLayoutType(value);
 		else if(property.equals("children")) config.childWrapperIds = createIds(value);
 		else if(property.equals("targets")) config.targetWrapperIds = createIds(value);
 		else if(property.equals("navigation")) config.navigationId = Integer.parseInt(value);
+		else if(property.equals("style")) config.styleId = Integer.parseInt(value);
+	}
+	
+	private void setStyleConfigProperty(StyleConfig config, String property, String value) {
+		if(property.equals("id")) config.id = Integer.parseInt(value);
+		else if(property.equals("background-color")) config.backgroundColor = Color.parseColor(value);
+		else if(property.equals("default-text-color")) config.defaultTextColor = Color.parseColor(value);
+		else if(property.equals("pressed-text-color")) config.pressedTextColor = Color.parseColor(value);
+		else if(property.equals("selected-text-color")) config.selectedTextColor = Color.parseColor(value);
+		else if(property.equals("focused-text-color")) config.focusedTextColor = Color.parseColor(value);
+		else if(property.equals("padding-left")) config.paddingLeft = Integer.parseInt(value);
+		else if(property.equals("padding-top")) config.paddingTop = Integer.parseInt(value);
+		else if(property.equals("padding-bottom")) config.paddingBottom = Integer.parseInt(value);
+		else if(property.equals("padding-right")) config.paddingRight = Integer.parseInt(value);
 	}
 	
 
@@ -115,6 +144,10 @@ public class ConfigStore {
 	public Config getConfig(int id){
 		return configs.get(id);
 	}
+	
+	public StyleConfig getStyleConfig(int id){
+		return styleConfigs.get(id);
+	}
 
 	/**
 	 * Converts and returns an ArrayList of ids to a HashMap of ids to Config(s)
@@ -125,6 +158,17 @@ public class ConfigStore {
 		if(ids != null){
 			for(Integer id : ids)
 				idToConfig.put(id, configs.get(id));
+		}
+		
+		return idToConfig;
+	}
+	
+	public HashMap<Integer, StyleConfig> getStyleConfigs(ArrayList<Integer> ids) {
+		HashMap<Integer, StyleConfig> idToConfig = new HashMap<Integer, StyleConfig>();
+		
+		if(ids != null){
+			for(Integer id : ids)
+				idToConfig.put(id, styleConfigs.get(id));
 		}
 		
 		return idToConfig;

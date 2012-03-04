@@ -2,6 +2,7 @@ package ui.wrapper;
 
 import ui.activity.BaseActivity;
 import ui.view.CustomTextView;
+import android.content.res.ColorStateList;
 import config.Config;
 
 public class TextWrapper extends Wrapper {
@@ -13,7 +14,21 @@ public class TextWrapper extends Wrapper {
 	@Override
 	public void createAndLayoutAndAddWrappers() {
 		view = new CustomTextView(activity, this);
-		getTextView().setTextColor(config.textColor);
+		getTextView().setTextColor(new ColorStateList(
+				new int[][] {
+						new int[] { android.R.attr.state_pressed},
+						new int[] { android.R.attr.state_selected},
+						
+						new int[] {android.R.attr.state_focused},
+						new int[] {}
+				}, 
+				new int[] {
+						styleConfig.pressedTextColor,
+						styleConfig.selectedTextColor,
+						styleConfig.focusedTextColor,
+						styleConfig.defaultTextColor
+				})
+		);
 		super.createAndLayoutAndAddWrappers();
 	}
 	

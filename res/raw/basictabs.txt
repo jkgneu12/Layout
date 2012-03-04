@@ -2,6 +2,7 @@ container
 	children:10,1001
 	title:Base
 	layout:flow
+	style:0
 	id:1000
 	
 tab
@@ -10,59 +11,44 @@ tab
 	inner-alignment:center
 	targets:1001,1002
 	children:13,11,12
-	width:-99
-	background-color:green
+	width:-100
+	style:1
 	id:10
 	
 button
 	screen-alignment:center
 	inner-alignment:center
 	width:-10
-	text-color:green
-	background-color:yellow
-	padding-left:5
-	padding-top:5
-	padding-bottom:5
-	padding-right:5
 	margin-left:5
 	margin-top:5
 	margin-bottom:5
 	margin-right:5
 	title:View in Tab Controller
+	style:2
 	id:13
 	
 tabbutton
 	screen-alignment:center
 	inner-alignment:center
 	width:-43
-	text-color:red
-	background-color:blue
-	padding-left:5
-	padding-top:5
-	padding-bottom:5
-	padding-right:5
 	margin-left:5
 	margin-top:5
 	margin-bottom:5
 	margin-right:5
 	title:Tab1
+	style:3
 	id:11
 	
 tabbutton
 	screen-alignment:center
 	inner-alignment:center
 	width:-43
-	text-color:yellow
-	background-color:blue
-	padding-left:5
-	padding-top:5
-	padding-bottom:5
-	padding-right:5
 	margin-left:5
 	margin-top:5
 	margin-bottom:5
 	margin-right:5
 	title:Tab2
+	style:3
 	id:12
 	
 container
@@ -70,33 +56,20 @@ container
 	screen-alignment:center
 	inner-alignment:left
 	height:-75
-	background-color:red
-	padding-left:5
-	padding-top:5
-	padding-bottom:5
-	padding-right:5
-	margin-left:5
-	margin-top:5
-	margin-bottom:5
-	margin-right:5
 	title:Screen1
 	id:1001
+	style:4
 	layout:flow
 
 button
 	screen-alignment:center
 	inner-alignment:center
-	text-color:white
-	background-color:green
-	padding-left:25
-	padding-top:5
-	padding-bottom:5
-	padding-right:5
 	margin-left:5
 	margin-top:5
 	margin-bottom:5
 	margin-right:5
 	title:Button1
+	style:5
 	id:1
 	
 container
@@ -104,31 +77,86 @@ container
 	screen-alignment:center
 	height:-75
 	inner-alignment:left
-	text-color:red
-	background-color:yellow
-	padding-left:5
-	padding-top:5
-	padding-bottom:5
-	padding-right:5
-	margin-left:5
-	margin-top:5
-	margin-bottom:5
-	margin-right:5
 	title:Screen2
 	layout:flow
+	style:6
 	id:1002
 
 button
 	screen-alignment:center
 	inner-alignment:center
-	background-color:green
-	padding-left:25
-	padding-top:5
-	padding-bottom:5
-	padding-right:5
 	margin-left:5
 	margin-top:5
 	margin-bottom:5
 	margin-right:5
 	title:Button2
+	style:7
 	id:2
+
+style
+	id:0
+	background-color:black
+
+style
+	id:1
+	background-color:green
+	
+style
+	id:2
+	default-text-color:black
+	pressed-text-color:black
+	selected-text-color:black
+	focused-text-color:black
+	background-color:yellow
+	padding-left:5
+	padding-top:5
+	padding-bottom:5
+	padding-right:5
+
+style
+	id:3
+	default-text-color:yellow
+	pressed-text-color:green
+	selected-text-color:red
+	focused-text-color:gray
+	background-color:blue
+	padding-left:5
+	padding-top:5
+	padding-bottom:5
+	padding-right:5
+
+style
+	id:4
+	background-color:red
+
+style
+	id:5
+	default-text-color:white
+	pressed-text-color:black
+	selected-text-color:black
+	focused-text-color:black
+	background-color:green
+	padding-left:25
+	padding-top:5
+	padding-bottom:5
+	padding-right:5
+	
+style
+	id:6
+	default-text-color:red
+	pressed-text-color:black
+	selected-text-color:black
+	focused-text-color:black
+	background-color:yellow
+	
+style
+	id:7
+	default-text-color:white
+	pressed-text-color:black
+	selected-text-color:black
+	focused-text-color:black
+	background-color:green
+	padding-left:25
+	padding-top:5
+	padding-bottom:5
+	padding-right:5

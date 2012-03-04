@@ -18,8 +18,6 @@ public class TabButtonWrapper extends ButtonWrapper {
 	@Override
 	public void createAndLayoutAndAddWrappers() {
 		view = new TabButtonView(activity, this, getTabWrapper());
-		setText(config.title);
-		view.setPadding(config.paddingLeft, config.paddingTop, config.paddingRight, config.paddingBottom);
 		super.createAndLayoutAndAddWrappers();
 	}
 	

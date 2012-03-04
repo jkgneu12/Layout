@@ -95,15 +95,17 @@ public class ContainerWrapper extends Wrapper {
 		return (int)(parentOffsetY + getLayout().getTranslationY());
 	}
 	
-	public void initFragment(boolean force) {
-		if(!fragmentHasBeenAdded || force){
-			if(fragment == null)
-				fragment = new BaseFragment(this);
-			FragmentTransaction trans = activity.getFragmentManager().beginTransaction();
-			trans.add(android.R.id.content, fragment);
-			trans.commit();
-			fragmentHasBeenAdded  = true;
-		}
+	public synchronized boolean initFragment() {
+		if(fragment == null)
+			fragment = new BaseFragment(this);
+		if(fragment.getView().getParent() != null)
+			return false;
+		FragmentTransaction trans = activity.getFragmentManager().beginTransaction();
+		//trans.setCustomAnimations(R.animator.slide_in, R.animator.slide_out);
+		trans.add(android.R.id.content, fragment);
+		trans.commit();
+		fragmentHasBeenAdded  = true;
+		return true;
 	}
 
 	public BaseFragment getFragment() {
@@ -126,14 +128,14 @@ public class ContainerWrapper extends Wrapper {
 	}
 	
 	public int getXOffset(){
-		int offset = config.paddingLeft + config.marginLeft;
+		int offset = styleConfig.paddingLeft + config.marginLeft;
 		if(parentWrapper != null)
 			return offset + parentWrapper.getXOffset();
 		return offset;
 	}
 	
 	public int getYOffset(){
-		int offset = config.paddingTop + config.marginTop;
+		int offset = styleConfig.paddingTop + config.marginTop;
 		if(parentWrapper != null)
 			return offset + parentWrapper.getYOffset();
 		return offset;
@@ -175,34 +177,34 @@ public class ContainerWrapper extends Wrapper {
 	}
 	
 	public int addPaddingToWidth(int width) {
-		if(config.paddingLeft != Wrapper.INVALID)
-			width += config.paddingLeft;
-		if(config.paddingRight != Wrapper.INVALID)
-			width += config.paddingRight;
+		if(styleConfig.paddingLeft != Wrapper.INVALID)
+			width += styleConfig.paddingLeft;
+		if(styleConfig.paddingRight != Wrapper.INVALID)
+			width += styleConfig.paddingRight;
 		return width;
 	}
 	
 	public int addPaddingToHeight(int height) {
-		if(config.paddingTop != Wrapper.INVALID)
-			height += config.paddingTop;
-		if(config.paddingBottom != Wrapper.INVALID)
-			height += config.paddingBottom;
+		if(styleConfig.paddingTop != Wrapper.INVALID)
+			height += styleConfig.paddingTop;
+		if(styleConfig.paddingBottom != Wrapper.INVALID)
+			height += styleConfig.paddingBottom;
 		return height;
 	}
 
 	public int subtractPaddingFromWidth(int width) {
-		if(config.paddingLeft != Wrapper.INVALID)
-			width -= config.paddingLeft;
-		if(config.paddingRight != Wrapper.INVALID)
-			width -= config.paddingRight;
+		if(styleConfig.paddingLeft != Wrapper.INVALID)
+			width -= styleConfig.paddingLeft;
+		if(styleConfig.paddingRight != Wrapper.INVALID)
+			width -= styleConfig.paddingRight;
 		return width;
 	}
 	
 	public int subtractPaddingFromHeight(int height) {
-		if(config.paddingTop != Wrapper.INVALID)
-			height -= config.paddingTop;
-		if(config.paddingBottom != Wrapper.INVALID)
-			height -= config.paddingBottom;
+		if(styleConfig.paddingTop != Wrapper.INVALID)
+			height -= styleConfig.paddingTop;
+		if(styleConfig.paddingBottom != Wrapper.INVALID)
+			height -= styleConfig.paddingBottom;
 		return height;
 	}
 	
@@ -226,8 +228,18 @@ public class ContainerWrapper extends Wrapper {
 	public void setText(String text) {}
 
 	public void resetLayout() {
-		view.setTranslationX(config.paddingLeft + config.marginLeft);
-		view.setTranslationY(config.paddingTop + config.marginTop);
+		view.setTranslationX(styleConfig.paddingLeft + config.marginLeft);
+		view.setTranslationY(styleConfig.paddingTop + config.marginTop);
 		getLayout().resetLayout();
+	}
+
+	public void relayout(boolean reset) {
+		for(Wrapper childWrapper : childWrappers)
+			childWrapper.relayout(reset);
+		if(reset)
+			resetLayout();
+		layoutWrappers();
+		finishLayoutWrappers();
+		
 	}
 }

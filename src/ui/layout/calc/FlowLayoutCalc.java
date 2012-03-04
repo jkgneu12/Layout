@@ -81,11 +81,11 @@ public class FlowLayoutCalc extends LayoutCalc {
 	 * Apply the horizontal and vertical spacing to wrappers
 	 */
 	protected void applySpacingBetweenViews() {
-		int verticalMargin = container.getConfig().paddingTop;
+		int verticalMargin = container.getStyleConfig().paddingTop;
 		for(int line = 0; line < wrappersByLine.size(); line++){
 			ArrayList<Wrapper> lineOfWrappers = wrappersByLine.get(line);
 			int space = spacingWidth.get(line);
-			int horizontalMargin = container.getConfig().paddingLeft;
+			int horizontalMargin = container.getStyleConfig().paddingLeft;
 			if(line > 0)
 				verticalMargin += spacingHeight.get(line - 1);
 			for(Wrapper wrapper : lineOfWrappers){
@@ -96,7 +96,7 @@ public class FlowLayoutCalc extends LayoutCalc {
 			}
 		}
 		verticalMargin += spacingHeight.get(spacingHeight.size() - 1);
-		verticalMargin += container.getConfig().paddingBottom;
+		verticalMargin += container.getStyleConfig().paddingBottom;
 		container.setCalculatedHeight(verticalMargin);
 		container.setCalculatedWidth(container.subtractMarginFromWidth(parentWidth));
 	}

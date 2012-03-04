@@ -4,9 +4,6 @@ import java.util.ArrayList;
 
 import ui.activity.BaseActivity;
 import ui.factory.WrapperFactory;
-import ui.view.TabButtonView;
-import android.view.View;
-import android.view.View.OnClickListener;
 import config.Config;
 
 /**
@@ -14,9 +11,8 @@ import config.Config;
  * They also hold references to the ContainerWrapper(s) that map to each tab
  *
  */
-public class TabWrapper extends ContainerWrapper implements OnClickListener {
+public class TabWrapper extends ContainerWrapper {
 	
-	private ContainerWrapper currentContainerWrapper;
 	private int currentTabIndex;
 	private ArrayList<TabButtonWrapper> tabs;
 	
@@ -41,10 +37,14 @@ public class TabWrapper extends ContainerWrapper implements OnClickListener {
 	
 	@Override
 	public void finializeWrappers(){
-		currentTabIndex = 0;
-		currentContainerWrapper = getCurrentTargetContainerWrapper();
-		getCurrentTabWrapper().setContainerWrapper(currentContainerWrapper);
+		setCurrentTab(0);
 		super.finializeWrappers();
+	}
+	
+	private void setCurrentTab(int index) {
+		currentTabIndex = index;
+		getCurrentTabButtonWrapper().getButtonView().setSelected(true);
+		getCurrentTabButtonWrapper().setContainerWrapper(getCurrentTargetContainerWrapper());
 	}
 
 	@Override
@@ -53,29 +53,26 @@ public class TabWrapper extends ContainerWrapper implements OnClickListener {
 	@Override
 	public void setText(String text) {}
 
-	public void onClick(View v) {
-		setActiveTab((TabButtonWrapper)((TabButtonView)v).getWrapper());
-	}
-
 	public void setActiveTab(TabButtonWrapper tab) {
 		int index = tab.getTabIndex();
 		ContainerWrapper newWrapper = tab.getContainerWrapper();
 		
 		if(newWrapper == null)
 			newWrapper = initContainerWrapper(index);
-		else if(newWrapper == currentContainerWrapper)
+		else if(newWrapper == getCurrentTargetContainerWrapper())
 			return;
 		
-		activity.replaceFragment(newWrapper, currentContainerWrapper);
+		boolean success = activity.replaceFragment(newWrapper, getCurrentTargetContainerWrapper());
 		
-		parentWrapper.replaceChildWrapper(currentContainerWrapper, newWrapper);
-		currentContainerWrapper = newWrapper; 
-		
-		activity.relayout(false);
+		if(success){
+			parentWrapper.replaceChildWrapper(getCurrentTargetContainerWrapper(), newWrapper);
+			setCurrentTab(index);
+			activity.relayout(false);
+		}
 	}
 
 	private ContainerWrapper initContainerWrapper(int index) {
-		TabButtonWrapper tab = getTabWrapper(index);
+		TabButtonWrapper tab = getTabButtonWrapper(index);
 		
 		ContainerWrapper wrapper = (ContainerWrapper) new WrapperFactory().createAndInitWrapper(activity, parentWrapper, config.targetWrapperIds.get(index));
 		
@@ -84,11 +81,11 @@ public class TabWrapper extends ContainerWrapper implements OnClickListener {
 		return wrapper;
 	}
 	
-	protected TabButtonWrapper getCurrentTabWrapper(){
-		return getTabWrapper(currentTabIndex);
+	protected TabButtonWrapper getCurrentTabButtonWrapper(){
+		return getTabButtonWrapper(currentTabIndex);
 	}
 	
-	protected TabButtonWrapper getTabWrapper(int index) {
+	protected TabButtonWrapper getTabButtonWrapper(int index) {
 		return tabs.get(index);
 	}
 	

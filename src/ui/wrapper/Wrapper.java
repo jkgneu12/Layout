@@ -4,6 +4,7 @@ import ui.activity.BaseActivity;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import config.Config;
+import config.StyleConfig;
 
 public abstract class Wrapper {
 	
@@ -13,6 +14,7 @@ public abstract class Wrapper {
 	protected View view;
 	protected ContainerWrapper parentWrapper;
 	protected Config config;
+	protected StyleConfig styleConfig;
 	
 	
 	/*Configurable*/
@@ -52,15 +54,18 @@ public abstract class Wrapper {
 		this.activity = context;
 		this.parentWrapper = parentWrapper;
 		this.config = config;
+		this.styleConfig = activity.getConfigStore().getStyleConfig(config.styleId);
 		
 		activity.addWrapper(config.id, this);
 	}
 	
 	public void createAndLayoutAndAddWrappers(){
-		view.setBackgroundColor(config.backgroundColor);
-		view.setPadding(config.paddingLeft, config.paddingTop, config.paddingRight, config.paddingBottom);
+		view.setBackgroundColor(styleConfig.backgroundColor);
+		view.setPadding(styleConfig.paddingLeft, styleConfig.paddingTop, styleConfig.paddingRight, styleConfig.paddingBottom);
 		setText(config.title);
 	}
+	
+	public void relayout(boolean reset){}
 	
 	public abstract void finializeWrappers();
 	
@@ -98,6 +103,10 @@ public abstract class Wrapper {
 
 	public Config getConfig() {
 		return config;
+	}
+	
+	public StyleConfig getStyleConfig() {
+		return styleConfig;
 	}
 
 	
@@ -269,7 +278,10 @@ public abstract class Wrapper {
 
 	public int getMeasuredWidth() {
 		if(getConfiguredWidth() == Config.INVALID){
-			getView().measure(MeasureSpec.UNSPECIFIED, MeasureSpec.UNSPECIFIED);
+			int height = MeasureSpec.UNSPECIFIED;
+			if(getConfiguredHeight() != INVALID)
+				height = MeasureSpec.makeMeasureSpec(getConfiguredHeight(), MeasureSpec.EXACTLY);
+			getView().measure(MeasureSpec.UNSPECIFIED, height);
 			return getView().getMeasuredWidth();
 		}
 		return getConfiguredWidth();	
@@ -277,7 +289,10 @@ public abstract class Wrapper {
 	
 	public int getMeasuredHeight() {
 		if(getConfiguredHeight() == Config.INVALID){
-			getView().measure(MeasureSpec.UNSPECIFIED, MeasureSpec.UNSPECIFIED);
+			int width = MeasureSpec.UNSPECIFIED;
+			if(getConfiguredWidth() != INVALID)
+				width = MeasureSpec.makeMeasureSpec(getConfiguredWidth(), MeasureSpec.EXACTLY);
+			getView().measure(width, MeasureSpec.UNSPECIFIED);
 			return getView().getMeasuredHeight();
 		}
 		return getConfiguredHeight();

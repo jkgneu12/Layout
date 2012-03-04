@@ -2,7 +2,6 @@ package config;
 
 import java.util.ArrayList;
 
-import android.graphics.Color;
 import enums.EAlignment;
 import enums.ELayoutType;
 import enums.EWrapperType;
@@ -15,15 +14,12 @@ public class Config {
 	
 	public int id = INVALID;
 	
+	public int styleId = INVALID;
+	
 	public EWrapperType type;
 	
 	public int width = INVALID;
 	public int height = INVALID;
-	
-	public int paddingLeft = 0;
-	public int paddingTop = 0;
-	public int paddingRight = 0;
-	public int paddingBottom = 0;
 	
 	public int marginLeft = 0;
 	public int marginTop = 0;
@@ -32,9 +28,6 @@ public class Config {
 	
 	public EAlignment screenAlignment = EAlignment.LEFT;
 	public EAlignment innerAlignment = EAlignment.LEFT;
-
-	public int backgroundColor = Color.TRANSPARENT;
-	public int textColor = Color.BLACK;
 	
 	public ELayoutType layoutType;
 
@@ -42,6 +35,8 @@ public class Config {
 	public ArrayList<Integer> targetWrapperIds;
 	
 	public int navigationId = INVALID;
+
+	
 
 	
 	

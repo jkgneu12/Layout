@@ -11,9 +11,6 @@ import android.app.Activity;
 import android.app.FragmentTransaction;
 import android.content.res.Configuration;
 import android.os.Bundle;
-
-import com.verivo.R;
-
 import config.ConfigStore;
 
 /**
@@ -47,7 +44,7 @@ public class BaseActivity extends Activity {
 		
 		setTitle(baseContainerWrapper.getConfig().title);
     }
-
+    
 	protected void initBaseContainerWrapper(int screenId) {
 		baseContainerWrapper = (ContainerWrapper)new WrapperFactory().createAndInitWrapper(this, null, screenId);
         
@@ -69,17 +66,23 @@ public class BaseActivity extends Activity {
      */
 	public void initFragments() {
 		for(ContainerWrapper sc : containerWrappers)
-    		sc.initFragment(false);
+    		sc.initFragment();
 	}
 	
-	public void replaceFragment(ContainerWrapper newWrapper, ContainerWrapper oldWrapper) {
-		if(oldWrapper.getFragment() != null){
+	public synchronized boolean replaceFragment(ContainerWrapper newWrapper, ContainerWrapper oldWrapper) {
+		if(oldWrapper == newWrapper)
+			return false;
+		removeFragment(oldWrapper);
+		return newWrapper.initFragment();
+	}
+
+	protected synchronized void removeFragment(ContainerWrapper oldWrapper) {
+		if(oldWrapper.getFragment().isAdded() && oldWrapper.getFragment() != null){
 			FragmentTransaction trans = getFragmentManager().beginTransaction();
-			trans.setCustomAnimations(R.animator.slide_in, R.animator.slide_out);
+			//trans.setCustomAnimations(R.animator.slide_in, R.animator.slide_out);
 			trans.remove(oldWrapper.getFragment());
 			trans.commit();
 		}
-		newWrapper.initFragment(true);
 	}
 
     public void updateData(){
@@ -110,13 +113,8 @@ public class BaseActivity extends Activity {
 	}
 
 	public void relayout(boolean reset) {
-		if(reset){
-			for(ContainerWrapper wrapper : containerWrappers){
-				wrapper.resetLayout();
-			}
-		}
-		baseContainerWrapper.layoutWrappers();
-		baseContainerWrapper.finishLayoutWrappers();
+		baseContainerWrapper.relayout(reset);
+		
 	}
     
 	public ConfigStore getConfigStore() {
