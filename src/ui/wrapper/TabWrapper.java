@@ -42,6 +42,7 @@ public class TabWrapper extends ContainerWrapper {
 	}
 	
 	private void setCurrentTab(int index) {
+		getCurrentTabButtonWrapper().getButtonView().setSelected(false);
 		currentTabIndex = index;
 		getCurrentTabButtonWrapper().getButtonView().setSelected(true);
 		getCurrentTabButtonWrapper().setContainerWrapper(getCurrentTargetContainerWrapper());
