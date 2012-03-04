@@ -19,7 +19,7 @@ public class HorizontalLayoutCalc extends LayoutCalc {
 	}
 	
 	protected void applySpacingToViews() {
-		int horizontalMargin = container.getPaddingLeft();
+		int horizontalMargin = container.getConfig().paddingLeft;
 		int maxHeight = 0;
 		
 		int maxWidth = container.subtractPaddingFromWidth(parentWidth);
@@ -30,22 +30,22 @@ public class HorizontalLayoutCalc extends LayoutCalc {
         	horizontalMargin += calculateLeftSpacing(wrapper, space);
         	wrapper.getView().setTranslationX(horizontalMargin);
         	horizontalMargin += calculateRightSpacing(wrapper, space) + width;
-        	wrapper.getView().setTranslationY(wrapper.getMarginTop());
+        	wrapper.getView().setTranslationY(wrapper.getConfig().marginTop);
         	int fullHeight = wrapper.getMeasuredHeightPlusMargins();
         	if(fullHeight > maxHeight)
         		maxHeight = fullHeight;
 		}
-		horizontalMargin += container.getPaddingRight();
+		horizontalMargin += container.getConfig().paddingRight;
 		container.setCalculatedWidth(horizontalMargin);
 		container.setCalculatedHeight(maxHeight);
 	}
 	
 	protected int calculateLeftSpacing(Wrapper wrapper, int space) {
-		return wrapper.getMarginLeft();
+		return wrapper.getConfig().marginLeft;
 	}
 	
 	protected int calculateRightSpacing(Wrapper wrapper, int space) {
-		return wrapper.getMarginRight();
+		return wrapper.getConfig().marginRight;
 	}
 
 }

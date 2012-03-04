@@ -77,6 +77,7 @@ public class ConfigStore {
 		else if(property.equals("screen-alignment")) config.screenAlignment = EAlignment.stringToAlignment(value);
 		else if(property.equals("inner-alignment")) config.innerAlignment = EAlignment.stringToAlignment(value);
 		else if(property.equals("background-color")) config.backgroundColor = Color.parseColor(value);
+		else if(property.equals("text-color")) config.textColor = Color.parseColor(value);
 		else if(property.equals("padding-left")) config.paddingLeft = Integer.parseInt(value);
 		else if(property.equals("padding-top")) config.paddingTop = Integer.parseInt(value);
 		else if(property.equals("padding-bottom")) config.paddingBottom = Integer.parseInt(value);

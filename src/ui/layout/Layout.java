@@ -34,10 +34,18 @@ public abstract class Layout extends FrameLayout {
 		
 	}
 
+	/**
+	 * Used in Fragment animation.
+	 * Don't call!!
+	 */
 	public float getXFraction() {
         return getX() / getWidth();
     }
 
+	/**
+	 * Used in Fragment animation.
+	 * Don't call!!
+	 */
     public void setXFraction(float xFraction) {
     	if(storedTranslation == -1)
     		storedTranslation = getTranslationX();

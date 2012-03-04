@@ -34,6 +34,7 @@ public class Config {
 	public EAlignment innerAlignment = EAlignment.LEFT;
 
 	public int backgroundColor = Color.TRANSPARENT;
+	public int textColor = Color.BLACK;
 	
 	public ELayoutType layoutType;
 
@@ -41,6 +42,8 @@ public class Config {
 	public ArrayList<Integer> targetWrapperIds;
 	
 	public int navigationId = INVALID;
+
+	
 	
 	
 	public Config(){}

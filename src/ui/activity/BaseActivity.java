@@ -45,7 +45,7 @@ public class BaseActivity extends Activity {
 		
 		initBaseContainerWrapper(getIntent().getIntExtra("baseId", 1000));
 		
-		setTitle(baseContainerWrapper.getTitle());
+		setTitle(baseContainerWrapper.getConfig().title);
     }
 
 	protected void initBaseContainerWrapper(int screenId) {

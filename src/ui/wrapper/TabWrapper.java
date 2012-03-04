@@ -7,6 +7,7 @@ import ui.factory.WrapperFactory;
 import ui.view.TabButtonView;
 import android.view.View;
 import android.view.View.OnClickListener;
+import config.Config;
 
 /**
  * A TabWrapper(s) Layout holds TabButtonWrapper(s).
@@ -19,8 +20,8 @@ public class TabWrapper extends ContainerWrapper implements OnClickListener {
 	private int currentTabIndex;
 	private ArrayList<TabButtonWrapper> tabs;
 	
-	public TabWrapper(BaseActivity activity, ContainerWrapper parent, int id) {
-		super(activity, parent, id);
+	public TabWrapper(BaseActivity activity, ContainerWrapper parent, Config config) {
+		super(activity, parent, config);
 		tabs = new ArrayList<TabButtonWrapper>();
 	}
 	
@@ -76,7 +77,7 @@ public class TabWrapper extends ContainerWrapper implements OnClickListener {
 	private ContainerWrapper initContainerWrapper(int index) {
 		TabButtonWrapper tab = getTabWrapper(index);
 		
-		ContainerWrapper wrapper = (ContainerWrapper) new WrapperFactory().createAndInitWrapper(activity, parentWrapper, targetWrapperIds.get(index));
+		ContainerWrapper wrapper = (ContainerWrapper) new WrapperFactory().createAndInitWrapper(activity, parentWrapper, config.targetWrapperIds.get(index));
 		
 		tab.setContainerWrapper(wrapper);
 		
@@ -92,7 +93,7 @@ public class TabWrapper extends ContainerWrapper implements OnClickListener {
 	}
 	
 	protected ContainerWrapper getCurrentTargetContainerWrapper() {
-		return (ContainerWrapper)getActivity().getWrapperById(targetWrapperIds.get(currentTabIndex));
+		return (ContainerWrapper)getActivity().getWrapperById(config.targetWrapperIds.get(currentTabIndex));
 	}
 
 

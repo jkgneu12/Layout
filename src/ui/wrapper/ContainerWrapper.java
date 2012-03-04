@@ -7,6 +7,7 @@ import ui.factory.WrapperFactory;
 import ui.fragment.BaseFragment;
 import ui.layout.Layout;
 import android.app.FragmentTransaction;
+import config.Config;
 
 /**
  * Holds a layout
@@ -23,18 +24,18 @@ public class ContainerWrapper extends Wrapper {
 	private int calculatedWidth = INVALID;
 	private int calculatedHeight = INVALID;
 	
-	public ContainerWrapper(BaseActivity activity, ContainerWrapper parent, int id) {
-		this(activity, parent, id, true);
+	public ContainerWrapper(BaseActivity activity, ContainerWrapper parent, Config config) {
+		this(activity, parent, config, true);
 	}
 	
-	public ContainerWrapper(BaseActivity activity, ContainerWrapper parent, int id, boolean addFragment) {
-		super(activity, parent, id);
+	public ContainerWrapper(BaseActivity activity, ContainerWrapper parent, Config config, boolean addFragment) {
+		super(activity, parent, config);
 		if(addFragment)
 			activity.addContainerWrapper(this);
 	}
 	
 	public void createLayoutAndAddWrappers(){
-		view = getLayoutType().getLayout(activity, this);
+		view = config.layoutType.getLayout(activity, this);
 		createWrappers();
 		layoutWrappers();
 		addWrappers();
@@ -42,7 +43,7 @@ public class ContainerWrapper extends Wrapper {
 	}
 	
 	public void createWrappers() {
-		childWrappers = new WrapperFactory().createWrapperForId(activity, this, id);
+		childWrappers = new WrapperFactory().createWrapperForId(activity, this, config.id);
 	}
 	
 	public void layoutWrappers() {
@@ -125,14 +126,14 @@ public class ContainerWrapper extends Wrapper {
 	}
 	
 	public int getXOffset(){
-		int offset = paddingLeft + marginLeft;
+		int offset = config.paddingLeft + config.marginLeft;
 		if(parentWrapper != null)
 			return offset + parentWrapper.getXOffset();
 		return offset;
 	}
 	
 	public int getYOffset(){
-		int offset = paddingTop + marginTop;
+		int offset = config.paddingTop + config.marginTop;
 		if(parentWrapper != null)
 			return offset + parentWrapper.getYOffset();
 		return offset;
@@ -174,50 +175,50 @@ public class ContainerWrapper extends Wrapper {
 	}
 	
 	public int addPaddingToWidth(int width) {
-		if(paddingLeft != Wrapper.INVALID)
-			width += paddingLeft;
-		if(paddingRight != Wrapper.INVALID)
-			width += paddingRight;
+		if(config.paddingLeft != Wrapper.INVALID)
+			width += config.paddingLeft;
+		if(config.paddingRight != Wrapper.INVALID)
+			width += config.paddingRight;
 		return width;
 	}
 	
 	public int addPaddingToHeight(int height) {
-		if(paddingTop != Wrapper.INVALID)
-			height += paddingTop;
-		if(paddingBottom != Wrapper.INVALID)
-			height += paddingBottom;
+		if(config.paddingTop != Wrapper.INVALID)
+			height += config.paddingTop;
+		if(config.paddingBottom != Wrapper.INVALID)
+			height += config.paddingBottom;
 		return height;
 	}
 
 	public int subtractPaddingFromWidth(int width) {
-		if(paddingLeft != Wrapper.INVALID)
-			width -= paddingLeft;
-		if(paddingRight != Wrapper.INVALID)
-			width -= paddingRight;
+		if(config.paddingLeft != Wrapper.INVALID)
+			width -= config.paddingLeft;
+		if(config.paddingRight != Wrapper.INVALID)
+			width -= config.paddingRight;
 		return width;
 	}
 	
 	public int subtractPaddingFromHeight(int height) {
-		if(paddingTop != Wrapper.INVALID)
-			height -= paddingTop;
-		if(paddingBottom != Wrapper.INVALID)
-			height -= paddingBottom;
+		if(config.paddingTop != Wrapper.INVALID)
+			height -= config.paddingTop;
+		if(config.paddingBottom != Wrapper.INVALID)
+			height -= config.paddingBottom;
 		return height;
 	}
 	
 	public int subtractMarginFromWidth(int width) {
-		if(marginLeft != Wrapper.INVALID)
-			width -= marginLeft;
-		if(marginRight != Wrapper.INVALID)
-			width -= marginRight;
+		if(config.marginLeft != Wrapper.INVALID)
+			width -= config.marginLeft;
+		if(config.marginRight != Wrapper.INVALID)
+			width -= config.marginRight;
 		return width;
 	}
 	
 	public int subtractMarginFromHeight(int height) {
-		if(marginTop != Wrapper.INVALID)
-			height -= marginTop;
-		if(marginBottom != Wrapper.INVALID)
-			height -= marginBottom;
+		if(config.marginTop != Wrapper.INVALID)
+			height -= config.marginTop;
+		if(config.marginBottom != Wrapper.INVALID)
+			height -= config.marginBottom;
 		return height;
 	}
 
@@ -225,8 +226,8 @@ public class ContainerWrapper extends Wrapper {
 	public void setText(String text) {}
 
 	public void resetLayout() {
-		view.setTranslationX(paddingLeft + marginLeft);
-		view.setTranslationY(paddingTop + marginTop);
+		view.setTranslationX(config.paddingLeft + config.marginLeft);
+		view.setTranslationY(config.paddingTop + config.marginTop);
 		getLayout().resetLayout();
 	}
 }

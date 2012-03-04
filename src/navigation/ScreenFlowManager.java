@@ -1,7 +1,7 @@
 package navigation;
 
-import android.content.Intent;
 import ui.activity.BaseActivity;
+import android.content.Intent;
 
 public class ScreenFlowManager {
 

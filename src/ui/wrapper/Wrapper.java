@@ -1,15 +1,9 @@
 package ui.wrapper;
 
-import java.util.ArrayList;
-
 import ui.activity.BaseActivity;
-import android.graphics.Color;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import config.Config;
-import enums.EAlignment;
-import enums.ELayoutType;
-import enums.EWrapperType;
 
 public abstract class Wrapper {
 	
@@ -18,10 +12,11 @@ public abstract class Wrapper {
 	protected BaseActivity activity;
 	protected View view;
 	protected ContainerWrapper parentWrapper;
+	protected Config config;
 	
 	
 	/*Configurable*/
-	protected String title;
+	/*protected String title;
 	
 	protected int id = INVALID;
 	
@@ -44,24 +39,29 @@ public abstract class Wrapper {
 	protected EAlignment innerAlignment = EAlignment.LEFT;
 
 	protected int backgroundColor = Color.TRANSPARENT;
+	private int textColor = Color.BLACK;
 	
 	protected ELayoutType layoutType = ELayoutType.FLOW;
 	
 	protected ArrayList<Integer> targetWrapperIds;
 	
-	protected int navigationId = INVALID;
+	protected int navigationId = INVALID;*/
 	
 	
-	public Wrapper(BaseActivity context, ContainerWrapper parentWrapper, int id){
+	public Wrapper(BaseActivity context, ContainerWrapper parentWrapper, Config config){
 		this.activity = context;
 		this.parentWrapper = parentWrapper;
-		this.id = id;
+		this.config = config;
 		
-		activity.addWrapper(id, this);
+		activity.addWrapper(config.id, this);
+		
+		createLayoutAndAddWrappers();
 	}
 	
 	public void createLayoutAndAddWrappers(){
-		view.setBackgroundColor(backgroundColor);
+		view.setBackgroundColor(config.backgroundColor);
+		view.setPadding(config.paddingLeft, config.paddingTop, config.paddingRight, config.paddingBottom);
+		setText(config.title);
 	}
 	
 	public abstract void finializeWrappers();
@@ -93,10 +93,18 @@ public abstract class Wrapper {
 	public void setParent(ContainerWrapper parent) {
 		this.parentWrapper = parent;
 	}
+	
+	public void setConfig(Config config) {
+		this.config = config;
+	}
+
+	public Config getConfig() {
+		return config;
+	}
 
 	
 	/*Configurable*/
-	
+	/*
 	public String getTitle() {
 		return title;
 	}
@@ -217,6 +225,14 @@ public abstract class Wrapper {
 		this.backgroundColor = backgroundColor;
 	}
 	
+	public void setTextColor(int textColor) {
+		this.textColor = textColor;
+	}
+
+	public int getTextColor() {
+		return textColor;
+	}
+	
 	public ELayoutType getLayoutType() {
 		return layoutType;
 	}
@@ -236,21 +252,21 @@ public abstract class Wrapper {
 	public int getNavigationId() {
 		return navigationId;
 	}
-	
+	*/
 	
 	
 	
 	
 	public int getConfiguredWidth(){
-		if(width >= 0 || width == Config.INVALID)
-			return width;
-		return (int) (activity.getScreenWidth() * ((double)-width / 100.0));
+		if(config.width >= 0 || config.width == Config.INVALID)
+			return config.width;
+		return (int) (activity.getScreenWidth() * ((double)-config.width / 100.0));
 	}
 	
 	public int getConfiguredHeight(){
-		if(height >= 0 || height == Config.INVALID)
-			return height;
-		return (int) (activity.getScreenHeight() * ((double)-height / 100.0));
+		if(config.height >= 0 || config.height == Config.INVALID)
+			return config.height;
+		return (int) (activity.getScreenHeight() * ((double)-config.height / 100.0));
 	}
 
 	public int getMeasuredWidth() {
@@ -270,11 +286,11 @@ public abstract class Wrapper {
 	}
 	
 	public int getMeasuredWidthPlusMargins(){
-		 return getMeasuredWidth() + marginLeft + marginRight;
+		 return getMeasuredWidth() + config.marginLeft + config.marginRight;
 	}
 	
 	public int getMeasuredHeightPlusMargins(){
-		 return getMeasuredHeight() + marginTop + marginBottom;
+		 return getMeasuredHeight() + config.marginTop + config.marginBottom;
 	}
 	
 	public int getMaxWidth() {

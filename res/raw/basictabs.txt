@@ -18,7 +18,8 @@ button
 	screen-alignment:center
 	inner-alignment:center
 	width:-10
-	background-color:blue
+	text-color:green
+	background-color:yellow
 	padding-left:5
 	padding-top:5
 	padding-bottom:5
@@ -34,6 +35,7 @@ tabbutton
 	screen-alignment:center
 	inner-alignment:center
 	width:-43
+	text-color:red
 	background-color:blue
 	padding-left:5
 	padding-top:5
@@ -50,6 +52,7 @@ tabbutton
 	screen-alignment:center
 	inner-alignment:center
 	width:-43
+	text-color:yellow
 	background-color:blue
 	padding-left:5
 	padding-top:5
@@ -83,6 +86,7 @@ container
 button
 	screen-alignment:center
 	inner-alignment:center
+	text-color:white
 	background-color:green
 	padding-left:25
 	padding-top:5
@@ -100,6 +104,7 @@ container
 	screen-alignment:center
 	height:-75
 	inner-alignment:left
+	text-color:red
 	background-color:yellow
 	padding-left:5
 	padding-top:5

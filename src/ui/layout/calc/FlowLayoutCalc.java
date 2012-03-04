@@ -81,22 +81,22 @@ public class FlowLayoutCalc extends LayoutCalc {
 	 * Apply the horizontal and vertical spacing to wrappers
 	 */
 	protected void applySpacingBetweenViews() {
-		int verticalMargin = container.getPaddingTop();
+		int verticalMargin = container.getConfig().paddingTop;
 		for(int line = 0; line < wrappersByLine.size(); line++){
 			ArrayList<Wrapper> lineOfWrappers = wrappersByLine.get(line);
 			int space = spacingWidth.get(line);
-			int horizontalMargin = container.getPaddingLeft();
+			int horizontalMargin = container.getConfig().paddingLeft;
 			if(line > 0)
 				verticalMargin += spacingHeight.get(line - 1);
 			for(Wrapper wrapper : lineOfWrappers){
 	        	horizontalMargin += calculateLeftSpacing(wrapper, space);
 	        	wrapper.getView().setTranslationX(horizontalMargin);
 	        	horizontalMargin += calculateRightSpacing(wrapper, space) + wrapper.getMeasuredWidth();
-	        	wrapper.getView().setTranslationY(verticalMargin + wrapper.getMarginTop());
+	        	wrapper.getView().setTranslationY(verticalMargin + wrapper.getConfig().marginTop);
 			}
 		}
 		verticalMargin += spacingHeight.get(spacingHeight.size() - 1);
-		verticalMargin += container.getPaddingBottom();
+		verticalMargin += container.getConfig().paddingBottom;
 		container.setCalculatedHeight(verticalMargin);
 		container.setCalculatedWidth(container.subtractMarginFromWidth(parentWidth));
 	}
@@ -105,8 +105,8 @@ public class FlowLayoutCalc extends LayoutCalc {
 	 * 
 	 */
 	protected int calculateLeftSpacing(Wrapper wrapper, int space) {
-		int marginLeft = wrapper.getMarginLeft();
-		switch(wrapper.getScreenAlignment()){
+		int marginLeft = wrapper.getConfig().marginLeft;
+		switch(wrapper.getConfig().screenAlignment){
 		case LEFT: return marginLeft;
 		case CENTER: return marginLeft + (space /2);
 		case RIGHT: return marginLeft + space;
@@ -115,8 +115,8 @@ public class FlowLayoutCalc extends LayoutCalc {
 	}
 	
 	protected int calculateRightSpacing(Wrapper wrapper, int space) {
-		int marginRight = wrapper.getMarginRight();
-		switch(wrapper.getScreenAlignment()){
+		int marginRight = wrapper.getConfig().marginRight;
+		switch(wrapper.getConfig().screenAlignment){
 		case RIGHT: return marginRight;
 		case CENTER: return marginRight + (space /2);
 		case LEFT: return marginRight + space;

@@ -5,6 +5,7 @@ import ui.activity.BaseActivity;
 import ui.view.ButtonView;
 import android.view.View;
 import android.view.View.OnClickListener;
+import config.Config;
 
 /**
  * Wrapper for a {@link ButtonView}
@@ -14,15 +15,14 @@ import android.view.View.OnClickListener;
 
 public class ButtonWrapper extends Wrapper implements OnClickListener {
 
-	public ButtonWrapper(BaseActivity activity, ContainerWrapper parent, int id) {
-		super(activity, parent, id);
+	public ButtonWrapper(BaseActivity activity, ContainerWrapper parent, Config config) {
+		super(activity, parent, config);
 	}
 
 	@Override
 	public void createLayoutAndAddWrappers() {
 		view = new ButtonView(activity, this);
-		setText(getTitle());
-		view.setPadding(paddingLeft, paddingTop, paddingRight, paddingBottom);
+		getButtonView().setTextColor(config.textColor);
 		super.createLayoutAndAddWrappers();
 	}
 	
@@ -43,8 +43,8 @@ public class ButtonWrapper extends Wrapper implements OnClickListener {
 	}
 
 	public void onClick(View v) {
-		if(navigationId != INVALID)
-			ScreenFlowManager.navigateToNextScreen(activity, getNavigationId());
+		if(config.navigationId != INVALID)
+			ScreenFlowManager.navigateToNextScreen(activity, config.navigationId);
 		else
 			ScreenFlowManager.navigateToPreviousScreen(activity);
 			//getActivity().updateData();
