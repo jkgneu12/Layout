@@ -35,7 +35,7 @@ public class ConfigStore {
 	 */
 	public void parseConfigFile(BaseActivity activity){
 		try {
-			InputStream is = activity.getResources().openRawResource(R.raw.basicvert);
+			InputStream is = activity.getResources().openRawResource(R.raw.basictabs);
 			BufferedReader in = new BufferedReader(new InputStreamReader(is));
 			
 			String line = in.readLine();

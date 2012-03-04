@@ -227,5 +227,6 @@ public class ContainerWrapper extends Wrapper {
 	public void resetLayout() {
 		view.setTranslationX(paddingLeft + marginLeft);
 		view.setTranslationY(paddingTop + marginTop);
+		getLayout().resetLayout();
 	}
 }

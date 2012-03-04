@@ -1,8 +1,9 @@
 package ui.wrapper;
 
+import java.util.ArrayList;
+
 import ui.activity.BaseActivity;
 import ui.factory.WrapperFactory;
-import ui.layout.HorizontalLayout;
 import ui.view.TabButtonView;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -16,23 +17,25 @@ public class TabWrapper extends ContainerWrapper implements OnClickListener {
 	
 	private ContainerWrapper currentContainerWrapper;
 	private int currentTabIndex;
+	private ArrayList<TabButtonWrapper> tabs;
 	
 	public TabWrapper(BaseActivity activity, ContainerWrapper parent, int id) {
 		super(activity, parent, id);
+		tabs = new ArrayList<TabButtonWrapper>();
 	}
 	
 	@Override
 	public void createWrappers() {
 		super.createWrappers();
-		for(int c = 0; c < childWrappers.size(); c++){
-			((TabButtonWrapper)childWrappers.get(c)).setTabIndex(c);
+		int tabCount = 0;
+		for(Wrapper childWrapper : childWrappers){
+			if(childWrapper instanceof TabButtonWrapper){
+				TabButtonWrapper tab = (TabButtonWrapper)childWrapper;
+				tab.setTabIndex(tabCount);
+				tabs.add(tab);
+				tabCount++;
+			}
 		}
-	}
-	
-	@Override
-	public void createLayoutAndAddWrappers() {
-		view = new HorizontalLayout(activity, this);
-		super.createLayoutAndAddWrappers();
 	}
 	
 	@Override
@@ -67,7 +70,7 @@ public class TabWrapper extends ContainerWrapper implements OnClickListener {
 		parentWrapper.replaceChildWrapper(currentContainerWrapper, newWrapper);
 		currentContainerWrapper = newWrapper; 
 		
-		activity.relayout();
+		activity.relayout(false);
 	}
 
 	private ContainerWrapper initContainerWrapper(int index) {
@@ -85,7 +88,7 @@ public class TabWrapper extends ContainerWrapper implements OnClickListener {
 	}
 	
 	protected TabButtonWrapper getTabWrapper(int index) {
-		return ((TabButtonWrapper)childWrappers.get(index));
+		return tabs.get(index);
 	}
 	
 	protected ContainerWrapper getCurrentTargetContainerWrapper() {

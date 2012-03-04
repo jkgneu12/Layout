@@ -106,12 +106,14 @@ public class BaseActivity extends Activity {
     @Override
 	public void onConfigurationChanged(Configuration newConfig) {
 		super.onConfigurationChanged(newConfig);
-		relayout();
+		relayout(true);
 	}
 
-	public void relayout() {
-		for(ContainerWrapper wrapper : containerWrappers){
-			wrapper.resetLayout();
+	public void relayout(boolean reset) {
+		if(reset){
+			for(ContainerWrapper wrapper : containerWrappers){
+				wrapper.resetLayout();
+			}
 		}
 		baseContainerWrapper.layoutWrappers();
 		baseContainerWrapper.finishLayoutWrappers();

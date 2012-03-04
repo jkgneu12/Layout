@@ -10,6 +10,7 @@ import android.widget.FrameLayout;
 public abstract class Layout extends FrameLayout {
 	
 	private Wrapper wrapper;
+	private float storedTranslation = -1;
 
 	public Layout(BaseActivity activity, Wrapper wrapper) {
 		super(activity);
@@ -34,14 +35,19 @@ public abstract class Layout extends FrameLayout {
 	}
 
 	public float getXFraction() {
-        return getX() / getWidth(); // TODO: guard divide-by-zero
+        return getX() / getWidth();
     }
 
     public void setXFraction(float xFraction) {
-        // TODO: cache width
+    	if(storedTranslation == -1)
+    		storedTranslation = getTranslationX();
         final int width = getWidth();
-        setX((width > 0) ? (xFraction * width) : -9999);
+        setX(storedTranslation + ((width > 0) ? (xFraction * width) : -9999));
     }
+
+	public void resetLayout() {
+		storedTranslation = -1;
+	}
 	
 	
 }

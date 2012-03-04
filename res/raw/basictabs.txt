@@ -5,18 +5,35 @@ container
 	id:1000
 	
 tab
+	layout:horizontal
 	screen-alignment:center
 	inner-alignment:center
 	targets:1001,1002
-	children:11,12
+	children:13,11,12
 	width:-99
 	background-color:green
 	id:10
 	
+button
+	screen-alignment:center
+	inner-alignment:center
+	width:-10
+	background-color:blue
+	padding-left:5
+	padding-top:5
+	padding-bottom:5
+	padding-right:5
+	margin-left:5
+	margin-top:5
+	margin-bottom:5
+	margin-right:5
+	title:View in Tab Controller
+	id:13
+	
 tabbutton
 	screen-alignment:center
 	inner-alignment:center
-	width:-48
+	width:-43
 	background-color:blue
 	padding-left:5
 	padding-top:5
@@ -32,7 +49,7 @@ tabbutton
 tabbutton
 	screen-alignment:center
 	inner-alignment:center
-	width:-48
+	width:-43
 	background-color:blue
 	padding-left:5
 	padding-top:5
