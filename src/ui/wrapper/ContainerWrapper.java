@@ -34,12 +34,12 @@ public class ContainerWrapper extends Wrapper {
 			activity.addContainerWrapper(this);
 	}
 	
-	public void createLayoutAndAddWrappers(){
+	public void createAndLayoutAndAddWrappers(){
 		view = config.layoutType.getLayout(activity, this);
 		createWrappers();
 		layoutWrappers();
 		addWrappers();
-		super.createLayoutAndAddWrappers();
+		super.createAndLayoutAndAddWrappers();
 	}
 	
 	public void createWrappers() {

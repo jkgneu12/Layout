@@ -54,11 +54,9 @@ public abstract class Wrapper {
 		this.config = config;
 		
 		activity.addWrapper(config.id, this);
-		
-		createLayoutAndAddWrappers();
 	}
 	
-	public void createLayoutAndAddWrappers(){
+	public void createAndLayoutAndAddWrappers(){
 		view.setBackgroundColor(config.backgroundColor);
 		view.setPadding(config.paddingLeft, config.paddingTop, config.paddingRight, config.paddingBottom);
 		setText(config.title);

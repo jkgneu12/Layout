@@ -11,10 +11,10 @@ public class TextWrapper extends Wrapper {
 	}
 	
 	@Override
-	public void createLayoutAndAddWrappers() {
+	public void createAndLayoutAndAddWrappers() {
 		view = new CustomTextView(activity, this);
 		getTextView().setTextColor(config.textColor);
-		super.createLayoutAndAddWrappers();
+		super.createAndLayoutAndAddWrappers();
 	}
 	
 	public void finializeWrappers(){}

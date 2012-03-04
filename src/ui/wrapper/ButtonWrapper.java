@@ -20,10 +20,10 @@ public class ButtonWrapper extends Wrapper implements OnClickListener {
 	}
 
 	@Override
-	public void createLayoutAndAddWrappers() {
+	public void createAndLayoutAndAddWrappers() {
 		view = new ButtonView(activity, this);
 		getButtonView().setTextColor(config.textColor);
-		super.createLayoutAndAddWrappers();
+		super.createAndLayoutAndAddWrappers();
 	}
 	
 	public void finializeWrappers(){}

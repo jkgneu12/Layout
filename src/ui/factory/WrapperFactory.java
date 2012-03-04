@@ -36,7 +36,9 @@ public class WrapperFactory {
 	}
 	
 	private Wrapper createWrapper(BaseActivity activity, ContainerWrapper parent, Config config) {
-		return config.type.getWrapper(activity, parent, config);
+		Wrapper wrapper = config.type.getWrapper(activity, parent, config);
+		wrapper.createAndLayoutAndAddWrappers();
+		return wrapper;
 	}
 
 	
