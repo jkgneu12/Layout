@@ -1,0 +1,207 @@
+container
+	children:10,1001
+	title:Base
+	layout:flow
+	style:0
+	id:1000
+	
+tab
+	layout:horizontal
+	screen-alignment:center
+	inner-alignment:center
+	targets:1001,1002
+	children:25,26,27
+	width:-100
+	style:1
+	id:10
+	
+button
+	screen-alignment:center
+	inner-alignment:center
+	width:-10
+	margin-left:5
+	margin-top:5
+	margin-bottom:5
+	margin-right:5
+	title:View in Tab Controller
+	style:2
+	id:25
+	
+tabbutton
+	screen-alignment:center
+	inner-alignment:center
+	width:-43
+	margin-left:5
+	margin-top:5
+	margin-bottom:5
+	margin-right:5
+	title:Tab1
+	style:3
+	id:26
+	
+tabbutton
+	screen-alignment:center
+	inner-alignment:center
+	width:-43
+	margin-left:5
+	margin-top:5
+	margin-bottom:5
+	margin-right:5
+	title:Tab2
+	style:3
+	id:27
+	
+container
+	children:120
+	screen-alignment:center
+	inner-alignment:left
+	title:Screen1
+	id:1001
+	style:4
+	layout:horizontal
+	
+list
+	layout:list
+	row:100
+	screen-alignment:center
+	inner-alignment:center
+	margin-left:5
+	margin-top:5
+	margin-bottom:5
+	margin-right:5
+	height:-100
+	style:1
+	id:120
+	
+listrow
+	layout:horizontal
+	screen-alignment:center
+	inner-alignment:center
+	children:13,11,12
+	style:5
+	id:100
+	
+button
+	screen-alignment:center
+	inner-alignment:center
+	width:-30
+	margin-left:5
+	margin-top:5
+	margin-bottom:5
+	margin-right:5
+	title:AAA
+	style:2
+	id:13
+	
+button
+	screen-alignment:center
+	inner-alignment:center
+	width:-30
+	margin-left:5
+	margin-top:5
+	margin-bottom:5
+	margin-right:5
+	title:BBB
+	style:3
+	id:11
+	
+button
+	screen-alignment:center
+	inner-alignment:center
+	width:-30
+	margin-left:5
+	margin-top:5
+	margin-bottom:5
+	margin-right:5
+	title:CCC
+	style:2
+	id:12
+	
+container
+	children:14
+	screen-alignment:center
+	height:-75
+	inner-alignment:left
+	title:Screen2
+	layout:flow
+	style:6
+	id:1002
+
+button
+	screen-alignment:center
+	inner-alignment:center
+	margin-left:5
+	margin-top:5
+	margin-bottom:5
+	margin-right:5
+	title:AAA
+	style:2
+	id:14
+
+style
+	id:0
+	background-color:#222222
+
+style
+	id:1
+	background-color:#222222
+	
+style
+	id:2
+	default-text-color:black
+	pressed-text-color:black
+	selected-text-color:black
+	focused-text-color:black
+	background-color:#771100
+	padding-left:5
+	padding-top:5
+	padding-bottom:5
+	padding-right:5
+
+style
+	id:3
+	default-text-color:#222222
+	pressed-text-color:#9A7419
+	selected-text-color:red
+	focused-text-color:gray
+	background-color:#771100
+	padding-left:5
+	padding-top:5
+	padding-bottom:5
+	padding-right:5
+
+style
+	id:4
+	background-color:#222222
+
+style
+	id:5
+	default-text-color:#222222
+	pressed-text-color:black
+	selected-text-color:black
+	focused-text-color:black
+	background-color:#9A7419
+	padding-left:5
+	padding-top:5
+	padding-bottom:5
+	padding-right:5
+	
+style
+	id:6
+	default-text-color:#222222
+	pressed-text-color:black
+	selected-text-color:black
+	focused-text-color:black
+	background-color:#222222
+	
+style
+	id:7
+	default-text-color:#222222
+	pressed-text-color:black
+	selected-text-color:black
+	focused-text-color:black
+	background-color:green
+	padding-left:5
+	padding-top:5
+	padding-bottom:5
+	padding-right:5

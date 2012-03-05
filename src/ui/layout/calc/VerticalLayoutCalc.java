@@ -1,12 +1,13 @@
 package ui.layout.calc;
 
+import ui.factory.MeasureFactory;
 import ui.wrapper.ContainerWrapper;
 import ui.wrapper.Wrapper;
 
 public class VerticalLayoutCalc extends LayoutCalc {
 
-	public VerticalLayoutCalc(ContainerWrapper c, int parentWidth, int parentHeight) {
-		super(c, parentWidth, parentHeight);
+	public VerticalLayoutCalc(ContainerWrapper c) {
+		super(c);
 	}
 
 	@Override
@@ -16,32 +17,32 @@ public class VerticalLayoutCalc extends LayoutCalc {
 	}
 	
 	protected void applySpacingToViews() {
-		int horizontalMargin = container.getStyleConfig().paddingLeft;
-		int verticalMargin = container.getStyleConfig().paddingTop;
+		int horizontalMargin = MeasureFactory.getPaddingLeft(container);
+		int verticalMargin = MeasureFactory.getPaddingTop(container);
 		
-		int maxWidth = container.subtractPaddingFromHeight(parentWidth);
+		int maxWidth = 0;//container.subtractPaddingFromHeight(parentWidth);
 		
 		for(Wrapper wrapper : childWrappers){
-			int fullWidth = wrapper.getMeasuredWidth();
+			int fullWidth = MeasureFactory.getMeasuredWidthPlusMarginsAndPadding(wrapper);
         	wrapper.getView().setTranslationX(horizontalMargin + calculateLeftSpacing(wrapper, 0));
         	wrapper.getView().setTranslationY(verticalMargin);
-        	verticalMargin += wrapper.getMeasuredHeightPlusMargins();
+        	verticalMargin += MeasureFactory.getMeasuredHeightPlusMargins(wrapper);
         	if(fullWidth > maxWidth)
         		maxWidth = fullWidth;
 		}
-		horizontalMargin += container.getStyleConfig().paddingRight;
+		horizontalMargin +=  MeasureFactory.getPaddingRight(container);
 		container.setCalculatedWidth(maxWidth);
 		container.setCalculatedHeight(verticalMargin);
 	}
 
 	@Override
 	protected int calculateLeftSpacing(Wrapper wrapper, int space) {
-		return wrapper.getConfig().marginLeft;
+		return MeasureFactory.getMarginLeft(wrapper);
 	}
 
 	@Override
 	protected int calculateRightSpacing(Wrapper wrapper, int space) {
-		return wrapper.getConfig().marginRight;
+		return MeasureFactory.getMarginRight(wrapper);
 	}
 
 }

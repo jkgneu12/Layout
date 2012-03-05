@@ -1,5 +1,6 @@
 package ui.layout.calc;
 
+import ui.factory.MeasureFactory;
 import ui.wrapper.ContainerWrapper;
 import ui.wrapper.Wrapper;
 
@@ -9,8 +10,8 @@ import ui.wrapper.Wrapper;
  */
 public class HorizontalLayoutCalc extends LayoutCalc {
 
-	public HorizontalLayoutCalc(ContainerWrapper c, int parentWidth, int parentHeight) {
-		super(c, parentWidth, parentHeight);
+	public HorizontalLayoutCalc(ContainerWrapper c) {
+		super(c);
 	}
 	
 	public void layoutViews() {
@@ -19,33 +20,38 @@ public class HorizontalLayoutCalc extends LayoutCalc {
 	}
 	
 	protected void applySpacingToViews() {
-		int horizontalMargin = container.getStyleConfig().paddingLeft;
+		int xOffset = MeasureFactory.getPaddingLeft(container);
+		
 		int maxHeight = 0;
 		
-		int maxWidth = container.subtractPaddingFromWidth(parentWidth);
-		
 		for(Wrapper wrapper : childWrappers){
-			int width = wrapper.getMeasuredWidth();
-			int space = maxWidth - width;
-        	horizontalMargin += calculateLeftSpacing(wrapper, space);
-        	wrapper.getView().setTranslationX(horizontalMargin);
-        	horizontalMargin += calculateRightSpacing(wrapper, space) + width;
-        	wrapper.getView().setTranslationY(wrapper.getConfig().marginTop);
-        	int fullHeight = wrapper.getMeasuredHeightPlusMargins();
-        	if(fullHeight > maxHeight)
-        		maxHeight = fullHeight;
+			if(wrapper.getView() != null){
+				int width = MeasureFactory.getMeasuredWidth(wrapper);
+				int space = 0;
+				
+	        	xOffset += calculateLeftSpacing(wrapper, space);
+	        	wrapper.getView().setTranslationX(xOffset);
+	        	xOffset += calculateRightSpacing(wrapper, space) + width;
+	        	
+	        	wrapper.getView().setTranslationY(MeasureFactory.getMarginTop(wrapper));
+	        	
+	        	int fullHeight = MeasureFactory.getMeasuredHeightPlusMargins(wrapper);
+	        	if(fullHeight > maxHeight)
+	        		maxHeight = fullHeight;
+			}
 		}
-		horizontalMargin += container.getStyleConfig().paddingRight;
-		container.setCalculatedWidth(horizontalMargin);
+		
+		xOffset -= MeasureFactory.getPaddingLeft(container);
+		container.setCalculatedWidth(xOffset);
 		container.setCalculatedHeight(maxHeight);
 	}
 	
 	protected int calculateLeftSpacing(Wrapper wrapper, int space) {
-		return wrapper.getConfig().marginLeft;
+		return MeasureFactory.getMarginLeft(wrapper);
 	}
 	
 	protected int calculateRightSpacing(Wrapper wrapper, int space) {
-		return wrapper.getConfig().marginRight;
+		return MeasureFactory.getMarginRight(wrapper);
 	}
 
 }

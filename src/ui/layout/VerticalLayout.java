@@ -8,13 +8,13 @@ import ui.wrapper.Wrapper;
 
 public class VerticalLayout extends Layout {
 
-	public VerticalLayout(BaseActivity activity, Wrapper wrapper) {
+	public VerticalLayout(BaseActivity activity, ContainerWrapper wrapper) {
 		super(activity, wrapper);
 	}
 
 	@Override
-	protected LayoutCalc createCalc(ContainerWrapper c, int width, int height) {
-		return new VerticalLayoutCalc(c, width, height);
+	protected LayoutCalc createCalc(ContainerWrapper wrapper) {
+		return new VerticalLayoutCalc(wrapper);
 	}
 
 }

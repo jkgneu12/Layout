@@ -3,15 +3,15 @@ package ui.wrapper;
 import ui.activity.BaseActivity;
 import ui.view.TabButtonView;
 import android.view.View;
-import config.Config;
+import config.ViewConfig;
 
 public class TabButtonWrapper extends ButtonWrapper {
 
 	
 	private int tabIndex;
-	private ContainerWrapper containerWrapper;
+	private FragmentContainerWrapper containerWrapper;
 
-	public TabButtonWrapper(BaseActivity activity, ContainerWrapper parent, Config config) {
+	public TabButtonWrapper(BaseActivity activity, ContainerWrapper parent, ViewConfig config) {
 		super(activity, parent, config);
 	}
 
@@ -37,11 +37,11 @@ public class TabButtonWrapper extends ButtonWrapper {
 		tabIndex = index;
 	}
 
-	public ContainerWrapper getContainerWrapper() {
+	public FragmentContainerWrapper getContainerWrapper() {
 		return containerWrapper;
 	}
 	
-	public void setContainerWrapper(ContainerWrapper wrapper) {
+	public void setContainerWrapper(FragmentContainerWrapper wrapper) {
 		containerWrapper = wrapper;
 	}
 	

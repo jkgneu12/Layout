@@ -8,13 +8,13 @@ import ui.wrapper.Wrapper;
 
 public class HorizontalLayout extends Layout {
 
-	public HorizontalLayout(BaseActivity activity, Wrapper wrapper) {
+	public HorizontalLayout(BaseActivity activity, ContainerWrapper wrapper) {
 		super(activity, wrapper);
 	}
 	
 	@Override
-	protected LayoutCalc createCalc(ContainerWrapper c, int width, int height) {
-		return new HorizontalLayoutCalc(c, width, height);
+	protected LayoutCalc createCalc(ContainerWrapper wrapper) {
+		return new HorizontalLayoutCalc(wrapper);
 	}
 
 }

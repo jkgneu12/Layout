@@ -3,11 +3,11 @@ package ui.wrapper;
 import ui.activity.BaseActivity;
 import ui.view.CustomTextView;
 import android.content.res.ColorStateList;
-import config.Config;
+import config.ViewConfig;
 
 public class TextWrapper extends Wrapper {
 
-	public TextWrapper(BaseActivity activity, ContainerWrapper parent, Config config) {
+	public TextWrapper(BaseActivity activity, ContainerWrapper parent, ViewConfig config) {
 		super(activity, parent, config);
 	}
 	
@@ -35,8 +35,8 @@ public class TextWrapper extends Wrapper {
 	public void finializeWrappers(){}
 
 	@Override
-	public void updateData() {
-		setText("456");
+	public void updateData(Object data) {
+		setText((String)data);
 	}
 	
 	private CustomTextView getTextView(){

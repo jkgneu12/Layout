@@ -1,0 +1,106 @@
+container
+	children:10
+	title:Base
+	layout:horizontal
+	style:0
+	id:1000
+
+list
+	row:100
+	screen-alignment:center
+	inner-alignment:center
+	margin-left:-2
+	margin-top:-2
+	margin-bottom:-2
+	margin-right:-2
+	style:1
+	id:10
+	
+listrow
+	layout:horizontal
+	screen-alignment:left
+	inner-alignment:left
+	children:13,11,12
+	style:5
+	id:100
+	
+button
+	screen-alignment:left
+	inner-alignment:left
+	margin-left:-2
+	margin-top:-2
+	margin-bottom:-2
+	margin-right:-2
+	title:AAA
+	style:2
+	id:13
+	
+button
+	screen-alignment:left
+	inner-alignment:left
+	margin-left:-2
+	margin-top:-2
+	margin-bottom:-2
+	margin-right:-2
+	title:BBB
+	style:3
+	id:11
+	
+button
+	screen-alignment:left
+	inner-alignment:left
+	margin-left:-2
+	margin-top:-2
+	margin-bottom:-2
+	margin-right:-2
+	title:CCC
+	style:4
+	id:12
+
+style
+	id:0
+	background-color:white
+
+style
+	id:1
+	background-color:green
+	
+style
+	id:5
+	background-color:black
+	
+style
+	id:2
+	default-text-color:black
+	pressed-text-color:black
+	selected-text-color:black
+	focused-text-color:black
+	background-color:yellow
+	padding-left:-2
+	padding-top:-2
+	padding-bottom:-2
+	padding-right:-2
+
+style
+	id:3
+	default-text-color:yellow
+	pressed-text-color:green
+	selected-text-color:red
+	focused-text-color:gray
+	background-color:blue
+	padding-left:-2
+	padding-top:-2
+	padding-bottom:-2
+	padding-right:-2
+	
+style
+	id:4
+	default-text-color:yellow
+	pressed-text-color:green
+	selected-text-color:red
+	focused-text-color:gray
+	background-color:red
+	padding-left:-2
+	padding-top:-2
+	padding-bottom:-2
+	padding-right:-2

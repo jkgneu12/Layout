@@ -8,13 +8,13 @@ import ui.wrapper.Wrapper;
 
 public class FlowLayout extends Layout {
 
-	public FlowLayout(BaseActivity activity, Wrapper wrapper) {
+	public FlowLayout(BaseActivity activity, ContainerWrapper wrapper) {
 		super(activity, wrapper);
 	}
 
 	@Override
-	protected LayoutCalc createCalc(ContainerWrapper c, int width, int height) {
-		return new FlowLayoutCalc(c, width, height);
+	protected LayoutCalc createCalc(ContainerWrapper wrapper) {
+		return new FlowLayoutCalc(wrapper);
 	}
 
 }

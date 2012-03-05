@@ -2,6 +2,7 @@ package ui.layout.calc;
 
 import java.util.ArrayList;
 
+import ui.factory.MeasureFactory;
 import ui.wrapper.ContainerWrapper;
 import ui.wrapper.Wrapper;
 import android.widget.FrameLayout.LayoutParams;
@@ -16,18 +17,13 @@ public abstract class LayoutCalc {
 
 	protected ContainerWrapper container;
 
-	protected int parentWidth;
-	protected int parentHeight;
 	
 	protected ArrayList<Wrapper> childWrappers;
 
-	public LayoutCalc(ContainerWrapper c, int parentWidth, int parentHeight) {
+	public LayoutCalc(ContainerWrapper c) {
 		this.container = c;
 		
 		this.childWrappers = c.getChildWrappers();
-		
-		this.parentWidth = parentWidth;
-		this.parentHeight = parentHeight;
 	}
 	
 	
@@ -39,8 +35,12 @@ public abstract class LayoutCalc {
 	protected void applyLayoutParamsToViews() {
 		LayoutParams layoutParams;
 		for(Wrapper wrapper : childWrappers){
-			layoutParams = new LayoutParams(wrapper.getMeasuredWidth(), wrapper.getMeasuredHeight());
-			wrapper.getView().setLayoutParams(layoutParams);
+			if(wrapper.getView() != null){
+				int w = MeasureFactory.getMeasuredWidth(wrapper);
+				int h = MeasureFactory.getMeasuredHeight(wrapper);
+				layoutParams = new LayoutParams(w,h); 
+				wrapper.getView().setLayoutParams(layoutParams);
+			}
 		}
 	}
 	

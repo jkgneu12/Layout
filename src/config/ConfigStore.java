@@ -22,11 +22,11 @@ import enums.EWrapperType;
  */
 public class ConfigStore {
 	
-	private HashMap<Integer, Config> configs;
+	private HashMap<Integer, ViewConfig> configs;
 	private HashMap<Integer, StyleConfig> styleConfigs;
 	
 	public ConfigStore(BaseActivity activity) {
-		configs = new  HashMap<Integer, Config>();
+		configs = new  HashMap<Integer, ViewConfig>();
 		styleConfigs = new HashMap<Integer, StyleConfig>();
 		
 		parseConfigFile(activity);
@@ -37,7 +37,7 @@ public class ConfigStore {
 	 */
 	public void parseConfigFile(BaseActivity activity){
 		try {
-			InputStream is = activity.getResources().openRawResource(R.raw.basictabs);
+			InputStream is = activity.getResources().openRawResource(R.raw.basiclist);
 			BufferedReader in = new BufferedReader(new InputStreamReader(is));
 			
 			String line = in.readLine();
@@ -62,7 +62,7 @@ public class ConfigStore {
 					styleConfigs.put(c.id, c);
 				} else {
 				
-					Config c = new Config();
+					ViewConfig c = new ViewConfig();
 					
 					c.type = EWrapperType.stringToWrapperType(line);
 					
@@ -92,7 +92,7 @@ public class ConfigStore {
 	/**
 	 * Sets the property to a value in a Config
 	 */
-	private void setConfigProperty(Config config, String property, String value) {
+	private void setConfigProperty(ViewConfig config, String property, String value) {
 		if(property.equals("id")) config.id = Integer.parseInt(value);
 		else if(property.equals("height")) config.height = Integer.parseInt(value);
 		else if(property.equals("width")) config.width = Integer.parseInt(value);
@@ -108,6 +108,7 @@ public class ConfigStore {
 		else if(property.equals("targets")) config.targetWrapperIds = createIds(value);
 		else if(property.equals("navigation")) config.navigationId = Integer.parseInt(value);
 		else if(property.equals("style")) config.styleId = Integer.parseInt(value);
+		else if(property.equals("row")) config.rowId = Integer.parseInt(value);
 	}
 	
 	private void setStyleConfigProperty(StyleConfig config, String property, String value) {
@@ -141,7 +142,7 @@ public class ConfigStore {
 	/**
 	 * Return the Config mapped to an id
 	 */
-	public Config getConfig(int id){
+	public ViewConfig getConfig(int id){
 		return configs.get(id);
 	}
 	
@@ -152,8 +153,8 @@ public class ConfigStore {
 	/**
 	 * Converts and returns an ArrayList of ids to a HashMap of ids to Config(s)
 	 */
-	public HashMap<Integer, Config> getConfigs(ArrayList<Integer> ids) {
-		HashMap<Integer, Config> idToConfig = new HashMap<Integer, Config>();
+	public HashMap<Integer, ViewConfig> getConfigs(ArrayList<Integer> ids) {
+		HashMap<Integer, ViewConfig> idToConfig = new HashMap<Integer, ViewConfig>();
 		
 		if(ids != null){
 			for(Integer id : ids)

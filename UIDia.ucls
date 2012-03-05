@@ -8,23 +8,7 @@
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="2" corner="BOTTOM_RIGHT" language="java" name="config.ControlConfig" project="ReRelayout" 
-    file="/ReRelayout/src/config/ControlConfig.java" binary="false">    
-    <position x="1899" y="1150" width="-1" height="-1"/>    
-    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true"/>      
-      <operations public="true" package="true" protected="true" private="true"/>    
-    </display>  
-  </class>  
-  <class id="3" corner="BOTTOM_RIGHT" language="java" name="config.ScreenConfig" project="ReRelayout" 
-    file="/ReRelayout/src/config/ScreenConfig.java" binary="false">    
-    <position x="1136" y="835" width="229" height="162"/>    
-    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true"/>      
-      <operations public="true" package="true" protected="true" private="true"/>    
-    </display>  
-  </class>  
-  <class id="4" corner="BOTTOM_RIGHT" language="java" name="ui.activity.BaseActivity" project="ReRelayout" 
+  <class id="2" corner="BOTTOM_RIGHT" language="java" name="ui.activity.BaseActivity" project="ReRelayout" 
     file="/ReRelayout/src/ui/activity/BaseActivity.java" binary="false">    
     <position x="1190" y="383" width="181" height="114"/>    
     <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
@@ -32,7 +16,7 @@
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="5" corner="BOTTOM_RIGHT" language="java" name="ui.layout.calc.FlowLayoutCalc" project="ReRelayout" 
+  <class id="3" corner="BOTTOM_RIGHT" language="java" name="ui.layout.calc.FlowLayoutCalc" project="ReRelayout" 
     file="/ReRelayout/src/ui/layout/calc/FlowLayoutCalc.java" binary="false">    
     <position x="63" y="537" width="277" height="226"/>    
     <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
@@ -40,31 +24,7 @@
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="6" corner="BOTTOM_RIGHT" language="java" name="ui.view.control.ButtonControl" project="ReRelayout" 
-    file="/ReRelayout/src/ui/view/control/ButtonControl.java" binary="false">    
-    <position x="1126" y="37" width="231" height="162"/>    
-    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true"/>      
-      <operations public="true" package="true" protected="true" private="true"/>    
-    </display>  
-  </class>  
-  <interface id="7" corner="BOTTOM_RIGHT" language="java" name="ui.view.control.IControl" project="ReRelayout" 
-    file="/ReRelayout/src/ui/view/control/IControl.java" binary="false">    
-    <position x="558" y="835" width="231" height="162"/>    
-    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true"/>      
-      <operations public="true" package="true" protected="true" private="true"/>    
-    </display>  
-  </interface>  
-  <class id="8" corner="BOTTOM_RIGHT" language="java" name="ui.view.control.TextControl" project="ReRelayout" 
-    file="/ReRelayout/src/ui/view/control/TextControl.java" binary="false">    
-    <position x="1397" y="37" width="231" height="162"/>    
-    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true"/>      
-      <operations public="true" package="true" protected="true" private="true"/>    
-    </display>  
-  </class>  
-  <class id="9" corner="BOTTOM_RIGHT" language="java" name="ui.factory.WrapperFactory" project="ReRelayout" 
+  <class id="4" corner="BOTTOM_RIGHT" language="java" name="ui.factory.WrapperFactory" project="ReRelayout" 
     file="/ReRelayout/src/ui/factory/WrapperFactory.java" binary="false">    
     <position x="88" y="37" width="363" height="114"/>    
     <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
@@ -72,31 +32,7 @@
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="10" corner="BOTTOM_RIGHT" language="java" name="ui.view.BaseView" project="ReRelayout" 
-    file="/ReRelayout/src/ui/view/BaseView.java" binary="false">    
-    <position x="1176" y="537" width="200" height="82"/>    
-    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true"/>      
-      <operations public="true" package="true" protected="true" private="true"/>    
-    </display>  
-  </class>  
-  <class id="11" corner="BOTTOM_RIGHT" language="java" name="ui.view.control.wrapper.Container" project="ReRelayout" 
-    file="/ReRelayout/src/ui/view/control/wrapper/Container.java" binary="false">    
-    <position x="537" y="37" width="231" height="306"/>    
-    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true"/>      
-      <operations public="true" package="true" protected="true" private="true"/>    
-    </display>  
-  </class>  
-  <class id="12" corner="BOTTOM_RIGHT" language="java" name="ui.view.control.ScreenHost" project="ReRelayout" 
-    file="/ReRelayout/src/ui/view/control/ScreenHost.java" binary="false">    
-    <position x="875" y="537" width="240" height="130"/>    
-    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true"/>      
-      <operations public="true" package="true" protected="true" private="true"/>    
-    </display>  
-  </class>  
-  <class id="13" corner="BOTTOM_RIGHT" language="java" name="ui.layout.FlowLayout" project="ReRelayout" 
+  <class id="5" corner="BOTTOM_RIGHT" language="java" name="ui.layout.FlowLayout" project="ReRelayout" 
     file="/ReRelayout/src/ui/layout/FlowLayout.java" binary="false">    
     <position x="401" y="537" width="136" height="66"/>    
     <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
@@ -104,215 +40,14 @@
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="14" corner="BOTTOM_RIGHT" language="java" name="ui.view.control.wrapper.Region" project="ReRelayout" 
-    file="/ReRelayout/src/ui/view/control/wrapper/Region.java" binary="false">    
-    <position x="598" y="537" width="216" height="114"/>    
-    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true"/>      
-      <operations public="true" package="true" protected="true" private="true"/>    
-    </display>  
-  </class>  
-  <interface id="15" corner="BOTTOM_RIGHT" language="java" name="ui.view.IView" project="ReRelayout" 
-    file="/ReRelayout/src/ui/view/IView.java" binary="false">    
-    <position x="42" y="383" width="111" height="66"/>    
-    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true"/>      
-      <operations public="true" package="true" protected="true" private="true"/>    
-    </display>  
-  </interface>  
-  <class id="16" corner="BOTTOM_RIGHT" language="java" name="ui.view.control.wrapper.ScreenContainer" 
-    project="ReRelayout" file="/ReRelayout/src/ui/view/control/wrapper/ScreenContainer.java" binary="false">    
-    <position x="912" y="383" width="238" height="98"/>    
-    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true"/>      
-      <operations public="true" package="true" protected="true" private="true"/>    
-    </display>  
-  </class>  
-  <class id="17" corner="BOTTOM_RIGHT" language="java" name="ui.layout.Layout" project="ReRelayout" 
-    file="/ReRelayout/src/ui/layout/Layout.java" binary="false">    
-    <position x="406" y="383" width="110" height="66"/>    
-    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true"/>      
-      <operations public="true" package="true" protected="true" private="true"/>    
-    </display>  
-  </class>  
-  <association id="18">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="19" name="controls"/>      
-      <multiplicity id="20" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="21">    
-    <bendpoint x="844" y="383"/>    
-    <bendpoint x="844" y="537"/>    
-    <end type="SOURCE" refId="8"/>    
-    <end type="TARGET" refId="7"/>  
-  </realization>  
-  <association id="22">    
-    <bendpoint x="1884" y="383"/>    
-    <bendpoint x="1884" y="537"/>    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="23" name="config"/>      
-      <multiplicity id="24" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="25">    
-    <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="26" name="controlConfig"/>      
-      <multiplicity id="27" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="28">    
-    <bendpoint x="1145" y="537"/>    
-    <end type="SOURCE" refId="16" navigable="false">      
-      <attribute id="29" name="screenConfig"/>      
-      <multiplicity id="30" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="31">    
-    <end type="SOURCE" refId="13"/>    
-    <end type="TARGET" refId="17"/>  
-  </generalization>  
-  <association id="32">    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="33" name="activity"/>      
-      <multiplicity id="34" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="35">    
-    <end type="SOURCE" refId="16"/>    
-    <end type="TARGET" refId="11"/>  
-  </generalization>  
-  <association id="36">    
-    <bendpoint x="1863" y="383"/>    
-    <bendpoint x="1863" y="537"/>    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="37" name="config"/>      
-      <multiplicity id="38" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="39">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="40" name="baseView"/>      
-      <multiplicity id="41" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="10" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="42">    
-    <end type="SOURCE" refId="10"/>    
-    <end type="TARGET" refId="16"/>  
-  </generalization>  
-  <association id="43">    
-    <end type="SOURCE" refId="11" navigable="false">      
-      <attribute id="44" name="activity"/>      
-      <multiplicity id="45" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="46">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="47" name="configStore"/>      
-      <multiplicity id="48" minimum="0" maximum="1"/>    
+  <association id="6">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="7" name="configStore"/>      
+      <multiplicity id="8" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="49">    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="50" name="controls"/>      
-      <multiplicity id="51" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="52">    
-    <end type="SOURCE" refId="14" navigable="false">      
-      <attribute id="53" name="controlConfig"/>      
-      <multiplicity id="54" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="55">    
-    <end type="SOURCE" refId="14"/>    
-    <end type="TARGET" refId="7"/>  
-  </realization>  
-  <realization id="56">    
-    <bendpoint x="567" y="383"/>    
-    <bendpoint x="567" y="537"/>    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="7"/>  
-  </realization>  
-  <realization id="57">    
-    <end type="SOURCE" refId="12"/>    
-    <end type="TARGET" refId="7"/>  
-  </realization>  
-  <association id="58">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="59" name="screens"/>      
-      <multiplicity id="60" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="61">    
-    <bendpoint x="370" y="383"/>    
-    <bendpoint x="370" y="537"/>    
-    <end type="SOURCE" refId="11" navigable="false">      
-      <attribute id="62" name="controls"/>      
-      <multiplicity id="63" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="64">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="65" name="activity"/>      
-      <multiplicity id="66" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="67">    
-    <end type="SOURCE" refId="11"/>    
-    <end type="TARGET" refId="15"/>  
-  </realization>  
-  <association id="68">    
-    <end type="SOURCE" refId="11" navigable="false">      
-      <attribute id="69" name="layout"/>      
-      <multiplicity id="70" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="17" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="71">    
-    <end type="SOURCE" refId="12"/>    
-    <end type="TARGET" refId="16"/>  
-  </generalization>  
-  <generalization id="72">    
-    <bendpoint x="32" y="537"/>    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="15"/>  
-  </generalization>  
-  <generalization id="73">    
-    <bendpoint x="546" y="383"/>    
-    <end type="SOURCE" refId="14"/>    
-    <end type="TARGET" refId="11"/>  
-  </generalization>  
   <classifier-display autosize="true" package="false" initial-value="false" signature="false" visibility="false">    
     <attributes public="true" package="true" protected="true" private="true"/>    
     <operations public="true" package="true" protected="true" private="true"/>  

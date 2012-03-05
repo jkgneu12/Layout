@@ -2,6 +2,7 @@ package ui.layout.calc;
 
 import java.util.ArrayList;
 
+import ui.factory.MeasureFactory;
 import ui.wrapper.ContainerWrapper;
 import ui.wrapper.Wrapper;
 
@@ -11,8 +12,8 @@ public class FlowLayoutCalc extends LayoutCalc {
 	protected ArrayList<Integer> spacingHeight;
 	protected ArrayList<ArrayList<Wrapper>> wrappersByLine;
 
-	public FlowLayoutCalc(ContainerWrapper c, int parentWidth, int parentHeight) {
-		super(c, parentWidth, parentHeight);
+	public FlowLayoutCalc(ContainerWrapper c) {
+		super(c);
 	}
 	
 	public void layoutViews() {
@@ -32,10 +33,10 @@ public class FlowLayoutCalc extends LayoutCalc {
 		int wrapperWidth = 0;
 		int line = 0;
 		
-		int maxWidth = container.subtractPaddingFromWidth(parentWidth);
+		int maxWidth = MeasureFactory.subtractPaddingFromWidth(container);
 		
 		for(Wrapper c : childWrappers){
-			int w = c.getMeasuredWidthPlusMargins();
+			int w = MeasureFactory.getMeasuredWidthPlusMargins(c);
         	wrapperWidth += w;
 			if(wrapperWidth > maxWidth){
 				line++;
@@ -54,15 +55,15 @@ public class FlowLayoutCalc extends LayoutCalc {
 		spacingWidth = new ArrayList<Integer>();
 		spacingHeight = new ArrayList<Integer>();
 		
-		int maxWidth = parentWidth;
+		int maxWidth = MeasureFactory.getMeasuredWidthMinusPadding(container);
 		
 		for(int line = 0; line < wrappersByLine.size(); line++){
 			ArrayList<Wrapper> lineOfWrappers = wrappersByLine.get(line);
 			int wrapperWidth = 0;
 			int maxHeight = 0;
 			for(Wrapper wrapper : lineOfWrappers){
-	        	wrapperWidth += wrapper.getMeasuredWidthPlusMargins();
-	        	int h = wrapper.getMeasuredHeightPlusMargins();
+	        	wrapperWidth += MeasureFactory.getMeasuredWidthPlusMargins(wrapper);
+	        	int h = MeasureFactory.getMeasuredHeightPlusMargins(wrapper);
 	        	if(h > maxHeight)
 	        		maxHeight = h;
 			}
@@ -81,31 +82,31 @@ public class FlowLayoutCalc extends LayoutCalc {
 	 * Apply the horizontal and vertical spacing to wrappers
 	 */
 	protected void applySpacingBetweenViews() {
-		int verticalMargin = container.getStyleConfig().paddingTop;
+		int verticalMargin = MeasureFactory.getPaddingTop(container);
 		for(int line = 0; line < wrappersByLine.size(); line++){
 			ArrayList<Wrapper> lineOfWrappers = wrappersByLine.get(line);
 			int space = spacingWidth.get(line);
-			int horizontalMargin = container.getStyleConfig().paddingLeft;
+			int horizontalMargin = MeasureFactory.getPaddingLeft(container);
 			if(line > 0)
 				verticalMargin += spacingHeight.get(line - 1);
 			for(Wrapper wrapper : lineOfWrappers){
 	        	horizontalMargin += calculateLeftSpacing(wrapper, space);
 	        	wrapper.getView().setTranslationX(horizontalMargin);
-	        	horizontalMargin += calculateRightSpacing(wrapper, space) + wrapper.getMeasuredWidth();
-	        	wrapper.getView().setTranslationY(verticalMargin + wrapper.getConfig().marginTop);
+	        	horizontalMargin += calculateRightSpacing(wrapper, space) + MeasureFactory.getMeasuredWidth(wrapper);
+	        	wrapper.getView().setTranslationY(verticalMargin + MeasureFactory.getMarginTop(wrapper));
 			}
 		}
 		verticalMargin += spacingHeight.get(spacingHeight.size() - 1);
-		verticalMargin += container.getStyleConfig().paddingBottom;
+		verticalMargin += MeasureFactory.getPaddingBottom(container);
 		container.setCalculatedHeight(verticalMargin);
-		container.setCalculatedWidth(container.subtractMarginFromWidth(parentWidth));
+		container.setCalculatedWidth(MeasureFactory.subtractPaddingFromWidth(container));
 	}
 	
 	/**
 	 * 
 	 */
 	protected int calculateLeftSpacing(Wrapper wrapper, int space) {
-		int marginLeft = wrapper.getConfig().marginLeft;
+		int marginLeft = MeasureFactory.getMarginLeft(wrapper);
 		switch(wrapper.getConfig().screenAlignment){
 		case LEFT: return marginLeft;
 		case CENTER: return marginLeft + (space /2);
@@ -115,7 +116,7 @@ public class FlowLayoutCalc extends LayoutCalc {
 	}
 	
 	protected int calculateRightSpacing(Wrapper wrapper, int space) {
-		int marginRight = wrapper.getConfig().marginRight;
+		int marginRight = MeasureFactory.getMarginRight(wrapper);;
 		switch(wrapper.getConfig().screenAlignment){
 		case RIGHT: return marginRight;
 		case CENTER: return marginRight + (space /2);

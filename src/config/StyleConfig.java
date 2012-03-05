@@ -1,12 +1,11 @@
 package config;
 
+import ui.factory.WrapperFactory;
 import android.graphics.Color;
 
-public class StyleConfig {
-
-	public static final int INVALID = -1000;
+public class StyleConfig extends Config {
 	
-	public int id = INVALID;
+	public int id = WrapperFactory.INVALID;
 	
 	public int paddingLeft = 0;
 	public int paddingTop = 0;
@@ -22,4 +21,6 @@ public class StyleConfig {
 	public int defaultTextColor = Color.BLACK;
 	
 	public StyleConfig(){}
+	
+	
 }

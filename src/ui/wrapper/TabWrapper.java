@@ -4,19 +4,19 @@ import java.util.ArrayList;
 
 import ui.activity.BaseActivity;
 import ui.factory.WrapperFactory;
-import config.Config;
+import config.ViewConfig;
 
 /**
  * A TabWrapper(s) Layout holds TabButtonWrapper(s).
  * They also hold references to the ContainerWrapper(s) that map to each tab
  *
  */
-public class TabWrapper extends ContainerWrapper {
+public class TabWrapper extends FragmentContainerWrapper {
 	
 	private int currentTabIndex;
 	private ArrayList<TabButtonWrapper> tabs;
 	
-	public TabWrapper(BaseActivity activity, ContainerWrapper parent, Config config) {
+	public TabWrapper(BaseActivity activity, ContainerWrapper parent, ViewConfig config) {
 		super(activity, parent, config);
 		tabs = new ArrayList<TabButtonWrapper>();
 	}
@@ -49,14 +49,11 @@ public class TabWrapper extends ContainerWrapper {
 	}
 
 	@Override
-	public void updateData() {}
-
-	@Override
 	public void setText(String text) {}
 
 	public void setActiveTab(TabButtonWrapper tab) {
 		int index = tab.getTabIndex();
-		ContainerWrapper newWrapper = tab.getContainerWrapper();
+		FragmentContainerWrapper newWrapper = tab.getContainerWrapper();
 		
 		if(newWrapper == null)
 			newWrapper = initContainerWrapper(index);
@@ -66,16 +63,17 @@ public class TabWrapper extends ContainerWrapper {
 		boolean success = activity.replaceFragment(newWrapper, getCurrentTargetContainerWrapper());
 		
 		if(success){
-			parentWrapper.replaceChildWrapper(getCurrentTargetContainerWrapper(), newWrapper);
+			if(parentWrapper instanceof FragmentContainerWrapper)
+				((FragmentContainerWrapper)parentWrapper).replaceChildWrapper(getCurrentTargetContainerWrapper(), newWrapper);
 			setCurrentTab(index);
-			activity.relayout(false);
+			activity.relayout(true);
 		}
 	}
 
-	private ContainerWrapper initContainerWrapper(int index) {
+	private FragmentContainerWrapper initContainerWrapper(int index) {
 		TabButtonWrapper tab = getTabButtonWrapper(index);
 		
-		ContainerWrapper wrapper = (ContainerWrapper) new WrapperFactory().createAndInitWrapper(activity, parentWrapper, config.targetWrapperIds.get(index));
+		FragmentContainerWrapper wrapper = (FragmentContainerWrapper) new WrapperFactory().createAndInitWrapper(activity, parentWrapper, config.targetWrapperIds.get(index));
 		
 		tab.setContainerWrapper(wrapper);
 		
@@ -90,8 +88,8 @@ public class TabWrapper extends ContainerWrapper {
 		return tabs.get(index);
 	}
 	
-	protected ContainerWrapper getCurrentTargetContainerWrapper() {
-		return (ContainerWrapper)getActivity().getWrapperById(config.targetWrapperIds.get(currentTabIndex));
+	protected FragmentContainerWrapper getCurrentTargetContainerWrapper() {
+		return (FragmentContainerWrapper)getActivity().getWrapperById(config.targetWrapperIds.get(currentTabIndex));
 	}
 
 

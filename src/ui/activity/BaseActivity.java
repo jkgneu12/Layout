@@ -6,9 +6,9 @@ import java.util.HashMap;
 import ui.factory.WrapperFactory;
 import ui.fragment.BaseFragment;
 import ui.wrapper.ContainerWrapper;
+import ui.wrapper.FragmentContainerWrapper;
 import ui.wrapper.Wrapper;
 import android.app.Activity;
-import android.app.FragmentTransaction;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import config.ConfigStore;
@@ -22,11 +22,11 @@ import config.ConfigStore;
  */
 public class BaseActivity extends Activity {
 	
-	private ContainerWrapper baseContainerWrapper;
+	private FragmentContainerWrapper baseContainerWrapper;
 	
 	private ConfigStore configStore;
 
-	private ArrayList<ContainerWrapper> containerWrappers;
+	private ArrayList<FragmentContainerWrapper> containerWrappers;
 	
 	private HashMap<Integer, Wrapper> wrappers;
 	
@@ -35,7 +35,7 @@ public class BaseActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
-        containerWrappers = new ArrayList<ContainerWrapper>();
+        containerWrappers = new ArrayList<FragmentContainerWrapper>();
         wrappers = new HashMap<Integer, Wrapper>();
         
         configStore = new ConfigStore(this);
@@ -46,9 +46,7 @@ public class BaseActivity extends Activity {
     }
     
 	protected void initBaseContainerWrapper(int screenId) {
-		baseContainerWrapper = (ContainerWrapper)new WrapperFactory().createAndInitWrapper(this, null, screenId);
-        
-        baseContainerWrapper.createAndLayoutAndAddWrappers();
+		baseContainerWrapper = (FragmentContainerWrapper)new WrapperFactory().createAndInitWrapper(this, null, screenId);
         
         baseContainerWrapper.finishLayoutWrappers();
         
@@ -58,35 +56,25 @@ public class BaseActivity extends Activity {
     @Override
     protected void onResume() {
     	super.onResume();
-    	initFragments();
+    	baseContainerWrapper.initFragments();
     }
 
     /**
      * Creates a Fragment in each ContainerWrapper
      */
-	public void initFragments() {
-		for(ContainerWrapper sc : containerWrappers)
-    		sc.initFragment();
-	}
 	
-	public synchronized boolean replaceFragment(ContainerWrapper newWrapper, ContainerWrapper oldWrapper) {
+	
+	public synchronized boolean replaceFragment(FragmentContainerWrapper newWrapper, FragmentContainerWrapper oldWrapper) {
 		if(oldWrapper == newWrapper)
 			return false;
-		removeFragment(oldWrapper);
+		oldWrapper.hideFragment();
 		return newWrapper.initFragment();
 	}
 
-	protected synchronized void removeFragment(ContainerWrapper oldWrapper) {
-		if(oldWrapper.getFragment().isAdded() && oldWrapper.getFragment() != null){
-			FragmentTransaction trans = getFragmentManager().beginTransaction();
-			//trans.setCustomAnimations(R.animator.slide_in, R.animator.slide_out);
-			trans.remove(oldWrapper.getFragment());
-			trans.commit();
-		}
-	}
+	
 
-    public void updateData(){
-    	baseContainerWrapper.updateData();
+    public void updateData(HashMap<String, Object> data){
+    	baseContainerWrapper.updateData(data);
     }
     
     public Wrapper getWrapperById(int id){
@@ -102,7 +90,7 @@ public class BaseActivity extends Activity {
      * Add a ContainerWrapper to the Activity. ContainerWrapper hold Fragments and we need to
      * be able to manage them from the Activity.
      */
-    public void addContainerWrapper(ContainerWrapper containerWrapper) {
+    public void addContainerWrapper(FragmentContainerWrapper containerWrapper) {
 		containerWrappers.add(containerWrapper);
 	}
     
@@ -132,7 +120,10 @@ public class BaseActivity extends Activity {
 	 * Get the full height of the device.
 	 */
 	public int getScreenHeight() {
-		return getWindowManager().getDefaultDisplay().getHeight();
+		int h = getWindowManager().getDefaultDisplay().getHeight(); 
+		if(getActionBar() != null)
+			h -= getActionBar().getHeight();
+		return h - 200;
 	}
 
 }

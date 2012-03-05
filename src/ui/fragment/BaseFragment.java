@@ -36,14 +36,13 @@ public class BaseFragment extends Fragment {
 	
 	@Override
 	public void onResume() {
-		// TODO Auto-generated method stub
 		super.onResume();
 	}
 	
 	
 	@Override
 	public View getView() {
-		return baseContainerWrapper.getLayout();
+		return baseContainerWrapper.getView();
 	}
 
 	public ContainerWrapper getBaseContainerFragment() {
