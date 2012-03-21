@@ -36,9 +36,9 @@ public class TabWrapper extends FragmentContainerWrapper {
 	}
 	
 	@Override
-	public void finializeWrappers(){
+	public void finializeWrapper(){
 		setCurrentTab(0);
-		super.finializeWrappers();
+		super.finializeWrapper();
 	}
 	
 	private void setCurrentTab(int index) {

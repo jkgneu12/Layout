@@ -4,7 +4,6 @@ import ui.activity.BaseActivity;
 import ui.layout.calc.LayoutCalc;
 import ui.layout.calc.VerticalLayoutCalc;
 import ui.wrapper.ContainerWrapper;
-import ui.wrapper.Wrapper;
 
 public class VerticalLayout extends Layout {
 

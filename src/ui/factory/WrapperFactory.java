@@ -38,6 +38,8 @@ public class WrapperFactory {
 		Wrapper wrapper = initializeAndCreateWrapper(activity, parent, config);
 		wrapper.layoutWrapper();
 		wrapper.addChildViews();
+		wrapper.finishLayoutWrapper();
+		wrapper.finializeWrapper();
 		
 		return wrapper;
 	}

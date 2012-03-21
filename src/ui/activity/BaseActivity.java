@@ -11,6 +11,7 @@ import ui.wrapper.Wrapper;
 import android.app.Activity;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import config.ConfigStore;
 
 /**
@@ -20,7 +21,7 @@ import config.ConfigStore;
  * Each {@link ContainerWrapper} houses a {@link BaseFragment}
  *
  */
-public class BaseActivity extends Activity {
+public class BaseActivity extends FragmentActivity {
 	
 	private FragmentContainerWrapper baseContainerWrapper;
 	
@@ -47,10 +48,6 @@ public class BaseActivity extends Activity {
     
 	protected void initBaseContainerWrapper(int screenId) {
 		baseContainerWrapper = (FragmentContainerWrapper)new WrapperFactory().buildWrapper(this, null, screenId);
-        
-        baseContainerWrapper.finishLayoutWrappers();
-        
-        baseContainerWrapper.finializeWrappers();
 	}
     
     @Override
@@ -121,8 +118,8 @@ public class BaseActivity extends Activity {
 	 */
 	public int getScreenHeight() {
 		int h = getWindowManager().getDefaultDisplay().getHeight(); 
-		if(getActionBar() != null)
-			h -= getActionBar().getHeight();
+		//if(getActionBar() != null)
+		//	h -= getActionBar().getHeight();
 		return h - 200;
 	}
 

@@ -8,6 +8,7 @@ import ui.factory.MeasureFactory;
 import ui.layout.Layout;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.FrameLayout.LayoutParams;
 import config.StyleConfig;
 import config.WrapperConfig;
 
@@ -54,7 +55,9 @@ public abstract class Wrapper implements OnClickListener {
 		setCalculatedWidth(INVALID);
 	}
 	
-	public abstract void finializeWrappers();
+	public abstract void finishLayoutWrapper();
+	
+	public abstract void finializeWrapper();
 	
 	public void updateData(ArrayList<HashMap<String, Object>> data){}
 	public void updateData(HashMap<String, Object> data){}
@@ -130,4 +133,34 @@ public abstract class Wrapper implements OnClickListener {
 		return calculatedHeight;
 	}
 	
+	public LayoutParams getLayoutParams(){
+		android.view.ViewGroup.LayoutParams lp = getView().getLayoutParams();
+		if(lp instanceof LayoutParams)
+			return (LayoutParams)lp;
+		return null;
+	}
+	
+	public int getLeftMargin() {
+		return getLayoutParams().leftMargin;
+	}
+	
+	public int getTopMargin() {
+		return getLayoutParams().topMargin;
+	}
+	
+	public void setLeftMargin(int leftMargin) {
+		getLayoutParams().leftMargin = leftMargin;
+	}
+	
+	public void setTopMargin(int topMargin) {
+		getLayoutParams().topMargin = topMargin;
+	}
+	
+	public void increaseLeftMargin(int dLeftMargin) {
+		getLayoutParams().leftMargin += dLeftMargin;
+	}
+	
+	public void increaseTopMargin(int dTopMargin) {
+		getLayoutParams().topMargin += dTopMargin;
+	}
 }

@@ -44,10 +44,15 @@ public class ButtonWrapper extends Wrapper implements OnClickListener {
 		return super.createWrapper();
 	}
 	
+	
 	@Override
 	public void layoutWrapper() {}
 	
-	public void finializeWrappers(){}
+	@Override
+	public void finishLayoutWrapper() {}
+	
+	@Override
+	public void finializeWrapper(){}
 	
 	@Override
 	public void updateData(Object data) {

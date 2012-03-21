@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import ui.factory.MeasureFactory;
 import ui.wrapper.ContainerWrapper;
 import ui.wrapper.Wrapper;
+import android.view.Gravity;
 import android.widget.FrameLayout.LayoutParams;
 
 
@@ -39,6 +40,7 @@ public abstract class LayoutCalc {
 				int w = MeasureFactory.getMeasuredWidth(wrapper);
 				int h = MeasureFactory.getMeasuredHeight(wrapper);
 				layoutParams = new LayoutParams(w,h); 
+				layoutParams.gravity = Gravity.NO_GRAVITY;
 				wrapper.getView().setLayoutParams(layoutParams);
 			}
 		}

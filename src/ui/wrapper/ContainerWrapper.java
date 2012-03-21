@@ -63,16 +63,20 @@ public abstract class ContainerWrapper extends Wrapper {
 			wrapper.updateData(data.get("" + wrapper.getConfig().id));
 		}
 		layoutChildWrappers();
-		finishLayoutWrappers();
+		finishLayoutWrapper();
 	}
 	
-	public void finializeWrappers(){
+	@Override
+	public void finializeWrapper(){
+		finalizeChildWrappers();
+	}
+
+	protected void finalizeChildWrappers() {
 		for(Wrapper childWrapper : childWrappers){
-			childWrapper.finializeWrappers();
+			childWrapper.finializeWrapper();
 		}
 	}
 	
-	public void finishLayoutWrappers(){}
 
 	public int getXOffset(){
 		int offset = MeasureFactory.getPaddingLeft(this) + MeasureFactory.getMarginLeft(this);
@@ -100,8 +104,8 @@ public abstract class ContainerWrapper extends Wrapper {
 	public void setText(String text) {}
 
 	public void resetLayout() {
-		view.setTranslationX(MeasureFactory.getPaddingLeft(this) + MeasureFactory.getMarginLeft(this));
-		view.setTranslationY(MeasureFactory.getPaddingTop(this) + MeasureFactory.getMarginTop(this));
+		setLeftMargin(MeasureFactory.getPaddingLeft(this) + MeasureFactory.getMarginLeft(this));
+		setTopMargin(MeasureFactory.getPaddingTop(this) + MeasureFactory.getMarginTop(this));
 		getLayout().resetLayout();
 	}
 
@@ -112,7 +116,7 @@ public abstract class ContainerWrapper extends Wrapper {
 		if(reset)
 			resetLayout();
 		layoutChildWrappers();
-		finishLayoutWrappers();
+		finishLayoutWrapper();
 		
 	}
 }

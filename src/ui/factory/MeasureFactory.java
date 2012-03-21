@@ -1,11 +1,10 @@
 package ui.factory;
 
-import enums.EWrapperType;
 import ui.activity.BaseActivity;
-import ui.wrapper.ContainerWrapper;
 import ui.wrapper.Wrapper;
 import android.view.View.MeasureSpec;
 import android.view.ViewGroup.LayoutParams;
+import enums.EWrapperType;
 
 public class MeasureFactory {
 	

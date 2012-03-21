@@ -32,10 +32,10 @@ public class ListWrapper extends Wrapper {
 	public void layoutWrapper() {}
 
 	@Override
-	public void finializeWrappers() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void finishLayoutWrapper() {}
+	
+	@Override
+	public void finializeWrapper() {}
 
 	@Override
 	public void updateData(ArrayList<HashMap<String, Object>> data) {

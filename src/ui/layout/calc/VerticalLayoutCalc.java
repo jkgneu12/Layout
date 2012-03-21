@@ -17,20 +17,20 @@ public class VerticalLayoutCalc extends LayoutCalc {
 	}
 	
 	protected void applySpacingToViews() {
-		int horizontalMargin = MeasureFactory.getPaddingLeft(container);
-		int verticalMargin = MeasureFactory.getPaddingTop(container);
+		int horizontalMargin = 0;
+		int verticalMargin = 0;
 		
-		int maxWidth = 0;//container.subtractPaddingFromHeight(parentWidth);
+		int maxWidth = 0;
 		
 		for(Wrapper wrapper : childWrappers){
 			int fullWidth = MeasureFactory.getMeasuredWidthPlusMarginsAndPadding(wrapper);
-        	wrapper.getView().setTranslationX(horizontalMargin + calculateLeftSpacing(wrapper, 0));
-        	wrapper.getView().setTranslationY(verticalMargin);
+			wrapper.increaseLeftMargin(horizontalMargin + calculateLeftSpacing(wrapper, 0));
+			wrapper.increaseTopMargin(verticalMargin);
         	verticalMargin += MeasureFactory.getMeasuredHeightPlusMargins(wrapper);
         	if(fullWidth > maxWidth)
         		maxWidth = fullWidth;
 		}
-		horizontalMargin +=  MeasureFactory.getPaddingRight(container);
+		
 		container.setCalculatedWidth(maxWidth);
 		container.setCalculatedHeight(verticalMargin);
 	}

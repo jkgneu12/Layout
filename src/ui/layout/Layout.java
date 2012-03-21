@@ -10,7 +10,6 @@ import android.widget.FrameLayout;
 public abstract class Layout extends FrameLayout {
 	
 	private ContainerWrapper wrapper;
-	private float storedTranslation = -1;
 
 	public Layout(BaseActivity activity, ContainerWrapper wrapper) {
 		super(activity);
@@ -23,7 +22,7 @@ public abstract class Layout extends FrameLayout {
 		
 		//setBackgroundColor(Color.GREEN);
 		
-		setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
+		setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT));
 		
 		setOnClickListener(wrapper);
 	}
@@ -41,32 +40,10 @@ public abstract class Layout extends FrameLayout {
 		
 	}
 
-	/**
-	 * Used in Fragment animation.
-	 * Don't call!!
-	 */
-	public float getXFraction() {
-        return getX() / getWidth();
-    }
-
-	/**
-	 * Used in Fragment animation.
-	 * Don't call!!
-	 */
-    public void setXFraction(float xFraction) {
-    	if(storedTranslation == -1)
-    		storedTranslation = getTranslationX();
-        final int width = getWidth();
-        setX(storedTranslation + ((width > 0) ? (xFraction * width) : -9999));
-    }
-
-	public void resetLayout() {
-		storedTranslation = -1;
-	}
+	public void resetLayout() {}
 	
 	public View self() {
 		return this;
 	}
-	
 	
 }

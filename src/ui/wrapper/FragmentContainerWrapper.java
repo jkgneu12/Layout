@@ -3,7 +3,7 @@ package ui.wrapper;
 import ui.activity.BaseActivity;
 import ui.fragment.BaseFragment;
 import ui.layout.Layout;
-import android.app.FragmentTransaction;
+import android.support.v4.app.FragmentTransaction;
 import config.WrapperConfig;
 
 public class FragmentContainerWrapper extends ContainerWrapper {
@@ -25,39 +25,36 @@ public class FragmentContainerWrapper extends ContainerWrapper {
 	 */
 	public void addViewToLayout(Layout layout) {}
 	
-	public void finishLayoutWrappers(){
+	@Override
+	public void finishLayoutWrapper(){
 		applyOffsetX(0);
 		applyOffsetY(0);
 	}
 	
 	public void applyOffsetX(int parentOffsetX){
 		if(getLayout() != null){
-			int newTranslationX = getOffsetX(parentOffsetX);
-			getLayout().setTranslationX(newTranslationX);
-			
-			for(Wrapper wrapper : getChildWrappers()){
-				wrapper.applyOffsetX(newTranslationX);
-			}
+			increaseLeftMargin(parentOffsetX);
+			applyChildWrappersOffsetX();
+		}
+	}
+
+	protected void applyChildWrappersOffsetX() {
+		for(Wrapper wrapper : getChildWrappers()){
+			wrapper.applyOffsetX(getLeftMargin());
 		}
 	}
 	
 	public void applyOffsetY(int parentOffsetY){
 		if(getLayout() != null){
-			int newTranslationY = getOffsetY(parentOffsetY);
-			getLayout().setTranslationY(newTranslationY);
-			
-			for(Wrapper wrapper : getChildWrappers()){
-				wrapper.applyOffsetY(newTranslationY);
-			}
+			increaseTopMargin(parentOffsetY);
+			applyChildWrappersOffsetY();
 		}
 	}
-	
-	protected int getOffsetX(int parentOffsetX){
-		return (int)(getLayout().getTranslationX() + parentOffsetX);
-	}
-	
-	protected int getOffsetY(int parentOffsetY) {
-		return (int)(parentOffsetY + getLayout().getTranslationY());
+
+	protected void applyChildWrappersOffsetY() {
+		for(Wrapper wrapper : getChildWrappers()){
+			wrapper.applyOffsetY(getTopMargin());
+		}
 	}
 
 	public void initFragments() {
@@ -69,8 +66,8 @@ public class FragmentContainerWrapper extends ContainerWrapper {
 	public synchronized boolean initFragment() {
 		if(fragment == null)
 			fragment = createFragment();
-		FragmentTransaction trans = activity.getFragmentManager().beginTransaction();
-		if(activity.getFragmentManager().findFragmentById(fragment.getId()) != null)
+		FragmentTransaction trans = activity.getSupportFragmentManager().beginTransaction();
+		if(activity.getSupportFragmentManager().findFragmentById(fragment.getId()) != null)
 			trans.show(fragment);
 		else
 			trans.add(android.R.id.content, fragment);
@@ -87,7 +84,7 @@ public class FragmentContainerWrapper extends ContainerWrapper {
 	
 	public synchronized void hideFragment() {
 		if(fragment != null){
-			FragmentTransaction trans = activity.getFragmentManager().beginTransaction();
+			FragmentTransaction trans = activity.getSupportFragmentManager().beginTransaction();
 			trans.hide(fragment);
 			trans.commit();
 		}

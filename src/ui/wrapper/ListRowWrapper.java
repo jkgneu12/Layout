@@ -13,14 +13,14 @@ public class ListRowWrapper extends ContainerWrapper {
 	@Override
 	public Wrapper createWrapper() {
 		super.createWrapper();
-		LayoutParams oldParams = view.getLayoutParams();
+		LayoutParams oldParams = getLayoutParams();
 		view.setLayoutParams(new android.widget.AbsListView.LayoutParams(oldParams.width, oldParams.height));
 		return this;
 	}
 	
 	@Override
-	public void finializeWrappers() {}
+	public void finializeWrapper() {}
 
 	@Override
-	public void finishLayoutWrappers() {}
+	public void finishLayoutWrapper() {}
 }
