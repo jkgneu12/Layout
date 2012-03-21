@@ -34,6 +34,8 @@ public class FlowLayoutCalc extends LayoutCalc {
 		int line = 0;
 		
 		int maxWidth = MeasureFactory.subtractPaddingFromWidth(container);
+		if(maxWidth == Wrapper.INVALID)
+			maxWidth = container.getActivity().getScreenWidth();
 		
 		for(Wrapper c : childWrappers){
 			int w = MeasureFactory.getMeasuredWidthPlusMargins(c);
@@ -55,7 +57,10 @@ public class FlowLayoutCalc extends LayoutCalc {
 		spacingWidth = new ArrayList<Integer>();
 		spacingHeight = new ArrayList<Integer>();
 		
-		int maxWidth = MeasureFactory.getMeasuredWidthMinusPadding(container);
+		//TODO:pull out check
+		int maxWidth = MeasureFactory.subtractPaddingFromWidth(container);
+		if(maxWidth == Wrapper.INVALID)
+			maxWidth = container.getActivity().getScreenWidth();
 		
 		for(int line = 0; line < wrappersByLine.size(); line++){
 			ArrayList<Wrapper> lineOfWrappers = wrappersByLine.get(line);

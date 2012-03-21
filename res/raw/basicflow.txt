@@ -1,36 +1,29 @@
 container
 	children:1,2,3,4,5
 	layout:flow
+	style:0
 	id:1000
 
 button
 	screen-alignment:center
 	inner-alignment:center
-	background-color:blue
-	padding-left:25
-	padding-top:5
-	padding-bottom:5
-	padding-right:5
 	margin-left:5
 	margin-top:5
 	margin-bottom:5
 	margin-right:5
 	title:Button11111111111
+	style:1
 	id:1
 	
 button
 	screen-alignment:center
 	inner-alignment:center
-	background-color:blue
-	padding-left:5
-	padding-top:5
-	padding-bottom:5
-	padding-right:5
 	margin-left:5
 	margin-top:25
 	margin-bottom:5
 	margin-right:5
 	title:Button2
+	style:2
 	id:2
 
 button
@@ -38,16 +31,12 @@ button
 	width:300
 	screen-alignment:center
 	inner-alignment:right
-	background-color:blue
-	padding-left:5
-	padding-top:5
-	padding-bottom:5
-	padding-right:20
 	margin-left:5
 	margin-top:5
 	margin-bottom:5
 	margin-right:5
 	title:Button3
+	style:3
 	id:3
 	
 button
@@ -55,30 +44,62 @@ button
 	width:200
 	screen-alignment:right
 	inner-alignment:left
-	background-color:blue
-	padding-left:5
-	padding-top:5
-	padding-bottom:5
-	padding-right:5
 	margin-left:5
 	margin-top:5
 	margin-bottom:5
 	margin-right:5
 	title:Button4
+	style:2
 	id:4
 	
 button
 	width:550
-	screen-alignment:left
+	screen-alignment:right
 	inner-alignment:left
-	background-color:blue
-	padding-left:5
-	padding-top:5
-	padding-bottom:5
-	padding-right:5
 	margin-left:5
 	margin-top:5
 	margin-bottom:5
 	margin-right:45
 	title:Button5
+	style:2
 	id:5
+
+style
+	id:0
+	background-color:white
+	
+style
+	id:1
+	default-text-color:black
+	pressed-text-color:black
+	selected-text-color:black
+	focused-text-color:black
+	background-color:blue
+	padding-left:25
+	padding-top:5
+	padding-bottom:5
+	padding-right:5
+	
+style
+	id:2
+	default-text-color:black
+	pressed-text-color:black
+	selected-text-color:black
+	focused-text-color:black
+	background-color:blue
+	padding-left:5
+	padding-top:5
+	padding-bottom:5
+	padding-right:5
+	
+style
+	id:3
+	default-text-color:black
+	pressed-text-color:black
+	selected-text-color:black
+	focused-text-color:black
+	background-color:blue
+	padding-left:5
+	padding-top:5
+	padding-bottom:5
+	padding-right:20

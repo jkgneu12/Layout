@@ -2,6 +2,7 @@ package ui.fragment;
 
 import ui.activity.BaseActivity;
 import ui.wrapper.ContainerWrapper;
+import ui.wrapper.FragmentContainerWrapper;
 import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
@@ -11,7 +12,7 @@ import android.view.ViewGroup;
 
 public class BaseFragment extends Fragment {
 	
-	protected ContainerWrapper baseContainerWrapper;
+	protected FragmentContainerWrapper baseContainerWrapper;
 	protected BaseActivity activity;
 	
 	public BaseFragment(){
@@ -20,7 +21,7 @@ public class BaseFragment extends Fragment {
 	
 	public BaseFragment(ContainerWrapper baseContainerWrapper) {
 		super();
-		this.baseContainerWrapper = baseContainerWrapper;
+		this.baseContainerWrapper = (FragmentContainerWrapper)baseContainerWrapper;
 	}
 	
 	@Override

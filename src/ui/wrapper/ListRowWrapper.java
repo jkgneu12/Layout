@@ -2,18 +2,20 @@ package ui.wrapper;
 
 import ui.activity.BaseActivity;
 import android.view.ViewGroup.LayoutParams;
-import config.ViewConfig;
+import config.WrapperConfig;
 
 public class ListRowWrapper extends ContainerWrapper {
 
-	public ListRowWrapper(BaseActivity activity, ContainerWrapper parent, ViewConfig config) {
+	public ListRowWrapper(BaseActivity activity, ContainerWrapper parent, WrapperConfig config) {
 		super(activity, parent, config);
 	}
 
-	public void createAndLayoutAndAddWrappers() {
-		super.createAndLayoutAndAddWrappers();
+	@Override
+	public Wrapper createWrapper() {
+		super.createWrapper();
 		LayoutParams oldParams = view.getLayoutParams();
 		view.setLayoutParams(new android.widget.AbsListView.LayoutParams(oldParams.width, oldParams.height));
+		return this;
 	}
 	
 	@Override

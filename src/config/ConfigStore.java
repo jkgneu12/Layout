@@ -22,11 +22,11 @@ import enums.EWrapperType;
  */
 public class ConfigStore {
 	
-	private HashMap<Integer, ViewConfig> configs;
+	private HashMap<Integer, WrapperConfig> configs;
 	private HashMap<Integer, StyleConfig> styleConfigs;
 	
 	public ConfigStore(BaseActivity activity) {
-		configs = new  HashMap<Integer, ViewConfig>();
+		configs = new  HashMap<Integer, WrapperConfig>();
 		styleConfigs = new HashMap<Integer, StyleConfig>();
 		
 		parseConfigFile(activity);
@@ -37,7 +37,7 @@ public class ConfigStore {
 	 */
 	public void parseConfigFile(BaseActivity activity){
 		try {
-			InputStream is = activity.getResources().openRawResource(R.raw.basiclist);
+			InputStream is = activity.getResources().openRawResource(R.raw.listtarget);
 			BufferedReader in = new BufferedReader(new InputStreamReader(is));
 			
 			String line = in.readLine();
@@ -62,7 +62,7 @@ public class ConfigStore {
 					styleConfigs.put(c.id, c);
 				} else {
 				
-					ViewConfig c = new ViewConfig();
+					WrapperConfig c = new WrapperConfig();
 					
 					c.type = EWrapperType.stringToWrapperType(line);
 					
@@ -92,7 +92,7 @@ public class ConfigStore {
 	/**
 	 * Sets the property to a value in a Config
 	 */
-	private void setConfigProperty(ViewConfig config, String property, String value) {
+	private void setConfigProperty(WrapperConfig config, String property, String value) {
 		if(property.equals("id")) config.id = Integer.parseInt(value);
 		else if(property.equals("height")) config.height = Integer.parseInt(value);
 		else if(property.equals("width")) config.width = Integer.parseInt(value);
@@ -142,7 +142,7 @@ public class ConfigStore {
 	/**
 	 * Return the Config mapped to an id
 	 */
-	public ViewConfig getConfig(int id){
+	public WrapperConfig getConfig(int id){
 		return configs.get(id);
 	}
 	
@@ -153,8 +153,8 @@ public class ConfigStore {
 	/**
 	 * Converts and returns an ArrayList of ids to a HashMap of ids to Config(s)
 	 */
-	public HashMap<Integer, ViewConfig> getConfigs(ArrayList<Integer> ids) {
-		HashMap<Integer, ViewConfig> idToConfig = new HashMap<Integer, ViewConfig>();
+	public HashMap<Integer, WrapperConfig> getConfigs(ArrayList<Integer> ids) {
+		HashMap<Integer, WrapperConfig> idToConfig = new HashMap<Integer, WrapperConfig>();
 		
 		if(ids != null){
 			for(Integer id : ids)

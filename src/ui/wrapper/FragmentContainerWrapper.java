@@ -2,22 +2,28 @@ package ui.wrapper;
 
 import ui.activity.BaseActivity;
 import ui.fragment.BaseFragment;
+import ui.layout.Layout;
 import android.app.FragmentTransaction;
-import config.ViewConfig;
+import config.WrapperConfig;
 
 public class FragmentContainerWrapper extends ContainerWrapper {
 
 	private BaseFragment fragment;
 	
-	public FragmentContainerWrapper(BaseActivity activity, ContainerWrapper parent, ViewConfig config) {
+	public FragmentContainerWrapper(BaseActivity activity, ContainerWrapper parent, WrapperConfig config) {
 		this(activity, parent, config, true);
 	}
 	
-	public FragmentContainerWrapper(BaseActivity activity, ContainerWrapper parent, ViewConfig config, boolean addFragment) {
+	public FragmentContainerWrapper(BaseActivity activity, ContainerWrapper parent, WrapperConfig config, boolean addFragment) {
 		super(activity, parent, config);
 		if(addFragment)
 			activity.addContainerWrapper(this);
 	}
+	
+	/**
+	 * FragmentContainerWrapper adds its view to R.id.content
+	 */
+	public void addViewToLayout(Layout layout) {}
 	
 	public void finishLayoutWrappers(){
 		applyOffsetX(0);

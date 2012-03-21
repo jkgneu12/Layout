@@ -1,11 +1,8 @@
 package config;
 
-import ui.factory.WrapperFactory;
 import android.graphics.Color;
 
 public class StyleConfig extends Config {
-	
-	public int id = WrapperFactory.INVALID;
 	
 	public int paddingLeft = 0;
 	public int paddingTop = 0;

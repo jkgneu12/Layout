@@ -4,16 +4,28 @@ listtarget
 	layout:horizontal
 	style:0
 	id:1000
-	
+
 list
-	layout:vertical
+	layout:list
+	row:100
 	screen-alignment:left
-	inner-alignment:left
-	targets:1001,1002
-	children:13,11,12
+	inner-alignment:center
+	margin-left:5
+	margin-top:5
+	margin-bottom:5
+	margin-right:5
+	height:-100
 	width:-30
 	style:1
 	id:10
+	
+listrow
+	layout:horizontal
+	screen-alignment:center
+	inner-alignment:center
+	children:13,11,12
+	style:5
+	id:100
 	
 text
 	screen-alignment:left
@@ -50,9 +62,14 @@ text
 	
 container
 	children:1
-	screen-alignment:center
+	screen-alignment:right
 	inner-alignment:left
-	height:-75
+	height:-100
+	width:-70
+	margin-left:5
+	margin-top:5
+	margin-bottom:5
+	margin-right:5
 	title:Screen1
 	id:1001
 	style:4

@@ -9,12 +9,10 @@ import enums.EAlignment;
 import enums.ELayoutType;
 import enums.EWrapperType;
 
-public class ViewConfig extends Config {
+public class WrapperConfig extends Config {
 	
 	
 	public String title;
-	
-	public int id = WrapperFactory.INVALID;
 	
 	public int styleId = StyleFactory.INVALID;
 	
@@ -43,7 +41,7 @@ public class ViewConfig extends Config {
 	
 	
 	
-	public ViewConfig(){}
+	public WrapperConfig(){}
 
 	
 }

@@ -3,16 +3,16 @@ package ui.wrapper;
 import ui.activity.BaseActivity;
 import ui.view.CustomTextView;
 import android.content.res.ColorStateList;
-import config.ViewConfig;
+import config.WrapperConfig;
 
 public class TextWrapper extends Wrapper {
 
-	public TextWrapper(BaseActivity activity, ContainerWrapper parent, ViewConfig config) {
+	public TextWrapper(BaseActivity activity, ContainerWrapper parent, WrapperConfig config) {
 		super(activity, parent, config);
 	}
 	
 	@Override
-	public void createAndLayoutAndAddWrappers() {
+	public Wrapper createWrapper() {
 		view = new CustomTextView(activity, this);
 		getTextView().setTextColor(new ColorStateList(
 				new int[][] {
@@ -29,8 +29,11 @@ public class TextWrapper extends Wrapper {
 						styleConfig.defaultTextColor
 				})
 		);
-		super.createAndLayoutAndAddWrappers();
+		return super.createWrapper();
 	}
+	
+	@Override
+	public void layoutWrapper() {}
 	
 	public void finializeWrappers(){}
 

@@ -3,7 +3,7 @@ package ui.wrapper;
 import ui.activity.BaseActivity;
 import ui.view.TabButtonView;
 import android.view.View;
-import config.ViewConfig;
+import config.WrapperConfig;
 
 public class TabButtonWrapper extends ButtonWrapper {
 
@@ -11,14 +11,14 @@ public class TabButtonWrapper extends ButtonWrapper {
 	private int tabIndex;
 	private FragmentContainerWrapper containerWrapper;
 
-	public TabButtonWrapper(BaseActivity activity, ContainerWrapper parent, ViewConfig config) {
+	public TabButtonWrapper(BaseActivity activity, ContainerWrapper parent, WrapperConfig config) {
 		super(activity, parent, config);
 	}
 
 	@Override
-	public void createAndLayoutAndAddWrappers() {
+	public Wrapper createWrapper() {
 		view = new TabButtonView(activity, this, getTabWrapper());
-		super.createAndLayoutAndAddWrappers();
+		return super.createWrapper();
 	}
 	
 	public TabWrapper getTabWrapper(){

@@ -1,18 +1,16 @@
 package ui.wrapper;
 
 import ui.activity.BaseActivity;
-import config.ViewConfig;
+import config.WrapperConfig;
 
-public class ListTargetWrapper extends FragmentContainerWrapper {
+public /*abstract*/ class ListTargetWrapper extends FragmentContainerWrapper {
+	
+	private ListWrapper list;
+	private FragmentContainerWrapper target;
+	
 
-	public ListTargetWrapper(BaseActivity activity, ContainerWrapper parent, ViewConfig config) {
+	public ListTargetWrapper(BaseActivity activity, ContainerWrapper parent, WrapperConfig config) {
 		super(activity, parent, config);
-	}
-
-	@Override
-	public void finishLayoutWrappers() {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

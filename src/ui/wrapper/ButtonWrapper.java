@@ -8,7 +8,7 @@ import ui.view.ButtonView;
 import android.content.res.ColorStateList;
 import android.view.View;
 import android.view.View.OnClickListener;
-import config.ViewConfig;
+import config.WrapperConfig;
 
 /**
  * Wrapper for a {@link ButtonView}
@@ -18,12 +18,12 @@ import config.ViewConfig;
 
 public class ButtonWrapper extends Wrapper implements OnClickListener {
 
-	public ButtonWrapper(BaseActivity activity, ContainerWrapper parent, ViewConfig config) {
+	public ButtonWrapper(BaseActivity activity, ContainerWrapper parent, WrapperConfig config) {
 		super(activity, parent, config);
 	}
 
 	@Override
-	public void createAndLayoutAndAddWrappers() {
+	public Wrapper createWrapper() {
 		view = new ButtonView(activity, this);
 		getButtonView().setTextColor(new ColorStateList(
 				new int[][] {
@@ -40,8 +40,12 @@ public class ButtonWrapper extends Wrapper implements OnClickListener {
 						styleConfig.defaultTextColor
 				})
 		);
-		super.createAndLayoutAndAddWrappers();
+		getButtonView().setGravity(config.innerAlignment.value());
+		return super.createWrapper();
 	}
+	
+	@Override
+	public void layoutWrapper() {}
 	
 	public void finializeWrappers(){}
 	

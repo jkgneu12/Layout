@@ -46,7 +46,7 @@ public class BaseActivity extends Activity {
     }
     
 	protected void initBaseContainerWrapper(int screenId) {
-		baseContainerWrapper = (FragmentContainerWrapper)new WrapperFactory().createAndInitWrapper(this, null, screenId);
+		baseContainerWrapper = (FragmentContainerWrapper)new WrapperFactory().buildWrapper(this, null, screenId);
         
         baseContainerWrapper.finishLayoutWrappers();
         

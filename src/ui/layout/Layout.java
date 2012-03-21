@@ -28,7 +28,7 @@ public abstract class Layout extends FrameLayout {
 		setOnClickListener(wrapper);
 	}
 
-	public void layoutWrappers() {
+	public void layoutChildWrappers() {
 		LayoutCalc calc = createCalc(wrapper);
 		calc.layoutViews();
 		calc = null;

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import ui.activity.BaseActivity;
 import ui.factory.WrapperFactory;
-import config.ViewConfig;
+import config.WrapperConfig;
 
 /**
  * A TabWrapper(s) Layout holds TabButtonWrapper(s).
@@ -16,14 +16,14 @@ public class TabWrapper extends FragmentContainerWrapper {
 	private int currentTabIndex;
 	private ArrayList<TabButtonWrapper> tabs;
 	
-	public TabWrapper(BaseActivity activity, ContainerWrapper parent, ViewConfig config) {
+	public TabWrapper(BaseActivity activity, ContainerWrapper parent, WrapperConfig config) {
 		super(activity, parent, config);
 		tabs = new ArrayList<TabButtonWrapper>();
 	}
 	
 	@Override
-	public void createWrappers() {
-		super.createWrappers();
+	public void createChildWrappers() {
+		super.createChildWrappers();
 		int tabCount = 0;
 		for(Wrapper childWrapper : childWrappers){
 			if(childWrapper instanceof TabButtonWrapper){
@@ -73,7 +73,7 @@ public class TabWrapper extends FragmentContainerWrapper {
 	private FragmentContainerWrapper initContainerWrapper(int index) {
 		TabButtonWrapper tab = getTabButtonWrapper(index);
 		
-		FragmentContainerWrapper wrapper = (FragmentContainerWrapper) new WrapperFactory().createAndInitWrapper(activity, parentWrapper, config.targetWrapperIds.get(index));
+		FragmentContainerWrapper wrapper = (FragmentContainerWrapper) new WrapperFactory().buildWrapper(activity, parentWrapper, config.targetWrapperIds.get(index));
 		
 		tab.setContainerWrapper(wrapper);
 		

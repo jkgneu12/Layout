@@ -7,7 +7,7 @@ import ui.activity.BaseActivity;
 import ui.factory.MeasureFactory;
 import ui.factory.WrapperFactory;
 import ui.layout.Layout;
-import config.ViewConfig;
+import config.WrapperConfig;
 
 /**
  * Holds a layout
@@ -19,20 +19,19 @@ public abstract class ContainerWrapper extends Wrapper {
 	protected ArrayList<Wrapper> childWrappers;
 	protected ArrayList<FragmentContainerWrapper> childFragmentWrappers;
 	
-	public ContainerWrapper(BaseActivity activity, ContainerWrapper parent, ViewConfig config) {
+	public ContainerWrapper(BaseActivity activity, ContainerWrapper parent, WrapperConfig config) {
 		super(activity, parent, config);
 		childFragmentWrappers = new ArrayList<FragmentContainerWrapper>();
 	}
 	
-	public void createAndLayoutAndAddWrappers(){
+	@Override
+	public Wrapper createWrapper(){
 		view = config.layoutType.getLayout(activity, this).self();
-		createWrappers();
-		layoutWrappers();
-		addWrappers();
-		super.createAndLayoutAndAddWrappers();
+		createChildWrappers();
+		return super.createWrapper();
 	}
 	
-	public void createWrappers() {
+	public void createChildWrappers() {
 		childWrappers = new WrapperFactory().createChildWrappersForId(activity, this, config.id);
 		for(Wrapper wrapper : childWrappers){
 			if(wrapper instanceof FragmentContainerWrapper)
@@ -40,15 +39,22 @@ public abstract class ContainerWrapper extends Wrapper {
 		}
 	}
 	
-	public void layoutWrappers() {
-		getLayout().layoutWrappers();
+	@Override
+	public void layoutWrapper() {
+		layoutChildWrappers();
+	}
+	
+	public void layoutChildWrappers(){
+		for(Wrapper c : getChildWrappers())
+			c.layoutWrapper();
+		getLayout().layoutChildWrappers();
 	}
 
-	public void addWrappers() {
+	@Override
+	public void addChildViews() {
 		for(Wrapper c : getChildWrappers()){
-			//ContainerWrapper hold Fragments and will be added to the id.content view
-			if(!(c instanceof FragmentContainerWrapper))
-				getLayout().addView(c.getView());
+			c.addChildViews();
+			c.addViewToLayout(getLayout());
 		}
 	}
 	
@@ -56,7 +62,7 @@ public abstract class ContainerWrapper extends Wrapper {
 		for(Wrapper wrapper : getChildWrappers()){
 			wrapper.updateData(data.get("" + wrapper.getConfig().id));
 		}
-		layoutWrappers();
+		layoutChildWrappers();
 		finishLayoutWrappers();
 	}
 	
@@ -105,7 +111,7 @@ public abstract class ContainerWrapper extends Wrapper {
 			childWrapper.relayout(reset);
 		if(reset)
 			resetLayout();
-		layoutWrappers();
+		layoutChildWrappers();
 		finishLayoutWrappers();
 		
 	}

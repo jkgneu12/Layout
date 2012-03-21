@@ -5,10 +5,11 @@ import java.util.HashMap;
 
 import ui.activity.BaseActivity;
 import ui.factory.MeasureFactory;
+import ui.layout.Layout;
 import android.view.View;
 import android.view.View.OnClickListener;
 import config.StyleConfig;
-import config.ViewConfig;
+import config.WrapperConfig;
 
 public abstract class Wrapper implements OnClickListener {
 	
@@ -17,14 +18,14 @@ public abstract class Wrapper implements OnClickListener {
 	protected BaseActivity activity;
 	protected View view;
 	protected ContainerWrapper parentWrapper;
-	protected ViewConfig config;
+	protected WrapperConfig config;
 	protected StyleConfig styleConfig;
 	
 	private int calculatedWidth = INVALID;
 	private int calculatedHeight = INVALID;
 	
 	
-	public Wrapper(BaseActivity context, ContainerWrapper parentWrapper, ViewConfig config){
+	public Wrapper(BaseActivity context, ContainerWrapper parentWrapper, WrapperConfig config){
 		this.activity = context;
 		this.parentWrapper = parentWrapper;
 		this.config = config;
@@ -33,10 +34,19 @@ public abstract class Wrapper implements OnClickListener {
 		activity.addWrapper(config.id, this);
 	}
 	
-	public void createAndLayoutAndAddWrappers(){
+	public Wrapper createWrapper() {
 		view.setBackgroundColor(styleConfig.backgroundColor);
 		view.setPadding(MeasureFactory.getPaddingLeft(this), MeasureFactory.getPaddingTop(this), MeasureFactory.getPaddingRight(this), MeasureFactory.getPaddingBottom(this));
 		setText(config.title);
+		return this;
+	}
+	
+	public abstract void layoutWrapper();
+	
+	public void addChildViews(){}
+	
+	public void addViewToLayout(Layout layout) {
+		layout.addView(getView());
 	}
 	
 	public void relayout(boolean reset){
@@ -76,11 +86,11 @@ public abstract class Wrapper implements OnClickListener {
 		this.parentWrapper = parent;
 	}
 	
-	public void setConfig(ViewConfig config) {
+	public void setConfig(WrapperConfig config) {
 		this.config = config;
 	}
 
-	public ViewConfig getConfig() {
+	public WrapperConfig getConfig() {
 		return config;
 	}
 	
