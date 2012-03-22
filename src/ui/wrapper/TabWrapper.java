@@ -25,7 +25,7 @@ public class TabWrapper extends FragmentContainerWrapper {
 	public void createChildWrappers() {
 		super.createChildWrappers();
 		int tabCount = 0;
-		for(Wrapper childWrapper : childWrappers){
+		for(Wrapper<?> childWrapper : childWrappers){
 			if(childWrapper instanceof TabButtonWrapper){
 				TabButtonWrapper tab = (TabButtonWrapper)childWrapper;
 				tab.setTabIndex(tabCount);
@@ -42,9 +42,9 @@ public class TabWrapper extends FragmentContainerWrapper {
 	}
 	
 	private void setCurrentTab(int index) {
-		getCurrentTabButtonWrapper().getButtonView().setSelected(false);
+		getCurrentTabButtonWrapper().getView().setSelected(false);
 		currentTabIndex = index;
-		getCurrentTabButtonWrapper().getButtonView().setSelected(true);
+		getCurrentTabButtonWrapper().getView().setSelected(true);
 		getCurrentTabButtonWrapper().setContainerWrapper(getCurrentTargetContainerWrapper());
 	}
 

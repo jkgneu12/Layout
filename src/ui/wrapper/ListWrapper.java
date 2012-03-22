@@ -10,14 +10,14 @@ import ui.view.CustomListView;
 import android.view.View;
 import config.WrapperConfig;
 
-public class ListWrapper extends Wrapper {
+public class ListWrapper extends Wrapper<CustomListView> {
 
 	public ListWrapper(BaseActivity activity, ContainerWrapper parent, WrapperConfig config) {
 		super(activity, parent, config);
 	}
 	
 	@Override
-	public Wrapper createWrapper() {
+	public Wrapper<CustomListView> createWrapper() {
 		view = new CustomListView(activity, this);
 		return super.createWrapper();
 	}
@@ -39,17 +39,13 @@ public class ListWrapper extends Wrapper {
 
 	@Override
 	public void updateData(ArrayList<HashMap<String, Object>> data) {
-		getListView().getBaseAdapter().updateData(data);
+		view.getBaseAdapter().updateData(data);
 	}
 
 	@Override
 	public void setText(String text) {
 		// TODO Auto-generated method stub
 		
-	}
-	
-	public CustomListView getListView(){
-		return (CustomListView)view;
 	}
 
 

@@ -1,6 +1,7 @@
 package ui.wrapper;
 
 import ui.activity.BaseActivity;
+import ui.view.ButtonView;
 import ui.view.TabButtonView;
 import android.view.View;
 import config.WrapperConfig;
@@ -16,7 +17,7 @@ public class TabButtonWrapper extends ButtonWrapper {
 	}
 
 	@Override
-	public Wrapper createWrapper() {
+	public Wrapper<ButtonView> createWrapper() {
 		view = new TabButtonView(activity, this, getTabWrapper());
 		return super.createWrapper();
 	}

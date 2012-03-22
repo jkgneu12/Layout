@@ -16,54 +16,54 @@ import config.WrapperConfig;
 public enum EWrapperType {
 	BUTTON {
 		@Override
-		public Wrapper initializeWrapper(BaseActivity activity, ContainerWrapper parent, WrapperConfig config) {
+		public ButtonWrapper initializeWrapper(BaseActivity activity, ContainerWrapper parent, WrapperConfig config) {
 			return new ButtonWrapper(activity, parent, config);
 		}
 	},
 	TEXT {
 		@Override
-		public Wrapper initializeWrapper(BaseActivity activity, ContainerWrapper parent, WrapperConfig config) {
+		public TextWrapper initializeWrapper(BaseActivity activity, ContainerWrapper parent, WrapperConfig config) {
 			return new TextWrapper(activity, parent, config);
 		}
 	},
 	CONTAINER {
 		@Override
-		public Wrapper initializeWrapper(BaseActivity activity, ContainerWrapper parent, WrapperConfig config) {
+		public FragmentContainerWrapper initializeWrapper(BaseActivity activity, ContainerWrapper parent, WrapperConfig config) {
 			return new FragmentContainerWrapper(activity, parent, config);
 		}
 	}, 
 	LIST {
 		@Override
-		public Wrapper initializeWrapper(BaseActivity activity, ContainerWrapper parent, WrapperConfig config) {
+		public ListWrapper initializeWrapper(BaseActivity activity, ContainerWrapper parent, WrapperConfig config) {
 			return new ListWrapper(activity, parent, config);
 		}
 	},
 	LISTROW {
 		@Override
-		public Wrapper initializeWrapper(BaseActivity activity, ContainerWrapper parent, WrapperConfig config) {
+		public ListRowWrapper initializeWrapper(BaseActivity activity, ContainerWrapper parent, WrapperConfig config) {
 			return new ListRowWrapper(activity, parent, config);
 		}
 	},
 	LISTTARGET {
 		@Override
-		public Wrapper initializeWrapper(BaseActivity activity, ContainerWrapper parent, WrapperConfig config) {
+		public ListTargetWrapper initializeWrapper(BaseActivity activity, ContainerWrapper parent, WrapperConfig config) {
 			return new ListTargetWrapper(activity, parent, config);
 		}
 	},
 	TAB {
 		@Override
-		public Wrapper initializeWrapper(BaseActivity activity, ContainerWrapper parent, WrapperConfig config) {
+		public TabWrapper initializeWrapper(BaseActivity activity, ContainerWrapper parent, WrapperConfig config) {
 			return new TabWrapper(activity, parent, config);
 		}
 	},
 	TABBUTTON {
 		@Override
-		public Wrapper initializeWrapper(BaseActivity activity, ContainerWrapper parent, WrapperConfig config) {
+		public TabButtonWrapper initializeWrapper(BaseActivity activity, ContainerWrapper parent, WrapperConfig config) {
 			return new TabButtonWrapper(activity, parent, config);
 		}
 	};
 
-	public abstract Wrapper initializeWrapper(BaseActivity activity, ContainerWrapper parent, WrapperConfig config);
+	public abstract Wrapper<?> initializeWrapper(BaseActivity activity, ContainerWrapper parent, WrapperConfig config);
 	
 	public static EWrapperType stringToWrapperType(String type) {
 		if(type != null){

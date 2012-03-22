@@ -12,12 +12,12 @@ import android.widget.FrameLayout.LayoutParams;
 import config.StyleConfig;
 import config.WrapperConfig;
 
-public abstract class Wrapper implements OnClickListener {
+public abstract class Wrapper<T extends View> implements OnClickListener {
 	
 	public static final int INVALID = -1000;
 	
 	protected BaseActivity activity;
-	protected View view;
+	protected T view;
 	protected ContainerWrapper parentWrapper;
 	protected WrapperConfig config;
 	protected StyleConfig styleConfig;
@@ -35,7 +35,7 @@ public abstract class Wrapper implements OnClickListener {
 		activity.addWrapper(config.id, this);
 	}
 	
-	public Wrapper createWrapper() {
+	public Wrapper<T> createWrapper() {
 		view.setBackgroundColor(styleConfig.backgroundColor);
 		view.setPadding(MeasureFactory.getPaddingLeft(this), MeasureFactory.getPaddingTop(this), MeasureFactory.getPaddingRight(this), MeasureFactory.getPaddingBottom(this));
 		setText(config.title);
@@ -47,7 +47,7 @@ public abstract class Wrapper implements OnClickListener {
 	public void addChildViews(){}
 	
 	public void addViewToLayout(Layout layout) {
-		layout.addView(getView());
+		layout.addView(view);
 	}
 	
 	public void relayout(boolean reset){
@@ -64,12 +64,12 @@ public abstract class Wrapper implements OnClickListener {
 	public void updateData(Object data){}
 
 	public abstract void setText(String text);
-	
-	public View getView() {
+
+	public T getView(){
 		return view;
 	}
-
-	public void setView(View view) {
+	
+	public void setView(T view) {
 		this.view = view;
 	}
 
@@ -134,7 +134,7 @@ public abstract class Wrapper implements OnClickListener {
 	}
 	
 	public LayoutParams getLayoutParams(){
-		android.view.ViewGroup.LayoutParams lp = getView().getLayoutParams();
+		android.view.ViewGroup.LayoutParams lp = view.getLayoutParams();
 		if(lp instanceof LayoutParams)
 			return (LayoutParams)lp;
 		return null;

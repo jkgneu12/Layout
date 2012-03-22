@@ -1,14 +1,14 @@
 package ui.view;
 
 import ui.activity.BaseActivity;
-import ui.wrapper.Wrapper;
+import ui.wrapper.TextWrapper;
 import android.widget.TextView;
 
 public class CustomTextView extends TextView {
 	
-	private Wrapper wrapper;
+	private TextWrapper wrapper;
 
-	public CustomTextView(BaseActivity activity, Wrapper wrapper) {
+	public CustomTextView(BaseActivity activity, TextWrapper wrapper) {
 		super(activity);
 		this.wrapper = wrapper;
 	}

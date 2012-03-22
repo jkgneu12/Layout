@@ -16,16 +16,16 @@ import config.WrapperConfig;
  * Controls logic specific to ButtonView(s)
  */
 
-public class ButtonWrapper extends Wrapper implements OnClickListener {
+public class ButtonWrapper extends Wrapper<ButtonView> implements OnClickListener {
 
 	public ButtonWrapper(BaseActivity activity, ContainerWrapper parent, WrapperConfig config) {
 		super(activity, parent, config);
 	}
 
 	@Override
-	public Wrapper createWrapper() {
+	public Wrapper<ButtonView> createWrapper() {
 		view = new ButtonView(activity, this);
-		getButtonView().setTextColor(new ColorStateList(
+		view.setTextColor(new ColorStateList(
 				new int[][] {
 						new int[] { android.R.attr.state_pressed},
 						new int[] { android.R.attr.state_selected},
@@ -40,7 +40,7 @@ public class ButtonWrapper extends Wrapper implements OnClickListener {
 						styleConfig.defaultTextColor
 				})
 		);
-		getButtonView().setGravity(config.innerAlignment.value());
+		view.setGravity(config.innerAlignment.value());
 		return super.createWrapper();
 	}
 	
@@ -59,13 +59,9 @@ public class ButtonWrapper extends Wrapper implements OnClickListener {
 		setText((String)data);
 	}
 
-	public ButtonView getButtonView() {
-		return (ButtonView)getView();
-	}
-
 	@Override
 	public void setText(String text) {
-		getButtonView().setText(text);
+		view.setText(text);
 	}
 
 	public void onClick(View v) {

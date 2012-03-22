@@ -22,7 +22,7 @@ public class VerticalLayoutCalc extends LayoutCalc {
 		
 		int maxWidth = 0;
 		
-		for(Wrapper wrapper : childWrappers){
+		for(Wrapper<?> wrapper : childWrappers){
 			int fullWidth = MeasureFactory.getMeasuredWidthPlusMarginsAndPadding(wrapper);
 			wrapper.increaseLeftMargin(horizontalMargin + calculateLeftSpacing(wrapper, 0));
 			wrapper.increaseTopMargin(verticalMargin);
@@ -36,12 +36,12 @@ public class VerticalLayoutCalc extends LayoutCalc {
 	}
 
 	@Override
-	protected int calculateLeftSpacing(Wrapper wrapper, int space) {
+	protected int calculateLeftSpacing(Wrapper<?> wrapper, int space) {
 		return MeasureFactory.getMarginLeft(wrapper);
 	}
 
 	@Override
-	protected int calculateRightSpacing(Wrapper wrapper, int space) {
+	protected int calculateRightSpacing(Wrapper<?> wrapper, int space) {
 		return MeasureFactory.getMarginRight(wrapper);
 	}
 

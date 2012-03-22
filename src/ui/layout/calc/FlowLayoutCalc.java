@@ -10,7 +10,7 @@ public class FlowLayoutCalc extends LayoutCalc {
 	
 	protected ArrayList<Integer> spacingWidth;
 	protected ArrayList<Integer> spacingHeight;
-	protected ArrayList<ArrayList<Wrapper>> wrappersByLine;
+	protected ArrayList<ArrayList<Wrapper<?>>> wrappersByLine;
 
 	public FlowLayoutCalc(ContainerWrapper c) {
 		super(c);
@@ -27,8 +27,8 @@ public class FlowLayoutCalc extends LayoutCalc {
 	 * Group wrappers into rows as they will appear on screen.
 	 */
 	protected void groupWrappersByLine() {
-		wrappersByLine = new ArrayList<ArrayList<Wrapper>>();
-		wrappersByLine.add(new ArrayList<Wrapper>());
+		wrappersByLine = new ArrayList<ArrayList<Wrapper<?>>>();
+		wrappersByLine.add(new ArrayList<Wrapper<?>>());
 		
 		int wrapperWidth = 0;
 		int line = 0;
@@ -37,13 +37,13 @@ public class FlowLayoutCalc extends LayoutCalc {
 		if(maxWidth == Wrapper.INVALID)
 			maxWidth = container.getActivity().getScreenWidth();
 		
-		for(Wrapper c : childWrappers){
+		for(Wrapper<?> c : childWrappers){
 			int w = MeasureFactory.getMeasuredWidthPlusMargins(c);
         	wrapperWidth += w;
 			if(wrapperWidth > maxWidth){
 				line++;
 				wrapperWidth = w;
-				wrappersByLine.add(new ArrayList<Wrapper>());
+				wrappersByLine.add(new ArrayList<Wrapper<?>>());
 			}
 			wrappersByLine.get(line).add(c);
         	
@@ -63,10 +63,10 @@ public class FlowLayoutCalc extends LayoutCalc {
 			maxWidth = container.getActivity().getScreenWidth();
 		
 		for(int line = 0; line < wrappersByLine.size(); line++){
-			ArrayList<Wrapper> lineOfWrappers = wrappersByLine.get(line);
+			ArrayList<Wrapper<?>> lineOfWrappers = wrappersByLine.get(line);
 			int wrapperWidth = 0;
 			int maxHeight = 0;
-			for(Wrapper wrapper : lineOfWrappers){
+			for(Wrapper<?> wrapper : lineOfWrappers){
 	        	wrapperWidth += MeasureFactory.getMeasuredWidthPlusMargins(wrapper);
 	        	int h = MeasureFactory.getMeasuredHeightPlusMargins(wrapper);
 	        	if(h > maxHeight)
@@ -89,12 +89,12 @@ public class FlowLayoutCalc extends LayoutCalc {
 	protected void applySpacingBetweenViews() {
 		int verticalMargin = 0;
 		for(int line = 0; line < wrappersByLine.size(); line++){
-			ArrayList<Wrapper> lineOfWrappers = wrappersByLine.get(line);
+			ArrayList<Wrapper<?>> lineOfWrappers = wrappersByLine.get(line);
 			int space = spacingWidth.get(line);
 			int horizontalMargin = 0;
 			if(line > 0)
 				verticalMargin += spacingHeight.get(line - 1);
-			for(Wrapper wrapper : lineOfWrappers){
+			for(Wrapper<?> wrapper : lineOfWrappers){
 	        	horizontalMargin += calculateLeftSpacing(wrapper, space);
 	        	wrapper.increaseLeftMargin(horizontalMargin);
 	        	horizontalMargin += calculateRightSpacing(wrapper, space) + MeasureFactory.getMeasuredWidth(wrapper);
@@ -109,7 +109,7 @@ public class FlowLayoutCalc extends LayoutCalc {
 	/**
 	 * 
 	 */
-	protected int calculateLeftSpacing(Wrapper wrapper, int space) {
+	protected int calculateLeftSpacing(Wrapper<?> wrapper, int space) {
 		int marginLeft = MeasureFactory.getMarginLeft(wrapper);
 		switch(wrapper.getConfig().screenAlignment){
 		case LEFT: return marginLeft;
@@ -119,7 +119,7 @@ public class FlowLayoutCalc extends LayoutCalc {
 		return 0;
 	}
 	
-	protected int calculateRightSpacing(Wrapper wrapper, int space) {
+	protected int calculateRightSpacing(Wrapper<?> wrapper, int space) {
 		int marginRight = MeasureFactory.getMarginRight(wrapper);;
 		switch(wrapper.getConfig().screenAlignment){
 		case RIGHT: return marginRight;

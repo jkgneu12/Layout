@@ -14,9 +14,9 @@ import config.WrapperConfig;
  * @author jimgeorge
  *
  */
-public abstract class ContainerWrapper extends Wrapper {
+public abstract class ContainerWrapper extends Wrapper<Layout> {
 
-	protected ArrayList<Wrapper> childWrappers;
+	protected ArrayList<Wrapper<?>> childWrappers;
 	protected ArrayList<FragmentContainerWrapper> childFragmentWrappers;
 	
 	public ContainerWrapper(BaseActivity activity, ContainerWrapper parent, WrapperConfig config) {
@@ -25,15 +25,15 @@ public abstract class ContainerWrapper extends Wrapper {
 	}
 	
 	@Override
-	public Wrapper createWrapper(){
-		view = config.layoutType.getLayout(activity, this).self();
+	public Wrapper<Layout> createWrapper(){
+		view = config.layoutType.getLayout(activity, this);
 		createChildWrappers();
 		return super.createWrapper();
 	}
 	
 	public void createChildWrappers() {
 		childWrappers = new WrapperFactory().createChildWrappersForId(activity, this, config.id);
-		for(Wrapper wrapper : childWrappers){
+		for(Wrapper<?> wrapper : childWrappers){
 			if(wrapper instanceof FragmentContainerWrapper)
 				childFragmentWrappers.add((FragmentContainerWrapper) wrapper);
 		}
@@ -45,21 +45,21 @@ public abstract class ContainerWrapper extends Wrapper {
 	}
 	
 	public void layoutChildWrappers(){
-		for(Wrapper c : getChildWrappers())
+		for(Wrapper<?> c : childWrappers)
 			c.layoutWrapper();
-		getLayout().layoutChildWrappers();
+		view.layoutChildWrappers();
 	}
 
 	@Override
 	public void addChildViews() {
-		for(Wrapper c : getChildWrappers()){
+		for(Wrapper<?> c : childWrappers){
 			c.addChildViews();
-			c.addViewToLayout(getLayout());
+			c.addViewToLayout(view);
 		}
 	}
 	
 	public void updateData(HashMap<String, Object> data) {
-		for(Wrapper wrapper : getChildWrappers()){
+		for(Wrapper<?> wrapper : childWrappers){
 			wrapper.updateData(data.get("" + wrapper.getConfig().id));
 		}
 		layoutChildWrappers();
@@ -72,7 +72,7 @@ public abstract class ContainerWrapper extends Wrapper {
 	}
 
 	protected void finalizeChildWrappers() {
-		for(Wrapper childWrapper : childWrappers){
+		for(Wrapper<?> childWrapper : childWrappers){
 			childWrapper.finializeWrapper();
 		}
 	}
@@ -92,11 +92,7 @@ public abstract class ContainerWrapper extends Wrapper {
 		return offset;
 	}
 	
-	public Layout getLayout() {
-		return (Layout)view;
-	}
-	
-	public ArrayList<Wrapper> getChildWrappers() {
+	public ArrayList<Wrapper<?>> getChildWrappers() {
 		return childWrappers;
 	}
 	
@@ -106,12 +102,12 @@ public abstract class ContainerWrapper extends Wrapper {
 	public void resetLayout() {
 		setLeftMargin(MeasureFactory.getPaddingLeft(this) + MeasureFactory.getMarginLeft(this));
 		setTopMargin(MeasureFactory.getPaddingTop(this) + MeasureFactory.getMarginTop(this));
-		getLayout().resetLayout();
+		view.resetLayout();
 	}
 
 	public void relayout(boolean reset) {
 		super.relayout(reset);
-		for(Wrapper childWrapper : childWrappers)
+		for(Wrapper<?> childWrapper : childWrappers)
 			childWrapper.relayout(reset);
 		if(reset)
 			resetLayout();

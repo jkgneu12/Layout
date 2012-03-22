@@ -24,7 +24,7 @@ public class HorizontalLayoutCalc extends LayoutCalc {
 		
 		int maxHeight = MeasureFactory.getPaddingTop(container);;
 		
-		for(Wrapper wrapper : childWrappers){
+		for(Wrapper<?> wrapper : childWrappers){
 			if(wrapper.getView() != null){
 				int width = MeasureFactory.getMeasuredWidth(wrapper);
 				int space = 0;
@@ -46,11 +46,11 @@ public class HorizontalLayoutCalc extends LayoutCalc {
 		container.setCalculatedHeight(maxHeight);
 	}
 	
-	protected int calculateLeftSpacing(Wrapper wrapper, int space) {
+	protected int calculateLeftSpacing(Wrapper<?> wrapper, int space) {
 		return MeasureFactory.getMarginLeft(wrapper);
 	}
 	
-	protected int calculateRightSpacing(Wrapper wrapper, int space) {
+	protected int calculateRightSpacing(Wrapper<?> wrapper, int space) {
 		return MeasureFactory.getMarginRight(wrapper);
 	}
 

@@ -3,7 +3,6 @@ import ui.activity.BaseActivity;
 import ui.layout.calc.LayoutCalc;
 import ui.wrapper.ContainerWrapper;
 import ui.wrapper.Wrapper;
-import android.view.View;
 import android.widget.FrameLayout;
 
 
@@ -14,13 +13,6 @@ public abstract class Layout extends FrameLayout {
 	public Layout(BaseActivity activity, ContainerWrapper wrapper) {
 		super(activity);
 		this.wrapper = wrapper;
-	
-		//GradientDrawable d = new GradientDrawable();
-		//d.setColor(Color.GREEN);
-		
-		//setBackgroundDrawable(d);
-		
-		//setBackgroundColor(Color.GREEN);
 		
 		setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT));
 		
@@ -35,15 +27,11 @@ public abstract class Layout extends FrameLayout {
 
 	protected abstract LayoutCalc createCalc(ContainerWrapper c);
 
-	public Wrapper getWrapper() {
+	public Wrapper<Layout> getWrapper() {
 		return wrapper;
 		
 	}
 
 	public void resetLayout() {}
-	
-	public View self() {
-		return this;
-	}
 	
 }

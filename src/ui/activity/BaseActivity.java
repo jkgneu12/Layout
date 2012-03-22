@@ -29,7 +29,7 @@ public class BaseActivity extends FragmentActivity {
 
 	private ArrayList<FragmentContainerWrapper> containerWrappers;
 	
-	private HashMap<Integer, Wrapper> wrappers;
+	private HashMap<Integer, Wrapper<?>> wrappers;
 	
 	
     @Override
@@ -37,7 +37,7 @@ public class BaseActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         
         containerWrappers = new ArrayList<FragmentContainerWrapper>();
-        wrappers = new HashMap<Integer, Wrapper>();
+        wrappers = new HashMap<Integer, Wrapper<?>>();
         
         configStore = new ConfigStore(this);
 		
@@ -74,12 +74,12 @@ public class BaseActivity extends FragmentActivity {
     	baseContainerWrapper.updateData(data);
     }
     
-    public Wrapper getWrapperById(int id){
+    public Wrapper<?> getWrapperById(int id){
     	return wrappers.get(id);
     }
     
     
-    public void addWrapper(int id, Wrapper wrapper) {
+    public void addWrapper(int id, Wrapper<?> wrapper) {
     	wrappers.put(id, wrapper);
 	}
     

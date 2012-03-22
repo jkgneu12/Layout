@@ -17,9 +17,8 @@ import android.widget.FrameLayout.LayoutParams;
 public abstract class LayoutCalc {
 
 	protected ContainerWrapper container;
-
 	
-	protected ArrayList<Wrapper> childWrappers;
+	protected ArrayList<Wrapper<?>> childWrappers;
 
 	public LayoutCalc(ContainerWrapper c) {
 		this.container = c;
@@ -35,7 +34,7 @@ public abstract class LayoutCalc {
 	 */
 	protected void applyLayoutParamsToViews() {
 		LayoutParams layoutParams;
-		for(Wrapper wrapper : childWrappers){
+		for(Wrapper<?> wrapper : childWrappers){
 			if(wrapper.getView() != null){
 				int w = MeasureFactory.getMeasuredWidth(wrapper);
 				int h = MeasureFactory.getMeasuredHeight(wrapper);
@@ -52,7 +51,7 @@ public abstract class LayoutCalc {
 	 * 
 	 * Usually comprised of the leftMargin and screenAlignment
 	 */
-	protected abstract int calculateLeftSpacing(Wrapper wrapper, int space);
+	protected abstract int calculateLeftSpacing(Wrapper<?> wrapper, int space);
 	
 	
 	/**
@@ -60,5 +59,5 @@ public abstract class LayoutCalc {
 	 * 
 	 * Usually comprised of the rightMargin and screenAlignment
 	 */
-	protected abstract int calculateRightSpacing(Wrapper wrapper, int space);
+	protected abstract int calculateRightSpacing(Wrapper<?> wrapper, int space);
 }

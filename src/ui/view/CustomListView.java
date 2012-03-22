@@ -7,16 +7,15 @@ import ui.activity.BaseActivity;
 import ui.adapter.BaseAdapter;
 import ui.wrapper.ContainerWrapper;
 import ui.wrapper.ListWrapper;
-import ui.wrapper.Wrapper;
 import android.graphics.Color;
 import android.view.View;
 import android.widget.ListView;
 
 public class CustomListView extends ListView {
 
-	private Wrapper wrapper;
+	private ListWrapper wrapper;
 
-	public CustomListView(BaseActivity activity, Wrapper wrapper) {
+	public CustomListView(BaseActivity activity, ListWrapper wrapper) {
 		super(activity);
 		this.wrapper = wrapper;
 		

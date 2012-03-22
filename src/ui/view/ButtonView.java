@@ -2,7 +2,6 @@ package ui.view;
 
 import ui.activity.BaseActivity;
 import ui.wrapper.ButtonWrapper;
-import ui.wrapper.Wrapper;
 import android.graphics.Canvas;
 import android.widget.Button;
 
@@ -18,10 +17,10 @@ public class ButtonView extends Button {
 
 	private ButtonWrapper wrapper;
 	
-	public ButtonView(BaseActivity activity, Wrapper wrapper) {
+	public ButtonView(BaseActivity activity, ButtonWrapper wrapper) {
 		super(activity);
-		this.setWrapper((ButtonWrapper)wrapper);
-		setOnClickListener((ButtonWrapper)wrapper);
+		this.setWrapper(wrapper);
+		setOnClickListener(wrapper);
 	}
 	
 	public void setWrapper(ButtonWrapper wrapper) {

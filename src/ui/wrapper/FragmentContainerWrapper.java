@@ -32,27 +32,27 @@ public class FragmentContainerWrapper extends ContainerWrapper {
 	}
 	
 	public void applyOffsetX(int parentOffsetX){
-		if(getLayout() != null){
+		if(view != null){
 			increaseLeftMargin(parentOffsetX);
 			applyChildWrappersOffsetX();
 		}
 	}
 
 	protected void applyChildWrappersOffsetX() {
-		for(Wrapper wrapper : getChildWrappers()){
+		for(Wrapper<?> wrapper : childWrappers){
 			wrapper.applyOffsetX(getLeftMargin());
 		}
 	}
 	
 	public void applyOffsetY(int parentOffsetY){
-		if(getLayout() != null){
+		if(view != null){
 			increaseTopMargin(parentOffsetY);
 			applyChildWrappersOffsetY();
 		}
 	}
 
 	protected void applyChildWrappersOffsetY() {
-		for(Wrapper wrapper : getChildWrappers()){
+		for(Wrapper<?> wrapper : childWrappers){
 			wrapper.applyOffsetY(getTopMargin());
 		}
 	}
